@@ -53,11 +53,11 @@ mk-adatype
 	./mk-adatype > conf-adatype.tmp && mv conf-adatype.tmp conf-adatype
 
 conf-cctype:\
-conf-cc mk-cctype
+conf-cc conf-cc mk-cctype
 	./mk-cctype > conf-cctype.tmp && mv conf-cctype.tmp conf-cctype
 
 conf-ldtype:\
-conf-ld mk-ldtype
+conf-ld conf-ld mk-ldtype
 	./mk-ldtype > conf-ldtype.tmp && mv conf-ldtype.tmp conf-ldtype
 
 conf-systype:\
@@ -110,9 +110,17 @@ cc-compile opengl-gettypes.c
 	./cc-compile opengl-gettypes.c
 
 # opengl.ads.mff
-opengl.ads: opengl.ads.sh align-colons.lua opengl-mkconst.sh \
-opengl_const.dat opengl-mkapi.lua opengl_1_1.dat opengl_1_2.dat \
-opengl_1_3.dat opengl_1_4.dat opengl_1_5.dat opengl_2_0.dat
+opengl.ads: \
+opengl.ads.sh align-colons.lua \
+opengl-mkconst.sh opengl_const.dat \
+opengl-mkapi.lua \
+opengl_1_1_types.dat opengl_1_1_names.dat \
+opengl_1_2_types.dat opengl_1_2_names.dat \
+opengl_1_3_types.dat opengl_1_3_names.dat \
+opengl_1_4_types.dat opengl_1_4_names.dat \
+opengl_1_5_types.dat opengl_1_5_names.dat \
+opengl_2_0_types.dat opengl_2_0_names.dat \
+opengl-mktypes.sh opengl-mktype.lua opengl_types.dat
 	./opengl.ads.sh > opengl.ads.tmp && mv opengl.ads.tmp opengl.ads
 
 opengl.ali:\

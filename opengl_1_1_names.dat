@@ -27,14 +27,14 @@ Color4i                 : Red            : Green          : Blue             : A
 Color4s                 : Red            : Green          : Blue             : Alpha
 ColorMask               : Red            : Green          : Blue             : Alpha
 ColorMaterial           : Face           : Mode
-ColorPointer            : Size           : Type           : Stride           : Pointer
+ColorPointer            : Size           : Data_Type      : Stride           : Pointer
 CopyPixels              : X              : Y              : Width            : Height        : Value_Type
 CopyTexImage1D          : Target         : Level          : Internal_Format  : X             : Y           : Width      : Border
 CopyTexImage2D          : Target         : Level          : Internal_Format  : X             : Y           : Width      : Height       : Border
 CopyTexSubImage1D       : Target         : Level          : X_Offset         : X             : Y           : Width
 CopyTexSubImage2D       : Target         : Level          : X_Offset         : Y_Offset      : X           : Y          : Width        : Height
 CullFace                : Mode
-DeleteLists             : List           : Range
+DeleteLists             : List           : List_Range
 DeleteTextures          : Size           : Textures
 DepthFunc               : Func
 DepthMask               : Flag
@@ -73,7 +73,7 @@ Fogi                    : Parameter      : Value
 Fogiv                   : Parameter      : Values
 FrontFace               : Mode
 Frustum                 : Left           : Right          : Bottom           : Top           : Near        : Far
-GenLists                : Range
+GenLists                : List_Range
 GenTextures             : Size           : Textures
 GetBooleanv             : Parameter      : Values
 GetClipPlane            : Plane          : Equation
