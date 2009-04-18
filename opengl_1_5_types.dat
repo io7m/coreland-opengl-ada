@@ -1,19 +1,19 @@
-void:GenQueries:GLsizei:GLuint *
-void:DeleteQueries:GLsizei:const GLuint *
-GLboolean:IsQuery:GLuint
 void:BeginQuery:GLenum:GLuint
-void:EndQuery:GLenum:GLuint
-void:GetQueryiv:GLenum:GLenum:GLint *
-void:GetQueryObjectiv:GLuint:GLenum:GLint *
-void:GetQueryObjectuiv:GLuint:GLenum:GLuint *
 void:BindBuffer:GLenum:GLuint
-void:DeleteBuffers:GLsizei:const GLuint *
-void:GenBuffers:GLsizei:GLuint *
-GLboolean:IsBuffer:GLuint
 void:BufferData:GLenum:GLsizeiptr:const GLvoid *:GLenum
 void:BufferSubData:GLenum:GLintptr:GLsizeiptr:const GLvoid *
-void:GetBufferSubData:GLenum:GLintptr:GLsizeiptr:GLvoid *
-void *:MapBuffer:GLenum:GLenum
-GLboolean:UnmapBuffer:GLenum:GLenum
+void:DeleteBuffers:GLsizei:const GLuint *
+void:DeleteQueries:GLsizei:const GLuint *
+void:EndQuery:GLenum:GLuint
+void:GenBuffers:GLsizei:GLuint *
+void:GenQueries:GLsizei:GLuint *
 void:GetBufferParameteriv:GLenum:GLenum:GLint *
 void:GetBufferPointerv:GLenum:GLenum:GLvoid **
+void:GetBufferSubData:GLenum:GLintptr:GLsizeiptr:GLvoid *
+void:GetQueryObjectiv:GLuint:GLenum:GLint *
+void:GetQueryObjectuiv:GLuint:GLenum:GLuint *
+void:GetQueryiv:GLenum:GLenum:GLint *
+GLboolean:IsBuffer:GLuint
+GLboolean:IsQuery:GLuint
+GLvoid *:MapBuffer:GLenum:GLenum
+GLboolean:UnmapBuffer:GLenum:GLenum

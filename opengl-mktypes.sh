@@ -20,6 +20,7 @@ cat <<EOF
 
   type Double_t;
   type Float_t;
+  type String_t is new System.Address;
 
 EOF
 
