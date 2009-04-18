@@ -150,24 +150,41 @@ for index, subprogram in pairs (subprograms) do
   ]]..subprogram.type..[[ ]]..sub_name..[[
 ]])
 
-  -- Write subprogram parameters.
-  for index, parameter in pairs (subprogram.parameters) do
-    -- First parameter? Open parentheses.
-    if index == 1 then
-      io.write ("\n")
-      io.write ("    (")
-    else
-      io.write ("     ")
-    end
-
-    io.write (parameter.name..[[ : ]]..map_type_to_ada (parameter.type))
-
-    if not (index == table.maxn (subprogram.parameters)) then
-      io.write (";\n")
-    end
-  end
-
   if #subprogram.parameters > 0 then
+    local longest_name = 0
+
+    -- Check lengths of subprogram parameter names
+    for index, parameter in pairs (subprogram.parameters) do
+      if #parameter.name > longest_name then
+        longest_name = #parameter.name
+      end
+    end
+
+    -- Write subprogram parameters.
+    for index, parameter in pairs (subprogram.parameters) do
+      -- First parameter? Open parentheses.
+      if index == 1 then
+        io.write ("\n")
+        io.write ("    (")
+      else
+        io.write ("     ")
+      end
+
+      io.write (parameter.name)
+
+      -- Align colons
+      for index = #parameter.name, longest_name do
+        io.write (" ")
+      end
+
+      io.write (": "..map_type_to_ada (parameter.type))
+
+      if not (index == table.maxn (subprogram.parameters)) then
+        io.write (";\n")
+      end
+    end
+
+    -- Close
     io.write (")")
   end
 
