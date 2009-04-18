@@ -1,0 +1,14 @@
+void:ActiveTexture:GLenum
+void:ClientActiveTexture:GLenum
+void:CompressedTexImage1D:GLenum:GLint:GLenum:GLsizei:GLint:GLsizei:const GLvoid *
+void:CompressedTexImage2D:GLenum:GLint:GLenum:GLsizei:GLsizei:GLint:GLsizei:const GLvoid *
+void:CompressedTexImage3D:GLenum:GLint:GLenum:GLsizei:GLsizei:GLsizei:GLint:GLsizei:const GLvoid *
+void:CompressedTexSubImage1D:GLenum:GLint:GLint:GLsizei:GLenum:GLsizei:const GLvoid *
+void:CompressedTexSubImage2D:GLenum:GLint:GLint:GLint:GLsizei:GLsizei:GLenum:GLsizei:const GLvoid *
+void:CompressedTexSubImage3D:GLenum:GLint:GLint:GLint:GLint:GLsizei:GLsizei:GLsizei:GLenum:GLsizei:const GLvoid *
+void:GetCompressedTexImage:GLenum:GLint:GLvoid *
+void:LoadTransposeMatrixd:const GLdouble[16]
+void:LoadTransposeMatrixf:const GLfloat[16]
+void:MultTransposeMatrixd:const GLdouble[16]
+void:MultTransposeMatrixf:const GLfloat[16]
+void:SampleCoverage:GLclampf:GLboolean

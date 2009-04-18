@@ -1,0 +1,45 @@
+void:BlendFuncSeparate:GLenum:GLenum:GLenum:GLenum
+void:FogCoordf:GLfloat
+void:FogCoordfv:GLfloat *
+void:FogCoordd:GLfloat
+void:FogCoorddv:GLfloat *
+void:FogCoordPointer:GLenum:GLsizei:GLvoid *
+void:MultiDrawArrays:GLenum:GLint *:GLsizei *:GLsizei
+void:MultiDrawElements:GLenum:const GLsizei *:GLenum:const GLvoid **:GLsizei
+void:PointParameterf:GLenum:GLfloat
+void:PointParameterfv:GLenum:const GLfloat *
+void:PointParameteri:GLenum:GLint
+void:PointParameteriv:GLenum:const GLint *
+void:SecondaryColor3b:GLbyte:GLbyte:GLbyte
+void:SecondaryColor3bv:const GLbyte *
+void:SecondaryColor3d:GLdouble:GLdouble:GLdouble
+void:SecondaryColor3dv:const GLdouble *
+void:SecondaryColor3f:GLfloat:GLfloat:GLfloat
+void:SecondaryColor3fv:const GLfloat *
+void:SecondaryColor3i:GLint:GLint:GLint
+void:SecondaryColor3iv:const GLint *
+void:SecondaryColor3s:GLshort:GLshort:GLshort
+void:SecondaryColor3sv:const GLshort *
+void:SecondaryColor3ub:GLubyte:GLubyte:GLubyte
+void:SecondaryColor3ubv:const GLubyte *
+void:SecondaryColor3ui:GLuint:GLuint:GLuint
+void:SecondaryColor3uiv:const GLuint *
+void:SecondaryColor3us:GLushort:GLushort:GLushort
+void:SecondaryColor3usv:const GLushort *
+void:SecondaryColorPointer:GLint:GLenum:GLsizei:const GLvoid *
+void:WindowPos2d:GLdouble:GLdouble
+void:WindowPos2dv:const GLdouble *
+void:WindowPos2f:GLfloat:GLfloat
+void:WindowPos2fv:const GLfloat *
+void:WindowPos2i:GLint:GLint
+void:WindowPos2iv:const GLint *
+void:WindowPos2s:GLshort:GLshort
+void:WindowPos2sv:const GLshort *
+void:WindowPos3d:GLdouble:GLdouble:GLdouble
+void:WindowPos3dv:const GLdouble *
+void:WindowPos3f:GLfloat:GLfloat:GLfloat
+void:WindowPos3fv:const GLfloat *
+void:WindowPos3i:GLint:GLint:GLint
+void:WindowPos3iv:const GLint *
+void:WindowPos3s:GLshort:GLshort:GLshort
+void:WindowPos3sv:const GLshort *

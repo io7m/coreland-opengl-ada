@@ -1,0 +1,138 @@
+void:ActiveTextureARB:GLenum
+void:BlendColor:GLclampf:GLclampf:GLclampf:GLclampf
+void:BlendEquation:GLenum
+void:ClientActiveTextureARB:GLenum
+void:Color3bv:const GLbyte *
+void:Color3dv:const GLdouble *
+void:Color3fv:const GLfloat *
+void:Color3iv:const GLint *
+void:Color3sv:const GLshort *
+void:Color3ub:GLubyte:GLubyte:GLubyte
+void:Color3ubv:const GLubyte *
+void:Color3ui:GLuint:GLuint:GLuint
+void:Color3uiv:const GLuint *
+void:Color3us:GLushort:GLushort:GLushort
+void:Color3usv:const GLushort *
+void:Color4bv:const GLbyte *
+void:Color4dv:const GLdouble *
+void:Color4fv:const GLfloat *
+void:Color4iv:const GLint *
+void:Color4sv:const GLshort *
+void:Color4ub:GLubyte:GLubyte:GLubyte:GLubyte
+void:Color4ubv:const GLubyte *
+void:Color4ui:GLuint:GLuint:GLuint:GLuint
+void:Color4uiv:const GLuint *
+void:Color4us:GLushort:GLushort:GLushort:GLushort
+void:Color4usv:const GLushort *
+void:ColorSubTable:GLenum:GLsizei:GLsizei:GLenum:GLenum:const GLvoid *
+void:ColorTable:GLenum:GLenum:GLsizei:GLenum:GLenum:const GLvoid *
+void:ColorTableParameterfv:GLenum:GLenum:const GLfloat *
+void:ColorTableParameteriv:GLenum:GLenum:const GLint *
+void:ConvolutionFilter1D:GLenum:GLenum:GLsizei:GLenum:GLenum:const GLvoid *
+void:ConvolutionFilter2D:GLenum:GLenum:GLsizei:GLsizei:GLenum:GLenum:const GLvoid *
+void:ConvolutionParameterf:GLenum:GLenum:GLfloat
+void:ConvolutionParameterfv:GLenum:GLenum:const GLfloat *
+void:ConvolutionParameteri:GLenum:GLenum:GLint
+void:ConvolutionParameteriv:GLenum:GLenum:const GLint *
+void:CopyColorSubTable:GLenum:GLsizei:GLint:GLint:GLsizei
+void:CopyColorTable:GLenum:GLenum:GLint:GLint:GLsizei
+void:CopyConvolutionFilter1D:GLenum:GLenum:GLint:GLint:GLsizei
+void:CopyConvolutionFilter2D:GLenum:GLenum:GLint:GLint:GLsizei:GLsizei
+void:CopyTexSubImage3D:GLenum:GLint:GLint:GLint:GLint:GLint:GLint:GLsizei:GLsizei
+void:DrawRangeElements:GLenum:GLuint:GLuint:GLsizei:GLenum:const GLvoid *
+void:GetColorTable:GLenum:GLenum:GLenum:GLvoid *
+void:GetColorTableParameterfv:GLenum:GLenum:GLfloat *
+void:GetColorTableParameteriv:GLenum:GLenum:GLint *
+void:GetConvolutionFilter:GLenum:GLenum:GLenum:GLvoid *
+void:GetConvolutionParameterfv:GLenum:GLenum:GLfloat *
+void:GetConvolutionParameteriv:GLenum:GLenum:GLint *
+void:GetHistogram:GLenum:GLboolean:GLenum:GLenum:GLvoid *
+void:GetHistogramParameterfv:GLenum:GLenum:GLfloat *
+void:GetHistogramParameteriv:GLenum:GLenum:GLint *
+void:GetMinmax:GLenum:GLboolean:GLenum:GLenum
+void:GetMinmaxParameterfv:GLenum:GLenum:GLfloat *
+void:GetMinmaxParameteriv:GLenum:GLenum:GLfloat *
+void:GetPixelMapfv:GLenum:GLfloat *
+void:GetPixelMapuiv:GLenum:GLuint *
+void:GetPixelMapusv:GLenum:GLushort *
+void:GetSeparableFilter:GLenum:GLenum:GLenum:GLvoid *:GLvoid *:GLvoid *
+void:GetTexGendv:GLenum:GLenum:GLdouble *
+void:Histogram:GLenum:GLsizei:GLenum:GLboolean
+void:Indexdv:const GLdouble *
+void:Indexfv:const GLfloat *
+void:Indexiv:const GLint *
+void:Indexsv:const GLshort *
+void:Indexub:GLubyte
+void:Indexubv:const GLubyte *
+void:Minmax:GLenum:GLenum:GLboolean
+void:MultiTexCoord1d:GLenum:GLdouble
+void:MultiTexCoord1dARB:GLenum:GLdouble
+void:MultiTexCoord1dv:GLenum:const GLdouble *
+void:MultiTexCoord1dvARB:GLenum:const GLdouble *
+void:MultiTexCoord1f:GLenum:GLfloat
+void:MultiTexCoord1fARB:GLenum:GLfloat
+void:MultiTexCoord1fv:GLenum:const GLfloat *
+void:MultiTexCoord1fvARB:GLenum:const GLfloat *
+void:MultiTexCoord1i:GLenum:GLint
+void:MultiTexCoord1iARB:GLenum:GLint
+void:MultiTexCoord1iv:GLenum:const GLint *
+void:MultiTexCoord1ivARB:GLenum:const GLint *
+void:MultiTexCoord1s:GLenum:GLshort
+void:MultiTexCoord1sARB:GLenum:GLshort
+void:MultiTexCoord1sv:GLenum:const GLshort *
+void:MultiTexCoord1svARB:GLenum:const GLshort *
+void:MultiTexCoord2d:GLenum:GLdouble:GLdouble
+void:MultiTexCoord2dARB:GLenum:GLdouble:GLdouble
+void:MultiTexCoord2dv:GLenum:const GLdouble *
+void:MultiTexCoord2dvARB:GLenum:const GLdouble *
+void:MultiTexCoord2f:GLenum:GLfloat:GLfloat
+void:MultiTexCoord2fARB:GLenum:GLfloat:GLfloat
+void:MultiTexCoord2fv:GLenum:const GLfloat *
+void:MultiTexCoord2fvARB:GLenum:const GLfloat *
+void:MultiTexCoord2i:GLenum:GLint:GLint
+void:MultiTexCoord2iARB:GLenum:GLint:GLint
+void:MultiTexCoord2iv:GLenum:const GLint *
+void:MultiTexCoord2ivARB:GLenum:const GLint *
+void:MultiTexCoord2s:GLenum:GLshort:GLshort
+void:MultiTexCoord2sARB:GLenum:GLshort:GLshort
+void:MultiTexCoord2sv:GLenum:const GLshort *
+void:MultiTexCoord2svARB:GLenum:const GLshort *
+void:MultiTexCoord3d:GLenum:GLdouble:GLdouble:GLdouble
+void:MultiTexCoord3dARB:GLenum:GLdouble:GLdouble:GLdouble
+void:MultiTexCoord3dv:GLenum:const GLdouble *
+void:MultiTexCoord3dvARB:GLenum:const GLdouble *
+void:MultiTexCoord3f:GLenum:GLfloat:GLfloat:GLfloat
+void:MultiTexCoord3fARB:GLenum:GLfloat:GLfloat:GLfloat
+void:MultiTexCoord3fv:GLenum:const GLfloat *
+void:MultiTexCoord3fvARB:GLenum:const GLfloat *
+void:MultiTexCoord3i:GLenum:GLint:GLint:GLint
+void:MultiTexCoord3iARB:GLenum:GLint:GLint:GLint
+void:MultiTexCoord3iv:GLenum:const GLint *
+void:MultiTexCoord3ivARB:GLenum:const GLint *
+void:MultiTexCoord3s:GLenum:GLshort:GLshort:GLshort
+void:MultiTexCoord3sARB:GLenum:GLshort:GLshort:GLshort
+void:MultiTexCoord3sv:GLenum:const GLshort *
+void:MultiTexCoord3svARB:GLenum:const GLshort *
+void:MultiTexCoord4d:GLenum:GLdouble:GLdouble:GLdouble:GLdouble
+void:MultiTexCoord4dARB:GLenum:GLdouble:GLdouble:GLdouble:GLdouble
+void:MultiTexCoord4dv:GLenum:const GLdouble *
+void:MultiTexCoord4dvARB:GLenum:const GLdouble *
+void:MultiTexCoord4f:GLenum:GLfloat:GLfloat:GLfloat:GLfloat
+void:MultiTexCoord4fARB:GLenum:GLfloat:GLfloat:GLfloat:GLfloat
+void:MultiTexCoord4fv:GLenum:const GLfloat *
+void:MultiTexCoord4fvARB:GLenum:const GLfloat *
+void:MultiTexCoord4i:GLenum:GLint:GLint:GLint:GLint
+void:MultiTexCoord4iARB:GLenum:GLint:GLint:GLint:GLint
+void:MultiTexCoord4iv:GLenum:const GLint *
+void:MultiTexCoord4ivARB:GLenum:const GLint *
+void:MultiTexCoord4s:GLenum:GLshort:GLshort:GLshort:GLshort
+void:MultiTexCoord4sARB:GLenum:GLshort:GLshort:GLshort:GLshort
+void:MultiTexCoord4sv:GLenum:const GLshort *
+void:MultiTexCoord4svARB:GLenum:const GLshort *
+void:PixelMapfv:GLenum:GLsizei:const GLfloat *
+void:PixelMapusv:GLenum:GLsizei:const GLushort *
+void:ResetHistogram:GLenum
+void:ResetMinmax:GLenum
+void:SeparableFilter2D:GLenum:GLenum:GLsizei:GLsizei:GLenum:GLenum:const GLvoid *:const GLvoid *
+void:TexImage3D:GLenum:GLint:GLint:GLsizei:GLsizei:GLsizei:GLint:GLenum:GLenum:const GLvoid *
+void:TexSubImage3D:GLenum:GLint:GLint:GLint:GLint:GLsizei:GLsizei:GLsizei:GLenum:GLenum:const GLvoid *
