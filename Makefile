@@ -3,7 +3,8 @@
 default: all
 
 all:\
-opengl-getconst opengl-getconst.o opengl.ali opengl.o
+opengl-getconst opengl-getconst.o opengl-gettypes opengl-gettypes.o opengl.ali \
+opengl.o
 
 # -- SYSDEPS start
 flags-opengl:
@@ -52,11 +53,11 @@ mk-adatype
 	./mk-adatype > conf-adatype.tmp && mv conf-adatype.tmp conf-adatype
 
 conf-cctype:\
-conf-cc conf-cc mk-cctype
+conf-cc mk-cctype
 	./mk-cctype > conf-cctype.tmp && mv conf-cctype.tmp conf-cctype
 
 conf-ldtype:\
-conf-ld conf-ld mk-ldtype
+conf-ld mk-ldtype
 	./mk-ldtype > conf-ldtype.tmp && mv conf-ldtype.tmp conf-ldtype
 
 conf-systype:\
@@ -95,6 +96,19 @@ opengl-getconst.o:\
 cc-compile opengl-getconst.c
 	./cc-compile opengl-getconst.c
 
+opengl-gettypes:\
+cc-link opengl-gettypes.ld opengl-gettypes.o
+	./cc-link opengl-gettypes opengl-gettypes.o
+
+# opengl-gettypes.c.mff
+opengl-gettypes.c: opengl_types.dat opengl-gettypes.lua
+	./opengl-gettypes.lua opengl_types.dat > opengl-gettypes.c.tmp
+	mv opengl-gettypes.c.tmp opengl-gettypes.c
+
+opengl-gettypes.o:\
+cc-compile opengl-gettypes.c
+	./cc-compile opengl-gettypes.c
+
 # opengl.ads.mff
 opengl.ads: opengl.ads.sh align-colons.lua opengl-mkconst.sh \
 opengl_const.dat opengl-mkapi.lua opengl_1_1.dat opengl_1_2.dat \
@@ -111,8 +125,8 @@ opengl.ali
 clean-all: sysdeps_clean obj_clean ext_clean
 clean: obj_clean
 obj_clean:
-	rm -f opengl-getconst opengl-getconst.c opengl-getconst.o opengl.ads opengl.ali \
-	opengl.o
+	rm -f opengl-getconst opengl-getconst.c opengl-getconst.o opengl-gettypes \
+	opengl-gettypes.c opengl-gettypes.o opengl.ads opengl.ali opengl.o
 ext_clean:
 	rm -f conf-adatype conf-cctype conf-ldtype conf-systype mk-ctxt
 

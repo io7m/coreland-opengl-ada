@@ -1,6 +1,13 @@
 #!/usr/bin/env lua
 
-local io = require ("io")
+local string_ex = require ("string_ex")
+local io        = require ("io")
+local argv      = arg
+local argc      = table.maxn (argv)
+
+assert (argc == 1)
+local types_map = io.open (argv[1])
+assert (types_map)
 
 io.write ([[
 #include <GL/gl.h>
@@ -14,14 +21,16 @@ main (int argc, char *argv[])
 
 ]])
 
-local types = {
+for line in types_map:lines() do
+  local type_record = string_ex.split (line, ":")
+  local type_name   = type_record [1]
 
-}
+  type_name = type_name:gsub ("^[%s]*", "")
+  type_name = type_name:gsub ("[%s]*$", "")
 
-for index, type_name in pairs (types) do
   io.write ([[
   if (strcmp (argv[1], "]]..type_name..[[") == 0) {
-    printf ("%u\n", sizeof (]]..type_name..[["));
+    printf ("%u\n", sizeof (]]..type_name..[[));
     return 0;
   }
 ]])

@@ -7,8 +7,8 @@ void:CompressedTexSubImage1D:GLenum:GLint:GLint:GLsizei:GLenum:GLsizei:const GLv
 void:CompressedTexSubImage2D:GLenum:GLint:GLint:GLint:GLsizei:GLsizei:GLenum:GLsizei:const GLvoid *
 void:CompressedTexSubImage3D:GLenum:GLint:GLint:GLint:GLint:GLsizei:GLsizei:GLsizei:GLenum:GLsizei:const GLvoid *
 void:GetCompressedTexImage:GLenum:GLint:GLvoid *
-void:LoadTransposeMatrixd:const GLdouble[16]
-void:LoadTransposeMatrixf:const GLfloat[16]
-void:MultTransposeMatrixd:const GLdouble[16]
-void:MultTransposeMatrixf:const GLfloat[16]
+void:LoadTransposeMatrixd:const GLdouble *
+void:LoadTransposeMatrixf:const GLfloat *
+void:MultTransposeMatrixd:const GLdouble *
+void:MultTransposeMatrixf:const GLfloat *
 void:SampleCoverage:GLclampf:GLboolean

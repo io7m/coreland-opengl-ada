@@ -49,7 +49,7 @@ void:GetConvolutionParameteriv:GLenum:GLenum:GLint *
 void:GetHistogram:GLenum:GLboolean:GLenum:GLenum:GLvoid *
 void:GetHistogramParameterfv:GLenum:GLenum:GLfloat *
 void:GetHistogramParameteriv:GLenum:GLenum:GLint *
-void:GetMinmax:GLenum:GLboolean:GLenum:GLenum
+void:GetMinmax:GLenum:GLboolean:GLenum:GLenum:GLvoid *
 void:GetMinmaxParameterfv:GLenum:GLenum:GLfloat *
 void:GetMinmaxParameteriv:GLenum:GLenum:GLfloat *
 void:GetPixelMapfv:GLenum:GLfloat *

@@ -1,0 +1,14 @@
+ActiveTexture:Texture
+ClientActiveTexture:Texture
+CompressedTexImage1D:Target:Level:Internal_Format:Width:Border:Image_Size:Data
+CompressedTexImage2D:Target:Level:Internal_Format:Width:Height:Border:Image_Size:Data
+CompressedTexImage3D:Target:Level:Internal_Format:Width:Height:Depth:Border:Image_Size:Data
+CompressedTexSubImage1D:Target:Level:X_Offset:Width:Format:Image_Size:Data
+CompressedTexSubImage2D:Target:Level:X_Offset:Y_Offset:Width:Height:Format:Image_Size:Data
+CompressedTexSubImage3D:Target:Level:X_Offset:Y_Offset:Z_Offset:Width:Height:Depth:Format:Image_Size:Data
+GetCompressedTexImage:Target:Level:Image
+LoadTransposeMatrixd:Matrix
+LoadTransposeMatrixf:Matrix
+MultTransposeMatrixd:Matrix
+MultTransposeMatrixf:Matrix
+SampleCoverage:Value:Invert

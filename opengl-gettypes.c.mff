@@ -1,0 +1,3 @@
+opengl-gettypes.c: opengl_types.dat opengl-gettypes.lua
+	./opengl-gettypes.lua opengl_types.dat > opengl-gettypes.c.tmp
+	mv opengl-gettypes.c.tmp opengl-gettypes.c

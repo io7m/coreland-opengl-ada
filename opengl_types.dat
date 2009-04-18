@@ -1,33 +1,35 @@
-GLbitfield        : Bitfield_t
-GLboolean *       : Boolean_Access_t
-GLboolean         : Boolean_t
-GLbyte            : Byte_t
-GLclampd          : Clamped_Double_t
-GLclampf          : Clamped_Float_t
-GLdouble *        : Double_Access_t
-GLdouble          : Double_t
-GLenum            : Enumeration_t
-GLfloat *         : Float_Access_t
-GLfloat           : Float_t
-GLint *           : Integer_Access_t
-GLint             : Integer_t
-GLshort *         : Short_Access_t
-GLshort           : Short_t
-GLsizei           : Size_t
-GLubyte *         : Unsigned_Byte_Access_t
-GLuint *          : Unsigned_Integer_Access_t
-GLuint            : Unsigned_Integer_t
-GLushort *        : Unsigned_Short_Access_t
-GLushort          : Unsigned_Short_t
-GLvoid *          : Void_Pointer_t
-GLvoid **         : Void_Pointer_Access_t
-const GLboolean * : Boolean_Constant_Access_t
-const GLbyte *    : Byte_Constant_Access_t
-const GLclampf *  : Clamped_Float_Constant_Access_t
-const GLdouble *  : Double_Constant_Access_t
-const GLfloat *   : Float_Constant_Access_t
-const GLint *     : Integer_Constant_Access_t
-const GLshort *   : Short_Constant_Access_t
-const GLubyte *   : Unsigned_Byte_Constant_Access_t
-const GLuint *    : Unsigned_Integer_Constant_Access_t
-const GLvoid *    : Void_Constant_Pointer_t
+GLbitfield        : Bitfield_t                         : modular
+GLboolean         : Boolean_t                          : boolean
+GLboolean *       : Boolean_Access_t                   : access
+GLbyte            : Byte_t                             : scalar
+GLclampd          : Clamped_Double_t                   : double_sub
+GLclampf          : Clamped_Float_t                    : float_sub
+GLdouble          : Double_t                           : double
+GLdouble *        : Double_Access_t                    : access
+GLenum            : Enumeration_t                      : modular
+GLfloat           : Float_t                            : float
+GLfloat *         : Float_Access_t                     : access
+GLint             : Integer_t                          : scalar
+GLint *           : Integer_Access_t                   : access
+GLshort           : Short_t                            : scalar
+GLshort *         : Short_Access_t                     : access
+GLsizei           : Size_t                             : scalar
+GLubyte           : Unsigned_Byte_t                    : modular
+GLubyte *         : Unsigned_Byte_Access_t             : access
+GLuint            : Unsigned_Integer_t                 : modular
+GLuint *          : Unsigned_Integer_Access_t          : access
+GLushort          : Unsigned_Short_t                   : modular
+GLushort *        : Unsigned_Short_Access_t            : access
+GLvoid *          : Void_Pointer_t                     : address
+GLvoid **         : Void_Pointer_Access_t              : access
+const GLboolean * : Boolean_Access_Constant_t          : access_constant
+const GLbyte *    : Byte_Access_Constant_t             : access_constant
+const GLclampf *  : Clamped_Float_Access_Constant_t    : access_constant
+const GLdouble *  : Double_Access_Constant_t           : access_constant
+const GLfloat *   : Float_Access_Constant_t            : access_constant
+const GLint *     : Integer_Access_Constant_t          : access_constant
+const GLshort *   : Short_Access_Constant_t            : access_constant
+const GLushort *  : Unsigned_Short_Access_Constant_t   : access_constant
+const GLubyte *   : Unsigned_Byte_Access_Constant_t    : access_constant
+const GLuint *    : Unsigned_Integer_Access_Constant_t : access_constant
+const GLvoid *    : Void_Constant_Pointer_t            : access_constant
