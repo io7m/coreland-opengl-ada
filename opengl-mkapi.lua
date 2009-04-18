@@ -55,6 +55,16 @@ while true do
   local type_record = string_ex.split (type_line, ":")
   local name_record = string_ex.split (name_line, ":")
 
+  -- Strip whitespace
+  for index, item in pairs (type_record) do
+    type_record [index] = type_record [index]:gsub ("^[%s]*", "")
+    type_record [index] = type_record [index]:gsub ("[%s]*$", "")
+  end
+  for index, item in pairs (name_record) do
+    name_record [index] = name_record [index]:gsub ("^[%s]*", "")
+    name_record [index] = name_record [index]:gsub ("[%s]*$", "")
+  end
+
   -- Sanity checking on name
   if type_record [2] ~= name_record [1] then
     error ("name "..type_record [2].." does not match "..name_record [1].." at line "..line)
