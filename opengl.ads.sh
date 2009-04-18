@@ -14,7 +14,11 @@ info()
 cat <<EOF
 -- Automatically generated, do not edit.
 
+with Interfaces.C;
+with System;
+
 package OpenGL is
+  package C renames Interfaces.C;
 
   -- Constants
 EOF
@@ -22,6 +26,9 @@ EOF
 info "generating OpenGL constants"
 ./opengl-mkconst.sh opengl_const.dat | ./align-colons.lua || fatal "could not generate constants"
 echo
+
+info "generating OpenGL types"
+./opengl-mktypes.sh opengl_types.dat || fatal "could not generate types"
 
 info "generating 1.1 API"
 echo '  -- OpenGL 1.1'

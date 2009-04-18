@@ -1,3 +1,5 @@
+GLfloat           : Float_t                            : float
+GLdouble          : Double_t                           : double
 GLsizeiptr        : Size_Pointer_t                     : modular
 GLintptr          : Integer_Pointer_t                  : modular
 GLbitfield        : Bitfield_t                         : modular
@@ -7,11 +9,9 @@ GLbyte            : Byte_t                             : scalar
 GLchar *          : String_Access_t                    : access
 GLclampd          : Clamped_Double_t                   : double_sub
 GLclampf          : Clamped_Float_t                    : float_sub
-GLdouble          : Double_t                           : double
 GLdouble *        : Double_Access_t                    : access
 GLenum            : Enumeration_t                      : modular
 GLenum *          : Enumeration_Access_t               : access
-GLfloat           : Float_t                            : float
 GLfloat *         : Float_Access_t                     : access
 GLint             : Integer_t                          : scalar
 GLint *           : Integer_Access_t                   : access
@@ -27,7 +27,7 @@ GLushort          : Unsigned_Short_t                   : modular
 GLushort *        : Unsigned_Short_Access_t            : access
 GLvoid *          : Void_Pointer_t                     : address
 GLvoid **         : Void_Pointer_Access_t              : access
-const GLvoid **   : Void_Pointer_Access_Constant_t     : access_constant
+const GLvoid **   : Void_Pointer_Access_Constant_t     : address_access_constant
 const GLboolean * : Boolean_Access_Constant_t          : access_constant
 const GLbyte *    : Byte_Access_Constant_t             : access_constant
 const GLclampf *  : Clamped_Float_Access_Constant_t    : access_constant
@@ -39,6 +39,6 @@ const GLshort *   : Short_Access_Constant_t            : access_constant
 const GLushort *  : Unsigned_Short_Access_Constant_t   : access_constant
 const GLubyte *   : Unsigned_Byte_Access_Constant_t    : access_constant
 const GLuint *    : Unsigned_Integer_Access_Constant_t : access_constant
-const GLvoid *    : Void_Constant_Pointer_t            : access_constant
+const GLvoid *    : Void_Constant_Pointer_t            : address
 const GLsizei *   : Size_Access_Constant_t             : access_constant
 const GLchar *    : String_Access_Constant_t           : access_constant

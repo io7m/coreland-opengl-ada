@@ -137,8 +137,17 @@ end
 --
 
 for index, subprogram in pairs (subprograms) do
+  local sub_name = subprogram.name
+  sub_name = modify_name (sub_name)
+
+  -- Hack
+  if (sub_name == "Begin") or
+     (sub_name == "End") then
+    sub_name = "GL_"..sub_name
+  end
+
   io.write ([[
-  ]]..subprogram.type..[[ ]]..modify_name (subprogram.name)..[[
+  ]]..subprogram.type..[[ ]]..sub_name..[[
 
 ]])
 
@@ -168,7 +177,7 @@ for index, subprogram in pairs (subprograms) do
 
   io.write (";\n")
   io.write ([[
-  pragma Import (C, ]]..modify_name (subprogram.name)..[[, "gl]]..subprogram.name..[[");
+  pragma Import (C, ]]..sub_name..[[, "gl]]..subprogram.name..[[");
 
 ]])
 end

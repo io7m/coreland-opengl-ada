@@ -37,11 +37,11 @@ if kind == "modular" then
 end
 
 if kind == "float" then
-  io.write ("  type "..ada_type.." is new C.c_float;\n")
+  io.write ("  type "..ada_type.." is new C.C_float;\n")
 end
 
 if kind == "double" then
-  io.write ("  type "..ada_type.." is new C.c_double;\n")
+  io.write ("  type "..ada_type.." is new C.double;\n")
 end
 
 if kind == "float_sub" then
@@ -79,7 +79,13 @@ end
 
 if kind == "address" then
   io.write ([[
-  type ]]..ada_type..[[ is new System.Address;
+  subtype ]]..ada_type..[[ is System.Address;
+]])
+end
+
+if kind == "address_access_constant" then
+  io.write ([[
+  type ]]..ada_type..[[ is access constant System.Address;
   pragma Convention (C, ]]..ada_type..[[);
 ]])
 end

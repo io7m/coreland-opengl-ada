@@ -144,15 +144,15 @@ MatrixMode              : Mode
 MultMatrixd             : Matrix
 MultMatrixf             : Matrix
 NewList                 : List           : Mode
-Normal3b                : Normal_X       : Normal_Y       : Normal_Y
+Normal3b                : Normal_X       : Normal_Y       : Normal_Z
 Normal3bv               : Vector
-Normal3d                : Normal_X       : Normal_Y       : Normal_Y
+Normal3d                : Normal_X       : Normal_Y       : Normal_Z
 Normal3dv               : Vector
-Normal3f                : Normal_X       : Normal_Y       : Normal_Y
+Normal3f                : Normal_X       : Normal_Y       : Normal_Z
 Normal3fv               : Vector
-Normal3i                : Normal_X       : Normal_Y       : Normal_Y
+Normal3i                : Normal_X       : Normal_Y       : Normal_Z
 Normal3iv               : Vector
-Normal3s                : Normal_X       : Normal_Y       : Normal_Y
+Normal3s                : Normal_X       : Normal_Y       : Normal_Z
 Normal3sv               : Vector
 NormalPointer           : Data_Type      : Stride         : Pointer
 Ortho                   : Left           : Right          : Bottom           : Top           : Near_Value  : Far_Value
