@@ -148,13 +148,13 @@ for index, subprogram in pairs (subprograms) do
 
   io.write ([[
   ]]..subprogram.type..[[ ]]..sub_name..[[
-
 ]])
 
   -- Write subprogram parameters.
   for index, parameter in pairs (subprogram.parameters) do
     -- First parameter? Open parentheses.
     if index == 1 then
+      io.write ("\n")
       io.write ("    (")
     else
       io.write ("     ")
@@ -162,15 +162,16 @@ for index, subprogram in pairs (subprograms) do
 
     io.write (parameter.name..[[ : ]]..map_type_to_ada (parameter.type))
 
-    -- Last parameter? Close parentheses.
-    if index == table.maxn (subprogram.parameters) then
-      io.write (")")
-    else
+    if not (index == table.maxn (subprogram.parameters)) then
       io.write (";\n")
     end
   end
 
-  -- Function type? Write return type.
+  if #subprogram.parameters > 0 then
+    io.write (")")
+  end
+
+  -- Function type? Write return type, else close procedure.
   if subprogram.type == "function" then
     io.write (" return "..map_type_to_ada (subprogram.return_type))
   end
