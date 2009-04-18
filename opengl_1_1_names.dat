@@ -1,302 +1,302 @@
-Accum:Operation:Value
-AlphaFunc:Func:Reference
-AreTexturesResident:Size:Textures:Residences
-ArrayElement:Index
-Begin:Mode
-BindTexture:Target:Texture
-Bitmap:Width:Height:X_Original:Y_Original:X_Move:Y_Move:Bitmap_Data
-BlendFunc:Source_Factor:Target_Factor
-CallList:List
-CallLists:Number:Value_Type:Lists
-Clear:Mask
-ClearAccum:Red:Green:Blue:Alpha
-ClearColor:Red:Green:Blue:Alpha
-ClearDepth:Depth
-ClearIndex:Index
-ClearStencil:Index
-ClipPlane:Plane:Equation
-Color3b:Red:Green:Blue
-Color3d:Red:Green:Blue
-Color3f:Red:Green:Blue
-Color3i:Red:Green:Blue
-Color3s:Red:Green:Blue
-Color4b:Red:Green:Blue:Alpha
-Color4d:Red:Green:Blue:Alpha
-Color4f:Red:Green:Blue:Alpha
-Color4i:Red:Green:Blue:Alpha
-Color4s:Red:Green:Blue:Alpha
-ColorMask:Red:Green:Blue:Alpha
-ColorMaterial:Face:Mode
-ColorPointer:Size:Type:Stride:Pointer
-CopyPixels:X:Y:Width:Height:Value_Type
-CopyTexImage1D:Target:Level:Internal_Format:X:Y:Width:Border
-CopyTexImage2D:Target:Level:Internal_Format:X:Y:Width:Height:Border
-CopyTexSubImage1D:Target:Level:X_Offset:X:Y:Width
-CopyTexSubImage2D:Target:Level:X_Offset:Y_Offset:X:Y:Width:Height
-CullFace:Mode
-DeleteLists:List:Range
-DeleteTextures:Size:Textures
-DepthFunc:Func
-DepthMask:Flag
-DepthRange:Near_Value:Far_Value
-Disable:Capability
-DisableClientState:Capability
-DrawArrays:Mode:First:Count
-DrawBuffer:Mode
-DrawElements:Mode:Count:Value_Type:Indices
-DrawPixels:Width:Height:Format:Data_Type:Data
-EdgeFlag:Flag
-EdgeFlagPointer:Stride:Pointer
-EdgeFlagv:Flag
-Enable:Capability
-EnableClientState:Capability
-End:
-EndList:
-EvalCoord1d:U
-EvalCoord1dv:U
-EvalCoord1f:U
-EvalCoord1fv:U
-EvalCoord2d:U:V
-EvalCoord2dv:U
-EvalCoord2f:U:V
-EvalCoord2fv:U
-EvalMesh1:Mode:I1:I2
-EvalMesh2:Mode:I1:I2:J1:J2
-EvalPoint1:I
-EvalPoint2:I:J
-FeedbackBuffer:Size:Info_Type:Buffer
-Finish:
-Flush:
-Fogf:Parameter:Value
-Fogfv:Parameter:Values
-Fogi:Parameter:Value
-Fogiv:Parameter:Values
-FrontFace:Mode
-Frustum:Left:Right:Bottom:Top:Near:Far
-GenLists:Range
-GenTextures:Size:Textures
-GetBooleanv:Parameter:Values
-GetClipPlane:Plane:Equation
-GetDoublev:Parameter:Values
-GetError:
-GetFloatv:Parameter:Values
-GetIntegerv:Parameter:Values
-GetLightfv:Light:Parameter:Values
-GetLightiv:Light:Parameter:Values
-GetMapdv:Target:Query:Values
-GetMapfv:Target:Query:Values
-GetMapiv:Target:Query:Values
-GetMaterialfv:Face:Parameter:Values
-GetMaterialiv:Face:Parameter:Values
-GetPointerv:Parameter:Values
-GetPolygonStipple:Pattern
-GetString:Name
-GetTexEnvfv:Target:Parameter:Values
-GetTexEnviv:Target:Parameter:Values
-GetTexGenfv:Coord:Parameter:Values
-GetTexGeniv:Coord:Parameter:Values
-GetTexImage:Target:Level:Format:Pixel_Type:Image
-GetTexLevelParameterfv:Target:Level:Parameter:Values
-GetTexLevelParameteriv:Target:Level:Parameter:Values
-GetTexParameterfv:Target:Parameter:Values
-GetTexParameteriv:Target:Parameter:Values
-Hint:Target:Mode
-IndexMask:Mask
-IndexPointer:Data_Type:Stride:Pointer
-Indexd:Value
-Indexf:Value
-Indexi:Value
-Indexs:Value
+Accum                   : Operation      : Value
+AlphaFunc               : Func           : Reference
+AreTexturesResident     : Size           : Textures       : Residences
+ArrayElement            : Index
+Begin                   : Mode
+BindTexture             : Target         : Texture
+Bitmap                  : Width          : Height         : X_Original       : Y_Original    : X_Move      : Y_Move     : Bitmap_Data
+BlendFunc               : Source_Factor  : Target_Factor
+CallList                : List
+CallLists               : Number         : Value_Type     : Lists
+Clear                   : Mask
+ClearAccum              : Red            : Green          : Blue             : Alpha
+ClearColor              : Red            : Green          : Blue             : Alpha
+ClearDepth              : Depth
+ClearIndex              : Index
+ClearStencil            : Index
+ClipPlane               : Plane          : Equation
+Color3b                 : Red            : Green          : Blue
+Color3d                 : Red            : Green          : Blue
+Color3f                 : Red            : Green          : Blue
+Color3i                 : Red            : Green          : Blue
+Color3s                 : Red            : Green          : Blue
+Color4b                 : Red            : Green          : Blue             : Alpha
+Color4d                 : Red            : Green          : Blue             : Alpha
+Color4f                 : Red            : Green          : Blue             : Alpha
+Color4i                 : Red            : Green          : Blue             : Alpha
+Color4s                 : Red            : Green          : Blue             : Alpha
+ColorMask               : Red            : Green          : Blue             : Alpha
+ColorMaterial           : Face           : Mode
+ColorPointer            : Size           : Type           : Stride           : Pointer
+CopyPixels              : X              : Y              : Width            : Height        : Value_Type
+CopyTexImage1D          : Target         : Level          : Internal_Format  : X             : Y           : Width      : Border
+CopyTexImage2D          : Target         : Level          : Internal_Format  : X             : Y           : Width      : Height       : Border
+CopyTexSubImage1D       : Target         : Level          : X_Offset         : X             : Y           : Width
+CopyTexSubImage2D       : Target         : Level          : X_Offset         : Y_Offset      : X           : Y          : Width        : Height
+CullFace                : Mode
+DeleteLists             : List           : Range
+DeleteTextures          : Size           : Textures
+DepthFunc               : Func
+DepthMask               : Flag
+DepthRange              : Near_Value     : Far_Value
+Disable                 : Capability
+DisableClientState      : Capability
+DrawArrays              : Mode           : First          : Count
+DrawBuffer              : Mode
+DrawElements            : Mode           : Count          : Value_Type       : Indices
+DrawPixels              : Width          : Height         : Format           : Data_Type     : Data
+EdgeFlag                : Flag
+EdgeFlagPointer         : Stride         : Pointer
+EdgeFlagv               : Flag
+Enable                  : Capability
+EnableClientState       : Capability
+End
+EndList
+EvalCoord1d             : U
+EvalCoord1dv            : U
+EvalCoord1f             : U
+EvalCoord1fv            : U
+EvalCoord2d             : U              : V
+EvalCoord2dv            : U
+EvalCoord2f             : U              : V
+EvalCoord2fv            : U
+EvalMesh1               : Mode           : I1             : I2
+EvalMesh2               : Mode           : I1             : I2               : J1            : J2
+EvalPoint1              : I
+EvalPoint2              : I              : J
+FeedbackBuffer          : Size           : Info_Type      : Buffer
+Finish
+Flush
+Fogf                    : Parameter      : Value
+Fogfv                   : Parameter      : Values
+Fogi                    : Parameter      : Value
+Fogiv                   : Parameter      : Values
+FrontFace               : Mode
+Frustum                 : Left           : Right          : Bottom           : Top           : Near        : Far
+GenLists                : Range
+GenTextures             : Size           : Textures
+GetBooleanv             : Parameter      : Values
+GetClipPlane            : Plane          : Equation
+GetDoublev              : Parameter      : Values
+GetError
+GetFloatv               : Parameter      : Values
+GetIntegerv             : Parameter      : Values
+GetLightfv              : Light          : Parameter      : Values
+GetLightiv              : Light          : Parameter      : Values
+GetMapdv                : Target         : Query          : Values
+GetMapfv                : Target         : Query          : Values
+GetMapiv                : Target         : Query          : Values
+GetMaterialfv           : Face           : Parameter      : Values
+GetMaterialiv           : Face           : Parameter      : Values
+GetPointerv             : Parameter      : Values
+GetPolygonStipple       : Pattern
+GetString               : Name
+GetTexEnvfv             : Target         : Parameter      : Values
+GetTexEnviv             : Target         : Parameter      : Values
+GetTexGenfv             : Coord          : Parameter      : Values
+GetTexGeniv             : Coord          : Parameter      : Values
+GetTexImage             : Target         : Level          : Format           : Pixel_Type    : Image
+GetTexLevelParameterfv  : Target         : Level          : Parameter        : Values
+GetTexLevelParameteriv  : Target         : Level          : Parameter        : Values
+GetTexParameterfv       : Target         : Parameter      : Values
+GetTexParameteriv       : Target         : Parameter      : Values
+Hint                    : Target         : Mode
+IndexMask               : Mask
+IndexPointer            : Data_Type      : Stride         : Pointer
+Indexd                  : Value
+Indexf                  : Value
+Indexi                  : Value
+Indexs                  : Value
 InitNames
-InterleavedArrays:Format:Stride:Pointer
-IsEnabled:Capability
-IsList:List
-IsTexture:Texture
-LightModelf:Parameter:Value
-LightModelfv:Parameter:Values
-LightModeli:Parameter:Value
-LightModeliv:Parameter:Values
-Lightf:Light:Parameter:Value
-Lightfv:Light:Parameter:Values
-Lighti:Light:Parameter:Value
-Lightiv:Light:Parameter:Values
-LineStipple:Factor:Pattern
-LineWidth:Width
-ListBase:Base
+InterleavedArrays       : Format         : Stride         : Pointer
+IsEnabled               : Capability
+IsList                  : List
+IsTexture               : Texture
+LightModelf             : Parameter      : Value
+LightModelfv            : Parameter      : Values
+LightModeli             : Parameter      : Value
+LightModeliv            : Parameter      : Values
+Lightf                  : Light          : Parameter      : Value
+Lightfv                 : Light          : Parameter      : Values
+Lighti                  : Light          : Parameter      : Value
+Lightiv                 : Light          : Parameter      : Values
+LineStipple             : Factor         : Pattern
+LineWidth               : Width
+ListBase                : Base
 LoadIdentity
-LoadMatrixd:Matrix
-LoadMatrixf:Matrix
-LoadName:Name
-LogicOp:Opcode
-Map1d:Target:U1:U2:Stride:Order:Points
-Map1f:Target:U1:U2:Stride:Order:Points
-Map2d:Target:U1:U2:U_Stride:U_Order:V1:V2:V_Stride:V_Order:Points
-Map2f:Target:U1:U2:U_Stride:U_Order:V1:V2:V_Stride:V_Order:Points
-MapGrid1d:U_Partitions:U1:U2
-MapGrid1f:U_Partitions:U1:U2
-MapGrid2d:U_Partitions:U1:U2:V_Partitions:V1:V2
-MapGrid2f:U_Partitions:U1:U2:V_Partitions:V1:V2
-Materialf:Face:Parameter:Value
-Materialfv:Face:Parameter:Values
-Materiali:Face:Parameter:Value
-Materialiv:Face:Parameter:Values
-MatrixMode:Mode
-MultMatrixd:Matrix
-MultMatrixf:Matrix
-NewList:List:Mode
-Normal3b:Normal_X:Normal_Y:Normal_Y
-Normal3bv:Vector
-Normal3d:Normal_X:Normal_Y:Normal_Y
-Normal3dv:Vector
-Normal3f:Normal_X:Normal_Y:Normal_Y
-Normal3fv:Vector
-Normal3i:Normal_X:Normal_Y:Normal_Y
-Normal3iv:Vector
-Normal3s:Normal_X:Normal_Y:Normal_Y
-Normal3sv:Vector
-NormalPointer:Data_Type:Stride:Pointer
-Ortho:Left:Right:Bottom:Top:Near_Value:Far_Value
-PassThrough:Token
-PixelMapuiv:Map:Map_Size:Values
-PixelStoref:Parameter:Value
-PixelStorei:Parameter:Value
-PixelTransferf:Parameter:Value
-PixelTransferi:Parameter:Value
-PixelZoom:X_Factor:Y_Factor
-PointSize:Size
-PolygonMode:Face:Mode
-PolygonOffset:Factor:Units
-PolygonStipple:Pattern
-PopAttrib:
-PopClientAttrib:
-PopMatrix:
-PopName:
-PrioritizeTextures:Size:Textures:Priorities
-PushAttrib:Mask
-PushClientAttrib:Mask
-PushMatrix:
-PushName:Name
-RasterPos2d:X:Y
-RasterPos2dv:Vector
-RasterPos2f:X:Y
-RasterPos2fv:Vector
-RasterPos2i:X:Y
-RasterPos2iv:Vector
-RasterPos2s:X:Y
-RasterPos2sv:Vector
-RasterPos3d:X:Y:Z
-RasterPos3dv:Vector
-RasterPos3f:X:Y:Z
-RasterPos3fv:Vector
-RasterPos3i:X:Y:Z
-RasterPos3iv:Vector
-RasterPos3s:X:Y:Z
-RasterPos3sv:Vector
-RasterPos4d:X:Y:Z:W
-RasterPos4dv:Vector
-RasterPos4f:X:Y:Z:W
-RasterPos4fv:Vector
-RasterPos4i:X:Y:Z:W
-RasterPos4iv:Vector
-RasterPos4s:X:Y:Z:W
-RasterPos4sv:Vector
-ReadBuffer:Mode
-ReadPixels:X:Y:Width:Height:Format:Data_Type:Data
-Rectd:X1:Y1:X2:Y2
-Rectdv:Vertex_1:Vertex_2
-Rectf:X1:Y1:X2:Y2
-Rectfv:Vertex_1:Vertex_2
-Recti:X1:Y1:X2:Y2
-Rectiv:Vertex_1:Vertex_2
-Rects:X1:Y1:X2:Y2
-Rectsv:Vertex_1:Vertex_2
-RenderMode:Mode
-Rotated:Angle:X:Y:Z
-Rotatef:Angle:X:Y:Z
-Scaled:X:Y:Z
-Scalef:X:Y:Z
-Scissor:X:Y:Width:Height
-SelectBuffer:Size:Buffer
-ShadeModel:Mode
-StencilFunc:Func:Reference:Mask
-StencilMask:Mask
-StencilOp:Stencil_Fail:Depth_Fail:Depth_Pass
-TexCoord1d:S
-TexCoord1dv:Vector
-TexCoord1f:S
-TexCoord1fv:Vector
-TexCoord1i:S
-TexCoord1iv:Vector
-TexCoord1s:S
-TexCoord1sv:Vector
-TexCoord2d:S:T
-TexCoord2dv:Vector
-TexCoord2f:S:T
-TexCoord2fv:Vector
-TexCoord2i:S:T
-TexCoord2iv:Vector
-TexCoord2s:S:T
-TexCoord2sv:Vector
-TexCoord3d:S:T:R
-TexCoord3dv:Vector
-TexCoord3f:S:T:R
-TexCoord3fv:Vector
-TexCoord3i:S:T:R
-TexCoord3iv:Vector
-TexCoord3s:S:T:R
-TexCoord3sv:Vector
-TexCoord4d:S:T:R:Q
-TexCoord4dv:Vector
-TexCoord4f:S:T:R:Q
-TexCoord4fv:Vector
-TexCoord4i:S:T:R:Q
-TexCoord4iv:Vector
-TexCoord4s:S:T:R:Q
-TexCoord4sv:Vector
-TexCoordPointer:Size:Data_Type:Stride:Pointer
-TexEnvf:Target:Parameter:Value
-TexEnvfv:Target:Parameter:Values
-TexEnvi:Target:Parameter:Value
-TexEnviv:Target:Parameter:Values
-TexGend:Coord:Parameter:Value
-TexGendv:Coord:Parameter:Values
-TexGenf:Coord:Parameter:Value
-TexGenfv:Coord:Parameter:Values
-TexGeni:Coord:Parameter:Value
-TexGeniv:Coord:Parameter:Values
-TexImage1D:Target:Level:Internal_Format:Width:Border:Format:Data_Type:Data
-TexImage2D:Target:Level:Internal_Format:Width:Height:Border:Format:Data_Type:Data
-TexParameterf:Target:Parameter:Value
-TexParameterfv:Target:Parameter:Values
-TexParameteri:Target:Parameter:Value
-TexParameteriv:Target:Parameter:Values
-TexSubImage1D:Target:Level:X_Offset:Width:Format:Data_Type:Data
-TexSubImage2D:Target:Level:X_Offset:Y_Offset:Width:Height:Format:Data_Type:Data
-Translated:X:Y:Z
-Translatef:X:Y:Z
-Vertex2d:X:Y
-Vertex2dv:Vector
-Vertex2f:X:Y
-Vertex2fv:Vector
-Vertex2i:X:Y
-Vertex2iv:Vector
-Vertex2s:X:Y
-Vertex2sv:Vector
-Vertex3d:X:Y:Z
-Vertex3dv:Vector
-Vertex3f:X:Y:Z
-Vertex3fv:Vector
-Vertex3i:X:Y:Z
-Vertex3iv:Vector
-Vertex3s:X:Y:Z
-Vertex3sv:Vector
-Vertex4d:X:Y:Z:W
-Vertex4dv:Vector
-Vertex4f:X:Y:Z:W
-Vertex4fv:Vector
-Vertex4i:X:Y:Z:W
-Vertex4iv:Vector
-Vertex4s:X:Y:Z:W
-Vertex4sv:Vector
-VertexPointer:Size:Data_Type:Stride:Pointer
-Viewport:X:Y:Width:Height
+LoadMatrixd             : Matrix
+LoadMatrixf             : Matrix
+LoadName                : Name
+LogicOp                 : Opcode
+Map1d                   : Target         : U1             : U2               : Stride        : Order       : Points
+Map1f                   : Target         : U1             : U2               : Stride        : Order       : Points
+Map2d                   : Target         : U1             : U2               : U_Stride      : U_Order     : V1         : V2           : V_Stride   : V_Order  : Points
+Map2f                   : Target         : U1             : U2               : U_Stride      : U_Order     : V1         : V2           : V_Stride   : V_Order  : Points
+MapGrid1d               : U_Partitions   : U1             : U2
+MapGrid1f               : U_Partitions   : U1             : U2
+MapGrid2d               : U_Partitions   : U1             : U2               : V_Partitions  : V1          : V2
+MapGrid2f               : U_Partitions   : U1             : U2               : V_Partitions  : V1          : V2
+Materialf               : Face           : Parameter      : Value
+Materialfv              : Face           : Parameter      : Values
+Materiali               : Face           : Parameter      : Value
+Materialiv              : Face           : Parameter      : Values
+MatrixMode              : Mode
+MultMatrixd             : Matrix
+MultMatrixf             : Matrix
+NewList                 : List           : Mode
+Normal3b                : Normal_X       : Normal_Y       : Normal_Y
+Normal3bv               : Vector
+Normal3d                : Normal_X       : Normal_Y       : Normal_Y
+Normal3dv               : Vector
+Normal3f                : Normal_X       : Normal_Y       : Normal_Y
+Normal3fv               : Vector
+Normal3i                : Normal_X       : Normal_Y       : Normal_Y
+Normal3iv               : Vector
+Normal3s                : Normal_X       : Normal_Y       : Normal_Y
+Normal3sv               : Vector
+NormalPointer           : Data_Type      : Stride         : Pointer
+Ortho                   : Left           : Right          : Bottom           : Top           : Near_Value  : Far_Value
+PassThrough             : Token
+PixelMapuiv             : Map            : Map_Size       : Values
+PixelStoref             : Parameter      : Value
+PixelStorei             : Parameter      : Value
+PixelTransferf          : Parameter      : Value
+PixelTransferi          : Parameter      : Value
+PixelZoom               : X_Factor       : Y_Factor
+PointSize               : Size
+PolygonMode             : Face           : Mode
+PolygonOffset           : Factor         : Units
+PolygonStipple          : Pattern
+PopAttrib
+PopClientAttrib
+PopMatrix
+PopName
+PrioritizeTextures      : Size           : Textures       : Priorities
+PushAttrib              : Mask
+PushClientAttrib        : Mask
+PushMatrix
+PushName                : Name
+RasterPos2d             : X              : Y
+RasterPos2dv            : Vector
+RasterPos2f             : X              : Y
+RasterPos2fv            : Vector
+RasterPos2i             : X              : Y
+RasterPos2iv            : Vector
+RasterPos2s             : X              : Y
+RasterPos2sv            : Vector
+RasterPos3d             : X              : Y              : Z
+RasterPos3dv            : Vector
+RasterPos3f             : X              : Y              : Z
+RasterPos3fv            : Vector
+RasterPos3i             : X              : Y              : Z
+RasterPos3iv            : Vector
+RasterPos3s             : X              : Y              : Z
+RasterPos3sv            : Vector
+RasterPos4d             : X              : Y              : Z                : W
+RasterPos4dv            : Vector
+RasterPos4f             : X              : Y              : Z                : W
+RasterPos4fv            : Vector
+RasterPos4i             : X              : Y              : Z                : W
+RasterPos4iv            : Vector
+RasterPos4s             : X              : Y              : Z                : W
+RasterPos4sv            : Vector
+ReadBuffer              : Mode
+ReadPixels              : X              : Y              : Width            : Height        : Format      : Data_Type  : Data
+Rectd                   : X1             : Y1             : X2               : Y2
+Rectdv                  : Vertex_1       : Vertex_2
+Rectf                   : X1             : Y1             : X2               : Y2
+Rectfv                  : Vertex_1       : Vertex_2
+Recti                   : X1             : Y1             : X2               : Y2
+Rectiv                  : Vertex_1       : Vertex_2
+Rects                   : X1             : Y1             : X2               : Y2
+Rectsv                  : Vertex_1       : Vertex_2
+RenderMode              : Mode
+Rotated                 : Angle          : X              : Y                : Z
+Rotatef                 : Angle          : X              : Y                : Z
+Scaled                  : X              : Y              : Z
+Scalef                  : X              : Y              : Z
+Scissor                 : X              : Y              : Width            : Height
+SelectBuffer            : Size           : Buffer
+ShadeModel              : Mode
+StencilFunc             : Func           : Reference      : Mask
+StencilMask             : Mask
+StencilOp               : Stencil_Fail   : Depth_Fail     : Depth_Pass
+TexCoord1d              : S
+TexCoord1dv             : Vector
+TexCoord1f              : S
+TexCoord1fv             : Vector
+TexCoord1i              : S
+TexCoord1iv             : Vector
+TexCoord1s              : S
+TexCoord1sv             : Vector
+TexCoord2d              : S              : T
+TexCoord2dv             : Vector
+TexCoord2f              : S              : T
+TexCoord2fv             : Vector
+TexCoord2i              : S              : T
+TexCoord2iv             : Vector
+TexCoord2s              : S              : T
+TexCoord2sv             : Vector
+TexCoord3d              : S              : T              : R
+TexCoord3dv             : Vector
+TexCoord3f              : S              : T              : R
+TexCoord3fv             : Vector
+TexCoord3i              : S              : T              : R
+TexCoord3iv             : Vector
+TexCoord3s              : S              : T              : R
+TexCoord3sv             : Vector
+TexCoord4d              : S              : T              : R                : Q
+TexCoord4dv             : Vector
+TexCoord4f              : S              : T              : R                : Q
+TexCoord4fv             : Vector
+TexCoord4i              : S              : T              : R                : Q
+TexCoord4iv             : Vector
+TexCoord4s              : S              : T              : R                : Q
+TexCoord4sv             : Vector
+TexCoordPointer         : Size           : Data_Type      : Stride           : Pointer
+TexEnvf                 : Target         : Parameter      : Value
+TexEnvfv                : Target         : Parameter      : Values
+TexEnvi                 : Target         : Parameter      : Value
+TexEnviv                : Target         : Parameter      : Values
+TexGend                 : Coord          : Parameter      : Value
+TexGendv                : Coord          : Parameter      : Values
+TexGenf                 : Coord          : Parameter      : Value
+TexGenfv                : Coord          : Parameter      : Values
+TexGeni                 : Coord          : Parameter      : Value
+TexGeniv                : Coord          : Parameter      : Values
+TexImage1D              : Target         : Level          : Internal_Format  : Width         : Border      : Format     : Data_Type    : Data
+TexImage2D              : Target         : Level          : Internal_Format  : Width         : Height      : Border     : Format       : Data_Type  : Data
+TexParameterf           : Target         : Parameter      : Value
+TexParameterfv          : Target         : Parameter      : Values
+TexParameteri           : Target         : Parameter      : Value
+TexParameteriv          : Target         : Parameter      : Values
+TexSubImage1D           : Target         : Level          : X_Offset         : Width         : Format      : Data_Type  : Data
+TexSubImage2D           : Target         : Level          : X_Offset         : Y_Offset      : Width       : Height     : Format       : Data_Type  : Data
+Translated              : X              : Y              : Z
+Translatef              : X              : Y              : Z
+Vertex2d                : X              : Y
+Vertex2dv               : Vector
+Vertex2f                : X              : Y
+Vertex2fv               : Vector
+Vertex2i                : X              : Y
+Vertex2iv               : Vector
+Vertex2s                : X              : Y
+Vertex2sv               : Vector
+Vertex3d                : X              : Y              : Z
+Vertex3dv               : Vector
+Vertex3f                : X              : Y              : Z
+Vertex3fv               : Vector
+Vertex3i                : X              : Y              : Z
+Vertex3iv               : Vector
+Vertex3s                : X              : Y              : Z
+Vertex3sv               : Vector
+Vertex4d                : X              : Y              : Z                : W
+Vertex4dv               : Vector
+Vertex4f                : X              : Y              : Z                : W
+Vertex4fv               : Vector
+Vertex4i                : X              : Y              : Z                : W
+Vertex4iv               : Vector
+Vertex4s                : X              : Y              : Z                : W
+Vertex4sv               : Vector
+VertexPointer           : Size           : Data_Type      : Stride           : Pointer
+Viewport                : X              : Y              : Width            : Height
