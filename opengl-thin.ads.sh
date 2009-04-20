@@ -2,13 +2,13 @@
 
 fatal()
 {
-  echo "opengl.ads.sh: fatal: $1" 1>&2
+  echo "opengl-thin.ads.sh: fatal: $1" 1>&2
   exit 1
 }
 
 info()
 {
-  echo "opengl.ads.sh: info: $1" 1>&2
+  echo "opengl-thin.ads.sh: info: $1" 1>&2
 }
 
 cat <<EOF
@@ -17,7 +17,7 @@ cat <<EOF
 with Interfaces.C;
 with System;
 
-package OpenGL is
+package OpenGL.Thin is
   package C renames Interfaces.C;
 
   -- Constants
@@ -60,5 +60,5 @@ echo
 ./opengl-mkapi.lua opengl_2_0_types.dat opengl_2_0_names.dat opengl_types.dat || fatal "could not generate API"
 
 cat <<EOF
-end OpenGL;
+end OpenGL.Thin;
 EOF

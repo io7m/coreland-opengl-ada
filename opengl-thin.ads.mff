@@ -1,6 +1,7 @@
-opengl.ads: \
-opengl.ads.sh align-colons.lua \
-opengl-mkconst.sh opengl_const.dat \
+opengl-thin.ads: \
+opengl-thin.ads.sh align-colons.lua \
+opengl-mkconst.sh opengl-getconst opengl_const.dat \
+opengl-gettypes \
 opengl-mkapi.lua \
 opengl_1_1_types.dat opengl_1_1_names.dat \
 opengl_1_2_types.dat opengl_1_2_names.dat \
@@ -9,4 +10,4 @@ opengl_1_4_types.dat opengl_1_4_names.dat \
 opengl_1_5_types.dat opengl_1_5_names.dat \
 opengl_2_0_types.dat opengl_2_0_names.dat \
 opengl-mktypes.sh opengl-mktype.lua opengl_types.dat
-	./opengl.ads.sh > opengl.ads.tmp && mv opengl.ads.tmp opengl.ads
+	./opengl-thin.ads.sh > opengl-thin.ads.tmp && mv opengl-thin.ads.tmp opengl-thin.ads

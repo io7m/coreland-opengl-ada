@@ -3,8 +3,10 @@
 default: all
 
 all:\
-opengl-getconst opengl-getconst.o opengl-gettypes opengl-gettypes.o opengl.ali \
-opengl.o
+opengl-ada.a opengl-error.ali opengl-error.o opengl-getconst opengl-getconst.o \
+opengl-gettypes opengl-gettypes.o opengl-light.ali opengl-light.o \
+opengl-state.ali opengl-state.o opengl-thin.ali opengl-thin.o opengl-types.ali \
+opengl-types.o opengl-vertex.ali opengl-vertex.o opengl.ali opengl.o
 
 # -- SYSDEPS start
 flags-opengl:
@@ -83,6 +85,20 @@ conf-cc conf-ld
 mk-systype:\
 conf-cc conf-ld
 
+opengl-ada.a:\
+cc-slib opengl-ada.sld opengl.o opengl-thin.o opengl-vertex.o
+	./cc-slib opengl-ada opengl.o opengl-thin.o opengl-vertex.o
+
+opengl-error.ads:\
+opengl.ali opengl-thin.ali
+
+opengl-error.ali:\
+ada-compile opengl-error.adb opengl.ali opengl-error.ads
+	./ada-compile opengl-error.adb
+
+opengl-error.o:\
+opengl-error.ali
+
 opengl-getconst:\
 cc-link opengl-getconst.ld opengl-getconst.o
 	./cc-link opengl-getconst opengl-getconst.o
@@ -109,10 +125,31 @@ opengl-gettypes.o:\
 cc-compile opengl-gettypes.c
 	./cc-compile opengl-gettypes.c
 
-# opengl.ads.mff
-opengl.ads: \
-opengl.ads.sh align-colons.lua \
-opengl-mkconst.sh opengl_const.dat \
+opengl-light.ads:\
+opengl.ali
+
+opengl-light.ali:\
+ada-compile opengl-light.adb opengl.ali opengl-light.ads opengl-thin.ali
+	./ada-compile opengl-light.adb
+
+opengl-light.o:\
+opengl-light.ali
+
+opengl-state.ads:\
+opengl.ali
+
+opengl-state.ali:\
+ada-compile opengl-state.adb opengl.ali opengl-state.ads
+	./ada-compile opengl-state.adb
+
+opengl-state.o:\
+opengl-state.ali
+
+# opengl-thin.ads.mff
+opengl-thin.ads: \
+opengl-thin.ads.sh align-colons.lua \
+opengl-mkconst.sh opengl-getconst opengl_const.dat \
+opengl-gettypes \
 opengl-mkapi.lua \
 opengl_1_1_types.dat opengl_1_1_names.dat \
 opengl_1_2_types.dat opengl_1_2_names.dat \
@@ -121,10 +158,34 @@ opengl_1_4_types.dat opengl_1_4_names.dat \
 opengl_1_5_types.dat opengl_1_5_names.dat \
 opengl_2_0_types.dat opengl_2_0_names.dat \
 opengl-mktypes.sh opengl-mktype.lua opengl_types.dat
-	./opengl.ads.sh > opengl.ads.tmp && mv opengl.ads.tmp opengl.ads
+	./opengl-thin.ads.sh > opengl-thin.ads.tmp && mv opengl-thin.ads.tmp opengl-thin.ads
+
+opengl-thin.ali:\
+ada-compile opengl-thin.ads
+	./ada-compile opengl-thin.ads
+
+opengl-thin.o:\
+opengl-thin.ali
+
+opengl-types.ali:\
+ada-compile opengl-types.ads opengl.ali opengl-types.ads opengl-thin.ali
+	./ada-compile opengl-types.ads
+
+opengl-types.o:\
+opengl-types.ali
+
+opengl-vertex.ads:\
+opengl.ali opengl-thin.ali
+
+opengl-vertex.ali:\
+ada-compile opengl-vertex.adb opengl.ali opengl-vertex.ads
+	./ada-compile opengl-vertex.adb
+
+opengl-vertex.o:\
+opengl-vertex.ali
 
 opengl.ali:\
-ada-compile opengl.ads
+ada-compile opengl.ads opengl.ads
 	./ada-compile opengl.ads
 
 opengl.o:\
@@ -133,8 +194,11 @@ opengl.ali
 clean-all: sysdeps_clean obj_clean ext_clean
 clean: obj_clean
 obj_clean:
-	rm -f opengl-getconst opengl-getconst.c opengl-getconst.o opengl-gettypes \
-	opengl-gettypes.c opengl-gettypes.o opengl.ads opengl.ali opengl.o
+	rm -f opengl-ada.a opengl-error.ali opengl-error.o opengl-getconst \
+	opengl-getconst.c opengl-getconst.o opengl-gettypes opengl-gettypes.c \
+	opengl-gettypes.o opengl-light.ali opengl-light.o opengl-state.ali \
+	opengl-state.o opengl-thin.ads opengl-thin.ali opengl-thin.o opengl-types.ali \
+	opengl-types.o opengl-vertex.ali opengl-vertex.o opengl.ali opengl.o
 ext_clean:
 	rm -f conf-adatype conf-cctype conf-ldtype conf-systype mk-ctxt
 
