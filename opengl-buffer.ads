@@ -86,8 +86,8 @@ package OpenGL.Buffer is
   Unsynchronized_Bit    : constant Access_Policy_t := Thin.GL_MAP_UNSYNCHRONIZED_BIT;
 
   generic
-    type Index_Type   is range <>;
     type Element_Type is private;
+    type Index_Type   is range <>;
 
   function Map_Buffer_Range
     (Target        : in Target_t;

@@ -1,3 +1,5 @@
+with OpenGL.Error;
+
 package body OpenGL.Buffer is
 
   procedure Generate (Buffers : in out Buffer_Array_t) is
@@ -110,7 +112,8 @@ package body OpenGL.Buffer is
        Length        => T_Size,
        Access_Policy => Thin.Bitfield_t (Access_Policy));
     if Address = System.Null_Address then
-      raise Constraint_Error;
+      raise Constraint_Error with
+        OpenGL.Error.Error_t'Image (OpenGL.Error.Get_Error);
     end if;
   end Map_Buffer_Range;
 
