@@ -16,4 +16,4 @@ void:GetQueryiv:GLenum:GLenum:GLint *
 GLboolean:IsBuffer:GLuint
 GLboolean:IsQuery:GLuint
 GLvoid *:MapBuffer:GLenum:GLenum
-GLboolean:UnmapBuffer:GLenum:GLenum
+GLboolean:UnmapBuffer:GLenum

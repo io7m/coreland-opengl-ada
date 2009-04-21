@@ -99,4 +99,10 @@ package OpenGL.Buffer is
      Offset : in Index_Type;
      Length : in Index_Type);
 
+  --
+  -- Unmap buffer.
+  --
+
+  function Unmap (Target : in Target_t) return Boolean;
+
 end OpenGL.Buffer;

@@ -2,12 +2,20 @@ with OpenGL.Error;
 
 package body OpenGL.Buffer is
 
+  --
+  -- Generate buffer name(s).
+  --
+
   procedure Generate (Buffers : in out Buffer_Array_t) is
   begin
     Thin.Gen_Buffers_Untyped
       (Size    => Buffers'Length,
        Buffers => Buffers (Buffers'First)'Address);
   end Generate;
+
+  --
+  -- Delete buffer.
+  --
 
   procedure Delete (Buffers : in Buffer_Array_t) is
   begin
@@ -30,6 +38,10 @@ package body OpenGL.Buffer is
       when Uniform_Buffer            => return Thin.GL_UNIFORM_BUFFER;
     end case;
   end Target_To_Constant;
+
+  --
+  -- Bind object to target.
+  --
 
   procedure Bind
     (Target : in Target_t;
@@ -54,6 +66,10 @@ package body OpenGL.Buffer is
       when Dynamic_Copy => return Thin.GL_DYNAMIC_COPY;
     end case;
   end Usage_To_Constant;
+
+  --
+  -- Buffer data.
+  --
 
   procedure Data
     (Target : in Target_t;
@@ -91,6 +107,10 @@ package body OpenGL.Buffer is
        Size   => T_Size,
        Data   => T_Address);
   end Sub_Data;
+
+  --
+  -- Map buffer data.
+  --
 
   function Map_Range
     (Target        : in Target_t;
@@ -136,6 +156,10 @@ package body OpenGL.Buffer is
     return Address;
   end Map;
 
+  --
+  -- Flush mapped buffer.
+  --
+
   procedure Flush_Range
     (Target : in Target_t;
      Offset : in Index_Type;
@@ -146,5 +170,20 @@ package body OpenGL.Buffer is
        Offset => Thin.Integer_Pointer_t (Offset),
        Length => Thin.Size_Pointer_t (Length));
   end Flush_Range;
+
+  --
+  -- Unmap buffer.
+  --
+
+  function Unmap (Target : in Target_t) return Boolean is
+    use type Thin.Boolean_t;
+    OK : constant Thin.Boolean_t := Thin.Unmap_Buffer (Target_To_Constant (Target));
+  begin
+    if OK = Thin.Boolean_t'Val (1) then
+      return True;
+    else
+      return False;
+    end if;
+  end Unmap;
 
 end OpenGL.Buffer;
