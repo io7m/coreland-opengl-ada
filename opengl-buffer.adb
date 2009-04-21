@@ -56,25 +56,62 @@ package body OpenGL.Buffer is
   procedure Data
     (Target : in Target_t;
      Data   : in Array_Type;
-     Usage  : in Usage_t) is
+     Usage  : in Usage_t)
+  is
+    use type Thin.Size_Pointer_t;
+
+    T_E_Size  : constant Thin.Size_Pointer_t := Element_Type'Size / System.Storage_Unit;
+    T_Size    : constant Thin.Size_Pointer_t := Data'Length * T_E_Size;
+    T_Address : constant System.Address      := Data (Data'First)'Address;
   begin
     Thin.Buffer_Data
       (Target => Target_To_Constant (Target),
-       Size   => Data'Length,
-       Data   => Data (Data'First)'Address,
+       Size   => T_Size,
+       Data   => T_Address,
        Usage  => Usage_To_Constant (Usage));
   end Data;
 
   procedure Sub_Data
     (Target : in Target_t;
-     Offset : in Types.Offset_t;
-     Data   : in Array_Type) is
+     Offset : in Index_Type;
+     Data   : in Array_Type)
+  is
+    use type Thin.Size_Pointer_t;
+
+    T_Offset  : constant Thin.Integer_Pointer_t := Thin.Integer_Pointer_t (Offset);
+    T_E_Size  : constant Thin.Size_Pointer_t    := Element_Type'Size / System.Storage_Unit;
+    T_Size    : constant Thin.Size_Pointer_t    := Data'Length * T_E_Size;
+    T_Address : constant System.Address         := Data (Data'First)'Address;
   begin
     Thin.Buffer_Sub_Data
       (Target => Target_To_Constant (Target),
-       Offset => Offset,
-       Size   => Data'Length,
-       Data   => Data (Data'First)'Address);
+       Offset => T_Offset,
+       Size   => T_Size,
+       Data   => T_Address);
   end Sub_Data;
+
+  function Map_Buffer_Range
+    (Target        : in Target_t;
+     Offset        : in Index_Type;
+     Length        : in Index_Type;
+     Access_Policy : in Access_Policy_t) return System.Address
+  is
+    use type Thin.Size_Pointer_t;
+    use type System.Address;
+
+    T_Offset  : constant Thin.Integer_Pointer_t := Thin.Integer_Pointer_t (Offset);
+    T_E_Size  : constant Thin.Size_Pointer_t    := Element_Type'Size / System.Storage_Unit;
+    T_Size    : constant Thin.Size_Pointer_t    := Thin.Size_Pointer_t (Length) * T_E_Size;
+    Address   : System.Address;
+  begin
+    Address := Thin.Map_Buffer_Range
+      (Target        => Target_To_Constant (Target),
+       Offset        => T_Offset,
+       Length        => T_Size,
+       Access_Policy => Thin.Bitfield_t (Access_Policy));
+    if Address = System.Null_Address then
+      raise Constraint_Error;
+    end if;
+  end Map_Buffer_Range;
 
 end OpenGL.Buffer;

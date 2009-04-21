@@ -12,15 +12,22 @@ opengl-types.o opengl-vertex.ali opengl-vertex.o opengl.ali opengl.o
 flags-opengl:
 	@echo SYSDEPS opengl-flags run create flags-opengl 
 	@(cd SYSDEPS/modules/opengl-flags && ./run)
+_sysinfo.h:
+	@echo SYSDEPS sysinfo run create _sysinfo.h 
+	@(cd SYSDEPS/modules/sysinfo && ./run)
 
 
 opengl-flags_clean:
 	@echo SYSDEPS opengl-flags clean flags-opengl 
 	@(cd SYSDEPS/modules/opengl-flags && ./clean)
+sysinfo_clean:
+	@echo SYSDEPS sysinfo clean _sysinfo.h 
+	@(cd SYSDEPS/modules/sysinfo && ./clean)
 
 
 sysdeps_clean:\
 opengl-flags_clean \
+sysinfo_clean \
 
 
 # -- SYSDEPS end
@@ -146,7 +153,7 @@ opengl-state.ali
 
 # opengl-thin.ads.mff
 opengl-thin.ads: \
-opengl-thin.ads.sh align-colons.lua \
+block-comment \
 opengl-mkconst.lua opengl_const.dat \
 opengl-gettypes \
 opengl-mkapi.lua \
@@ -156,8 +163,31 @@ opengl_1_3_types.dat opengl_1_3_names.dat \
 opengl_1_4_types.dat opengl_1_4_names.dat \
 opengl_1_5_types.dat opengl_1_5_names.dat \
 opengl_2_0_types.dat opengl_2_0_names.dat \
+opengl_2_1_types.dat opengl_2_1_names.dat \
+opengl_3_0_types.dat opengl_3_0_names.dat \
 opengl-mktypes.sh opengl-mktype.lua opengl_types.dat
-	./opengl-thin.ads.sh > opengl-thin.ads.tmp && mv opengl-thin.ads.tmp opengl-thin.ads
+	rm -f opengl-thin.ads.tmp
+	cat opengl-thin.ads.0 >> opengl-thin.ads.tmp
+	./opengl-mkconst.lua opengl_const.dat >> opengl-thin.ads.tmp
+	./opengl-mktypes.sh opengl_types.dat >> opengl-thin.ads.tmp
+	./block-comment 'OpenGL 1.1' >> opengl-thin.ads.tmp
+	./opengl-mkapi.lua opengl_1_1_types.dat opengl_1_1_names.dat opengl_types.dat >> opengl-thin.ads.tmp
+	./block-comment 'OpenGL 1.2' >> opengl-thin.ads.tmp
+	./opengl-mkapi.lua opengl_1_2_types.dat opengl_1_2_names.dat opengl_types.dat >> opengl-thin.ads.tmp
+	./block-comment 'OpenGL 1.3' >> opengl-thin.ads.tmp
+	./opengl-mkapi.lua opengl_1_3_types.dat opengl_1_3_names.dat opengl_types.dat >> opengl-thin.ads.tmp
+	./block-comment 'OpenGL 1.4' >> opengl-thin.ads.tmp
+	./opengl-mkapi.lua opengl_1_4_types.dat opengl_1_4_names.dat opengl_types.dat >> opengl-thin.ads.tmp
+	./block-comment 'OpenGL 1.5' >> opengl-thin.ads.tmp
+	./opengl-mkapi.lua opengl_1_5_types.dat opengl_1_5_names.dat opengl_types.dat >> opengl-thin.ads.tmp
+	./block-comment 'OpenGL 2.0' >> opengl-thin.ads.tmp
+	./opengl-mkapi.lua opengl_2_0_types.dat opengl_2_0_names.dat opengl_types.dat >> opengl-thin.ads.tmp
+	./block-comment 'OpenGL 2.1' >> opengl-thin.ads.tmp
+	./opengl-mkapi.lua opengl_2_1_types.dat opengl_2_1_names.dat opengl_types.dat >> opengl-thin.ads.tmp
+	./block-comment 'OpenGL 3.0' >> opengl-thin.ads.tmp
+	./opengl-mkapi.lua opengl_3_0_types.dat opengl_3_0_names.dat opengl_types.dat >> opengl-thin.ads.tmp
+	cat opengl-thin.ads.N >> opengl-thin.ads.tmp
+	mv opengl-thin.ads.tmp opengl-thin.ads
 
 opengl-thin.ali:\
 ada-compile opengl-thin.ads

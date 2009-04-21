@@ -156,22 +156,28 @@ local function subprogram_name (subprogram)
 end
 
 --
--- Check if a parameter can be replaced with an address type.
+-- Check if a type can be replaced with an address type.
 --
 
-local function can_be_address (parameter_type)
-  assert (type (parameter_type) == "string")
-  return (types_ada_kind [parameter_type] == "access") or
-         (types_ada_kind [parameter_type] == "access_constant")
+local function can_be_address (input_type)
+  assert (type (input_type) == "string")
+  return (types_ada_kind [input_type] == "access") or
+         (types_ada_kind [input_type] == "access_constant")
 end
 
 --
--- Check to see if one of the subprograms parameters (if any)
--- is an access type.
+-- Check to see if one of the subprograms parameters (if any) or
+-- return type (if any) is an access type.
 --
 
 local function want_raw_addressing (subprogram)
   assert (type (subprogram) == "table")
+
+  if subprogram.type == "function" then
+    if can_be_address (subprogram.return_type) then
+      return true
+    end
+  end
 
   if #subprogram.parameters <= 0 then
     return false
@@ -256,7 +262,18 @@ local function write_subprogram (sub_name, subprogram, raw_addressing)
 
   -- Function type? Write return type, else close procedure.
   if subprogram.type == "function" then
-    io.write (" return "..map_type_to_ada (subprogram.return_type))
+    local use_addr = false
+    if raw_addressing then
+      if can_be_address (subprogram.return_type) then
+        use_addr = true
+      end
+    end
+
+    if use_addr then
+      io.write (" return System.Address")
+    else
+      io.write (" return "..map_type_to_ada (subprogram.return_type))
+    end
   end
 
   io.write (";\n")

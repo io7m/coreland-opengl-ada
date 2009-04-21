@@ -23,6 +23,10 @@ package OpenGL.Vertex is
   procedure Disable_Attribute_Array (Index : in Attribute_Index_t)
     renames OpenGL.Thin.Disable_Vertex_Attrib_Array;
 
+  --
+  -- Render arrays.
+  --
+
   procedure Draw_Arrays
     (Mode  : in Primitive_Type_t;
      First : in Attribute_Index_t;

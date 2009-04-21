@@ -59,6 +59,16 @@ echo '  -- OpenGL 2.0'
 echo
 ./opengl-mkapi.lua opengl_2_0_types.dat opengl_2_0_names.dat opengl_types.dat || fatal "could not generate API"
 
+info "generating 2.1 API"
+echo '  -- OpenGL 2.1'
+echo
+./opengl-mkapi.lua opengl_2_1_types.dat opengl_2_1_names.dat opengl_types.dat || fatal "could not generate API"
+
+info "generating 3.0 API"
+echo '  -- OpenGL 3.0'
+echo
+./opengl-mkapi.lua opengl_3_0_types.dat opengl_3_0_names.dat opengl_types.dat || fatal "could not generate API"
+
 cat <<EOF
 end OpenGL.Thin;
 EOF
