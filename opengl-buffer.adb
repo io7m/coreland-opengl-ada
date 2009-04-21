@@ -14,7 +14,7 @@ package body OpenGL.Buffer is
        Buffers => Buffers (Buffers'First)'Address);
   end Delete;
 
-  function Enum_Value (Target : in Target_t) return Thin.Enumeration_t is
+  function Target_To_Constant (Target : in Target_t) return Thin.Enumeration_t is
   begin
     case Target is
       when Array_Buffer              => return Thin.GL_ARRAY_BUFFER;
@@ -27,15 +27,42 @@ package body OpenGL.Buffer is
       when Transform_Feedback_Buffer => return Thin.GL_TRANSFORM_FEEDBACK_BUFFER;
       when Uniform_Buffer            => return Thin.GL_UNIFORM_BUFFER;
     end case;
-  end Enum_Value;
+  end Target_To_Constant;
 
   procedure Bind
     (Target : in Target_t;
      Buffer : in Buffer_t) is
   begin
     Thin.Bind_Buffer
-      (Target => Enum_Value (Target),
+      (Target => Target_To_Constant (Target),
        Buffer => Thin.Unsigned_Integer_t (Buffer));
   end Bind;
+
+  function Usage_To_Constant (Usage : in Usage_t) return Thin.Enumeration_t is
+  begin
+    case Usage is
+      when Stream_Draw  => return Thin.GL_STREAM_DRAW;
+      when Stream_Read  => return Thin.GL_STREAM_READ;
+      when Stream_Copy  => return Thin.GL_STREAM_COPY;
+      when Static_Draw  => return Thin.GL_STATIC_DRAW;
+      when Static_Read  => return Thin.GL_STATIC_READ;
+      when Static_Copy  => return Thin.GL_STATIC_COPY;
+      when Dynamic_Draw => return Thin.GL_DYNAMIC_DRAW;
+      when Dynamic_Read => return Thin.GL_DYNAMIC_READ;
+      when Dynamic_Copy => return Thin.GL_DYNAMIC_COPY;
+    end case;
+  end Usage_To_Constant;
+
+  procedure Data
+    (Target : in Target_t;
+     Data   : in Array_Type;
+     Usage  : in Usage_t) is
+  begin
+    Thin.Buffer_Data
+      (Target => Target_To_Constant (Target),
+       Size   => Data'Length,
+       Data   => Data (Data'First)'Address,
+       Usage  => Usage_To_Constant (Usage));
+  end Data;
 
 end OpenGL.Buffer;
