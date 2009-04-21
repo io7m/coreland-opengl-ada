@@ -65,4 +65,16 @@ package body OpenGL.Buffer is
        Usage  => Usage_To_Constant (Usage));
   end Data;
 
+  procedure Sub_Data
+    (Target : in Target_t;
+     Offset : in Types.Offset_t;
+     Data   : in Array_Type) is
+  begin
+    Thin.Buffer_Sub_Data
+      (Target => Target_To_Constant (Target),
+       Offset => Offset,
+       Size   => Data'Length,
+       Data   => Data (Data'First)'Address);
+  end Sub_Data;
+
 end OpenGL.Buffer;

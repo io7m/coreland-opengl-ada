@@ -1,4 +1,5 @@
 with OpenGL.Thin;
+with OpenGL.Types;
 
 package OpenGL.Buffer is
 
@@ -59,5 +60,14 @@ package OpenGL.Buffer is
     (Target : in Target_t;
      Data   : in Array_Type;
      Usage  : in Usage_t);
+
+  generic
+    type Element_Type is private;
+    type Array_Type is array (Natural range <>) of aliased Element_Type;
+
+  procedure Sub_Data
+    (Target : in Target_t;
+     Offset : in OpenGL.Types.Offset_t;
+     Data   : in Array_Type);
 
 end OpenGL.Buffer;
