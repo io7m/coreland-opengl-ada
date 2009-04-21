@@ -13,6 +13,7 @@ assert (api_types_map)
 assert (api_names_map)
 assert (gl_types_map)
 
+local types_ada_kind = {}
 local types_c_to_ada = {}
 local types_ada_to_c = {}
 local subprograms    = {}
@@ -26,9 +27,11 @@ for line in gl_types_map:lines() do
 
   record[1] = record[1]:gsub ("[%s]*$", "")
   record[2] = record[2]:gsub ("[%s]*", "")
+  record[3] = record[3]:gsub ("[%s]*", "")
 
-  types_c_to_ada [record [1]] = record[2]
-  types_ada_to_c [record [2]] = record[1]
+  types_ada_kind [record [1]] = record[3] -- ada_type -> kind
+  types_c_to_ada [record [1]] = record[2] -- c_type -> ada_type
+  types_ada_to_c [record [2]] = record[1] -- ada_type -> c_type
 end
 
 --
@@ -133,10 +136,13 @@ local function map_type_to_ada (name)
 end
 
 --
--- Generate API
+-- Get subprogram name
 --
 
-for index, subprogram in pairs (subprograms) do
+local function subprogram_name (subprogram)
+  assert (type (subprogram) == "table")
+
+  -- Modify name for Ada
   local sub_name = subprogram.name
   sub_name = modify_name (sub_name)
 
@@ -146,10 +152,59 @@ for index, subprogram in pairs (subprograms) do
     sub_name = "GL_"..sub_name
   end
 
+  return sub_name
+end
+
+--
+-- Check if a parameter can be replaced with an address type.
+--
+
+local function can_be_address (parameter_type)
+  assert (type (parameter_type) == "string")
+  return (types_ada_kind [parameter_type] == "access") or
+         (types_ada_kind [parameter_type] == "access_constant")
+end
+
+--
+-- Check to see if one of the subprograms parameters (if any)
+-- is an access type.
+--
+
+local function want_raw_addressing (subprogram)
+  assert (type (subprogram) == "table")
+
+  if #subprogram.parameters <= 0 then
+    return false
+  end
+
+  for index, parameter in pairs (subprogram.parameters) do
+    if can_be_address (parameter.type) then
+      return true
+    end
+  end
+
+  return false
+end
+
+--
+-- Write subprogram definition
+--
+
+local function write_subprogram (sub_name, subprogram, raw_addressing)
+  assert (type (sub_name) == "string")
+  assert (type (subprogram) == "table")
+  assert (type (raw_addressing) == "boolean")
+
+  if raw_addressing then
+    sub_name = sub_name.."_Untyped"
+  end
+
+  -- Write initial name/type
   io.write ([[
   ]]..subprogram.type..[[ ]]..sub_name..[[
 ]])
 
+  -- Write subprogram parameters
   if #subprogram.parameters > 0 then
     local longest_name = 0
 
@@ -177,7 +232,18 @@ for index, subprogram in pairs (subprograms) do
         io.write (" ")
       end
 
-      io.write (": "..map_type_to_ada (parameter.type))
+      -- Want an 'untyped' version using raw memory addresses for access types?
+      local use_addr = false
+      if raw_addressing == true then
+        if can_be_address (parameter.type) then
+          use_addr = true
+        end
+      end
+      if use_addr then
+        io.write (": in System.Address")
+      else
+        io.write (": "..map_type_to_ada (parameter.type))
+      end
 
       if not (index == table.maxn (subprogram.parameters)) then
         io.write (";\n")
@@ -198,4 +264,20 @@ for index, subprogram in pairs (subprograms) do
   pragma Import (C, ]]..sub_name..[[, "gl]]..subprogram.name..[[");
 
 ]])
+end
+
+--
+-- Generate API
+--
+
+for index, subprogram in pairs (subprograms) do
+  local sub_name = subprogram_name (subprogram)
+
+  write_subprogram (sub_name, subprogram, false)
+
+  -- Check that there's actually a parameter to change (otherwise the
+  -- result is an identical, conflicting definition).
+  if want_raw_addressing (subprogram) then
+    write_subprogram (sub_name, subprogram, true)
+  end
 end

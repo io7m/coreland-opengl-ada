@@ -63,6 +63,7 @@ end
 
 if kind == "access" then
   local target_type = ada_type:gsub ("_Access", "")
+
   io.write ([[
   type ]]..ada_type..[[ is access all ]]..target_type..[[;
   pragma Convention (C, ]]..ada_type..[[);

@@ -24,7 +24,7 @@ package OpenGL.Thin is
 EOF
 
 info "generating OpenGL constants"
-./opengl-mkconst.sh opengl_const.dat | ./align-colons.lua || fatal "could not generate constants"
+./opengl-mkconst.lua opengl_const.dat || fatal "could not generate constants"
 echo
 
 info "generating OpenGL types"

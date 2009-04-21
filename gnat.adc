@@ -1,4 +1,8 @@
 
+-- ./opengl-buffer.apk
+pragma source_file_name(OpenGL.Buffer, spec_file_name => "opengl-buffer.ads");
+pragma source_file_name(OpenGL.Buffer, body_file_name => "opengl-buffer.adb");
+
 -- ./opengl-error.apk
 pragma source_file_name(OpenGL.Error, spec_file_name => "opengl-error.ads");
 pragma source_file_name(OpenGL.Error, body_file_name => "opengl-error.adb");

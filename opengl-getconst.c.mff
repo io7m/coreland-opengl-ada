@@ -1,3 +1,0 @@
-opengl-getconst.c: opengl_const.dat opengl-getconst.lua
-	./opengl-getconst.lua opengl_const.dat > opengl-getconst.c.tmp
-	mv opengl-getconst.c.tmp opengl-getconst.c

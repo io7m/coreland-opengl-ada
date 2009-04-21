@@ -1,6 +1,6 @@
 opengl-thin.ads: \
 opengl-thin.ads.sh align-colons.lua \
-opengl-mkconst.sh opengl-getconst opengl_const.dat \
+opengl-mkconst.lua opengl_const.dat \
 opengl-gettypes \
 opengl-mkapi.lua \
 opengl_1_1_types.dat opengl_1_1_names.dat \
