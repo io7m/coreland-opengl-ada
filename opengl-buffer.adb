@@ -92,7 +92,7 @@ package body OpenGL.Buffer is
        Data   => T_Address);
   end Sub_Data;
 
-  function Map_Buffer_Range
+  function Map_Range
     (Target        : in Target_t;
      Offset        : in Index_Type;
      Length        : in Index_Type;
@@ -115,6 +115,36 @@ package body OpenGL.Buffer is
       raise Constraint_Error with
         OpenGL.Error.Error_t'Image (OpenGL.Error.Get_Error);
     end if;
-  end Map_Buffer_Range;
+    return Address;
+  end Map_Range;
+
+  function Map
+    (Target        : in Target_t;
+     Access_Policy : in Access_Policy_t) return System.Address
+  is
+    use type System.Address;
+
+    Address : System.Address;
+  begin
+    Address := Thin.Map_Buffer
+      (Target        => Target_To_Constant (Target),
+       Access_Policy => Thin.Enumeration_t (Access_Policy));
+    if Address = System.Null_Address then
+      raise Constraint_Error with
+        OpenGL.Error.Error_t'Image (OpenGL.Error.Get_Error);
+    end if;
+    return Address;
+  end Map;
+
+  procedure Flush_Range
+    (Target : in Target_t;
+     Offset : in Index_Type;
+     Length : in Index_Type) is
+  begin
+    Thin.Flush_Mapped_Buffer_Range
+      (Target => Target_To_Constant (Target),
+       Offset => Thin.Integer_Pointer_t (Offset),
+       Length => Thin.Size_Pointer_t (Length));
+  end Flush_Range;
 
 end OpenGL.Buffer;

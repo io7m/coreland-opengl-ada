@@ -1,6 +1,11 @@
 with OpenGL.Thin;
 with System;
 
+generic
+  type Element_Type is private;
+  type Index_Type   is range <>;
+  type Array_Type   is array (Index_Type range <>) of aliased Element_Type;
+
 package OpenGL.Buffer is
 
   type Buffer_t       is new Thin.Unsigned_Integer_t;
@@ -52,20 +57,10 @@ package OpenGL.Buffer is
      Dynamic_Read,
      Dynamic_Copy);
 
-  generic
-    type Element_Type is private;
-    type Index_Type   is range <>;
-    type Array_Type   is array (Index_Type range <>) of aliased Element_Type;
-
   procedure Data
     (Target : in Target_t;
      Data   : in Array_Type;
      Usage  : in Usage_t);
-
-  generic
-    type Element_Type is private;
-    type Index_Type   is range <>;
-    type Array_Type   is array (Index_Type range <>) of aliased Element_Type;
 
   procedure Sub_Data
     (Target : in Target_t;
@@ -85,14 +80,23 @@ package OpenGL.Buffer is
   Flush_Explicit_Bit    : constant Access_Policy_t := Thin.GL_MAP_FLUSH_EXPLICIT_BIT;
   Unsynchronized_Bit    : constant Access_Policy_t := Thin.GL_MAP_UNSYNCHRONIZED_BIT;
 
-  generic
-    type Element_Type is private;
-    type Index_Type   is range <>;
-
-  function Map_Buffer_Range
+  function Map_Range
     (Target        : in Target_t;
      Offset        : in Index_Type;
      Length        : in Index_Type;
      Access_Policy : in Access_Policy_t) return System.Address;
+
+  function Map
+    (Target        : in Target_t;
+     Access_Policy : in Access_Policy_t) return System.Address;
+
+  --
+  -- Flush mapped buffer.
+  --
+
+  procedure Flush_Range
+    (Target : in Target_t;
+     Offset : in Index_Type;
+     Length : in Index_Type);
 
 end OpenGL.Buffer;

@@ -1,1 +1,2 @@
 GLvoid *:MapBufferRange:GLenum:GLintptr:GLsizeiptr:GLbitfield
+void:FlushMappedBufferRange:GLenum:GLintptr:GLsizeiptr
