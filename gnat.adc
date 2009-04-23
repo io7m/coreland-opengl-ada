@@ -19,6 +19,10 @@ pragma source_file_name(OpenGL.Matrix, body_file_name => "opengl-matrix.adb");
 pragma source_file_name(OpenGL.State, spec_file_name => "opengl-state.ads");
 pragma source_file_name(OpenGL.State, body_file_name => "opengl-state.adb");
 
+-- ./opengl-texture.apk
+pragma source_file_name(OpenGL.Texture, spec_file_name => "opengl-texture.ads");
+pragma source_file_name(OpenGL.Texture, body_file_name => "opengl-texture.adb");
+
 -- ./opengl-thin.apk
 pragma source_file_name(OpenGL.Thin, spec_file_name => "opengl-thin.ads");
 
