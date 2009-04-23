@@ -1,5 +1,8 @@
+with OpenGL.Thin;
+
 package OpenGL.Texture is
 
+  type Index_t is new Thin.Unsigned_Integer_t;
   type Border_Width_t is range 0 .. 1;
 
   type Internal_Format_t is

@@ -1,5 +1,3 @@
-with OpenGL.Thin;
-
 package body OpenGL.Texture is
 
   function Target_1D_To_Constant (Target : in Target_1D_t)
