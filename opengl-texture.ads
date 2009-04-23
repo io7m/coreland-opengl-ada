@@ -100,7 +100,7 @@ package OpenGL.Texture is
   -- Image3D
   --
 
-  type Target_3D_t is (Texture_3D, Proxy_Texture_3D);
+  type Target_3D_t is (Texture_3D, Proxy_Texture_3D, Texture_Rectangle_ARB);
 
   -- proc_map : glTexImage3D
   procedure Image_3D
@@ -128,7 +128,8 @@ package OpenGL.Texture is
     Texture_Cube_Map_Negative_Y,
     Texture_Cube_Map_Positive_Z,
     Texture_Cube_Map_Negative_Z,
-    Proxy_Texture_Cube_Map);
+    Proxy_Texture_Cube_Map,
+    Texture_Rectangle_ARB);
 
   -- proc_map : glTexImage2D
   procedure Image_2D
@@ -146,7 +147,7 @@ package OpenGL.Texture is
   -- Image1D
   --
 
-  type Target_1D_t is (Texture_1D, Proxy_Texture_1D);
+  type Target_1D_t is (Texture_1D, Proxy_Texture_1D, Texture_Rectangle_ARB);
 
   -- proc_map : glTexImage1D
   procedure Image_1D

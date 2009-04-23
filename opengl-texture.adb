@@ -6,8 +6,9 @@ package body OpenGL.Texture is
     return Thin.Enumeration_t is
   begin
     case Target is
-      when Texture_1D       => return Thin.GL_TEXTURE_1D;
-      when Proxy_Texture_1D => return Thin.GL_PROXY_TEXTURE_1D;
+      when Texture_1D            => return Thin.GL_TEXTURE_1D;
+      when Proxy_Texture_1D      => return Thin.GL_PROXY_TEXTURE_1D;
+      when Texture_Rectangle_ARB => return Thin.GL_TEXTURE_RECTANGLE_ARB;
     end case;
   end Target_1D_To_Constant;
 
@@ -24,6 +25,7 @@ package body OpenGL.Texture is
       when Texture_Cube_Map_Positive_X => return Thin.GL_TEXTURE_CUBE_MAP_POSITIVE_X;
       when Texture_Cube_Map_Positive_Y => return Thin.GL_TEXTURE_CUBE_MAP_POSITIVE_Y;
       when Texture_Cube_Map_Positive_Z => return Thin.GL_TEXTURE_CUBE_MAP_POSITIVE_Z;
+      when Texture_Rectangle_ARB       => return Thin.GL_TEXTURE_RECTANGLE_ARB;
     end case;
   end Target_2D_To_Constant;
 
@@ -31,8 +33,9 @@ package body OpenGL.Texture is
     return Thin.Enumeration_t is
   begin
     case Target is
-      when Texture_3D       => return Thin.GL_TEXTURE_3D;
-      when Proxy_Texture_3D => return Thin.GL_PROXY_TEXTURE_3D;
+      when Texture_3D            => return Thin.GL_TEXTURE_3D;
+      when Proxy_Texture_3D      => return Thin.GL_PROXY_TEXTURE_3D;
+      when Texture_Rectangle_ARB => return Thin.GL_TEXTURE_RECTANGLE_ARB;
     end case;
   end Target_3D_To_Constant;
 
