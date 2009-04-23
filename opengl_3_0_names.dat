@@ -1,2 +1,5 @@
-MapBufferRange:Target:Offset:Length:Access_Policy
+BindVertexArray:Index
+DeleteVertexArrays:Size:Arrays
 FlushMappedBufferRange:Target:Offset:Length
+GenVertexArrays:Size:Arrays
+MapBufferRange:Target:Offset:Length:Access_Policy

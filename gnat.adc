@@ -11,6 +11,10 @@ pragma source_file_name(OpenGL.Error, body_file_name => "opengl-error.adb");
 pragma source_file_name(OpenGL.Light, spec_file_name => "opengl-light.ads");
 pragma source_file_name(OpenGL.Light, body_file_name => "opengl-light.adb");
 
+-- ./opengl-matrix.apk
+pragma source_file_name(OpenGL.Matrix, spec_file_name => "opengl-matrix.ads");
+pragma source_file_name(OpenGL.Matrix, body_file_name => "opengl-matrix.adb");
+
 -- ./opengl-state.apk
 pragma source_file_name(OpenGL.State, spec_file_name => "opengl-state.ads");
 pragma source_file_name(OpenGL.State, body_file_name => "opengl-state.adb");
@@ -24,6 +28,10 @@ pragma source_file_name(OpenGL.Types, spec_file_name => "opengl-types.ads");
 -- ./opengl-vertex.apk
 pragma source_file_name(OpenGL.Vertex, spec_file_name => "opengl-vertex.ads");
 pragma source_file_name(OpenGL.Vertex, body_file_name => "opengl-vertex.adb");
+
+-- ./opengl-view.apk
+pragma source_file_name(OpenGL.View, spec_file_name => "opengl-view.ads");
+pragma source_file_name(OpenGL.View, body_file_name => "opengl-view.adb");
 
 -- ./opengl.apk
 pragma source_file_name(OpenGL, spec_file_name => "opengl.ads");

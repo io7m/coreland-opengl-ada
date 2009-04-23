@@ -24,6 +24,7 @@ package OpenGL.Error is
      Invalid_Framebuffer_Operation => Thin.GL_INVALID_FRAMEBUFFER_OPERATION,
      Table_Too_Large               => Thin.GL_TABLE_TOO_LARGE);
 
+  -- proc_map : glGetError
   function Get_Error return Error_t;
   pragma Inline (Get_Error);
 

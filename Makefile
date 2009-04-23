@@ -5,8 +5,9 @@ default: all
 all:\
 opengl-ada.a opengl-buffer.ali opengl-buffer.o opengl-error.ali opengl-error.o \
 opengl-gettypes opengl-gettypes.o opengl-light.ali opengl-light.o \
-opengl-state.ali opengl-state.o opengl-thin.ali opengl-thin.o opengl-types.ali \
-opengl-types.o opengl-vertex.ali opengl-vertex.o opengl.ali opengl.o
+opengl-matrix.ali opengl-matrix.o opengl-state.ali opengl-state.o \
+opengl-thin.ali opengl-thin.o opengl-types.ali opengl-types.o opengl-vertex.ali \
+opengl-vertex.o opengl-view.ali opengl-view.o opengl.ali opengl.o
 
 # -- SYSDEPS start
 flags-opengl:
@@ -94,15 +95,17 @@ conf-cc conf-ld
 
 opengl-ada.a:\
 cc-slib opengl-ada.sld opengl-buffer.o opengl-error.o opengl-light.o \
-opengl-state.o opengl-thin.o opengl-types.o opengl-vertex.o opengl.o
+opengl-matrix.o opengl-state.o opengl-thin.o opengl-types.o opengl-vertex.o \
+opengl-view.o opengl.o
 	./cc-slib opengl-ada opengl-buffer.o opengl-error.o opengl-light.o \
-	opengl-state.o opengl-thin.o opengl-types.o opengl-vertex.o opengl.o
+	opengl-matrix.o opengl-state.o opengl-thin.o opengl-types.o opengl-vertex.o \
+	opengl-view.o opengl.o
 
 opengl-buffer.ads:\
 opengl.ali opengl-thin.ali
 
 opengl-buffer.ali:\
-ada-compile opengl-buffer.adb opengl.ali opengl-buffer.ads
+ada-compile opengl-buffer.adb opengl.ali opengl-buffer.ads opengl-error.ali
 	./ada-compile opengl-buffer.adb
 
 opengl-buffer.o:\
@@ -140,6 +143,16 @@ ada-compile opengl-light.adb opengl.ali opengl-light.ads opengl-thin.ali
 
 opengl-light.o:\
 opengl-light.ali
+
+opengl-matrix.ads:\
+opengl.ali
+
+opengl-matrix.ali:\
+ada-compile opengl-matrix.adb opengl.ali opengl-matrix.ads opengl-thin.ali
+	./ada-compile opengl-matrix.adb
+
+opengl-matrix.o:\
+opengl-matrix.ali
 
 opengl-state.ads:\
 opengl.ali
@@ -213,6 +226,16 @@ ada-compile opengl-vertex.adb opengl.ali opengl-vertex.ads
 opengl-vertex.o:\
 opengl-vertex.ali
 
+opengl-view.ads:\
+opengl.ali opengl-types.ali
+
+opengl-view.ali:\
+ada-compile opengl-view.adb opengl.ali opengl-view.ads opengl-thin.ali
+	./ada-compile opengl-view.adb
+
+opengl-view.o:\
+opengl-view.ali
+
 opengl.ali:\
 ada-compile opengl.ads opengl.ads
 	./ada-compile opengl.ads
@@ -225,9 +248,10 @@ clean: obj_clean
 obj_clean:
 	rm -f opengl-ada.a opengl-buffer.ali opengl-buffer.o opengl-error.ali \
 	opengl-error.o opengl-gettypes opengl-gettypes.c opengl-gettypes.o \
-	opengl-light.ali opengl-light.o opengl-state.ali opengl-state.o opengl-thin.ads \
-	opengl-thin.ali opengl-thin.o opengl-types.ali opengl-types.o opengl-vertex.ali \
-	opengl-vertex.o opengl.ali opengl.o
+	opengl-light.ali opengl-light.o opengl-matrix.ali opengl-matrix.o \
+	opengl-state.ali opengl-state.o opengl-thin.ads opengl-thin.ali opengl-thin.o \
+	opengl-types.ali opengl-types.o opengl-vertex.ali opengl-vertex.o \
+	opengl-view.ali opengl-view.o opengl.ali opengl.o
 ext_clean:
 	rm -f conf-adatype conf-cctype conf-ldtype conf-systype mk-ctxt
 

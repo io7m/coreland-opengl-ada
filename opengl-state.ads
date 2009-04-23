@@ -73,12 +73,15 @@ package OpenGL.State is
     Vertex_Program_Point_Size,
     Vertex_Program_Two_Side);
 
+  -- proc_map : glEnable
   procedure Enable (Capability : in Capability_t);
   pragma Inline (Enable);
 
+  -- proc_map : glDisable
   procedure Disable (Capability : in Capability_t);
   pragma Inline (Disable);
 
+  -- proc_map : glIsEnabled
   function Is_Enabled (Capability : in Capability_t) return Boolean;
   pragma Inline (Is_Enabled);
 

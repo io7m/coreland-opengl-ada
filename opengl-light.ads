@@ -10,12 +10,15 @@ package OpenGL.Light is
      Light_6,
      Light_7);
 
+  -- proc_map : glEnable
   procedure Enable (Index : in Light_Index_t);
   pragma Inline (Enable);
 
+  -- proc_map : glDisable
   procedure Disable (Index : in Light_Index_t);
   pragma Inline (Disable);
 
+  -- proc_map : glIsEnabled
   function Is_Enabled (Index : in Light_Index_t) return Boolean;
   pragma Inline (Is_Enabled);
 

@@ -10,17 +10,20 @@ package OpenGL.Buffer is
 
   type Buffer_t       is new Thin.Unsigned_Integer_t;
   type Buffer_Array_t is array (Natural range <>) of aliased Buffer_t;
+  pragma Convention (C, Buffer_Array_t);
 
   --
   -- Generate buffer name(s).
   --
 
+  -- proc_map : glGenBuffers
   procedure Generate (Buffers : in out Buffer_Array_t);
 
   --
   -- Delete buffer.
   --
 
+  -- proc_map : glDeleteBuffers
   procedure Delete (Buffers : in Buffer_Array_t);
 
   --
@@ -38,6 +41,7 @@ package OpenGL.Buffer is
      Transform_Feedback_Buffer,
      Uniform_Buffer);
 
+  -- proc_map : glBindBuffer
   procedure Bind
     (Target : in Target_t;
      Buffer : in Buffer_t);
@@ -57,11 +61,13 @@ package OpenGL.Buffer is
      Dynamic_Read,
      Dynamic_Copy);
 
+  -- proc_map : glBufferData
   procedure Data
     (Target : in Target_t;
      Data   : in Array_Type;
      Usage  : in Usage_t);
 
+  -- proc_map : glBufferSubData
   procedure Sub_Data
     (Target : in Target_t;
      Offset : in Index_Type;
@@ -80,12 +86,14 @@ package OpenGL.Buffer is
   Flush_Explicit_Bit    : constant Access_Policy_t := Thin.GL_MAP_FLUSH_EXPLICIT_BIT;
   Unsynchronized_Bit    : constant Access_Policy_t := Thin.GL_MAP_UNSYNCHRONIZED_BIT;
 
+  -- proc_map : glMapBufferRange
   function Map_Range
     (Target        : in Target_t;
      Offset        : in Index_Type;
      Length        : in Index_Type;
      Access_Policy : in Access_Policy_t) return System.Address;
 
+  -- proc_map : glMapBuffer
   function Map
     (Target        : in Target_t;
      Access_Policy : in Access_Policy_t) return System.Address;
@@ -94,6 +102,7 @@ package OpenGL.Buffer is
   -- Flush mapped buffer.
   --
 
+  -- proc_map : glFlushMappedBufferRange
   procedure Flush_Range
     (Target : in Target_t;
      Offset : in Index_Type;
@@ -103,6 +112,7 @@ package OpenGL.Buffer is
   -- Unmap buffer.
   --
 
+  -- proc_map : glUnmapBuffer
   function Unmap (Target : in Target_t) return Boolean;
 
 end OpenGL.Buffer;

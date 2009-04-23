@@ -1,2 +1,5 @@
-GLvoid *:MapBufferRange:GLenum:GLintptr:GLsizeiptr:GLbitfield
+void:BindVertexArray:GLuint
+void:DeleteVertexArrays:GLsizei:const GLuint *
 void:FlushMappedBufferRange:GLenum:GLintptr:GLsizeiptr
+void:GenVertexArrays:GLsizei:GLuint *
+GLvoid *:MapBufferRange:GLenum:GLintptr:GLsizeiptr:GLbitfield
