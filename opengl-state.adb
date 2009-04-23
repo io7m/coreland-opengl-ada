@@ -13,8 +13,8 @@ package body OpenGL.State is
       when Color_Material                  => return Thin.GL_COLOR_MATERIAL;
       when Color_Sum                       => return Thin.GL_COLOR_SUM;
       when Color_Table                     => return Thin.GL_COLOR_TABLE;
-      when Convolution_1d                  => return Thin.GL_CONVOLUTION_1D;
-      when Convolution_2d                  => return Thin.GL_CONVOLUTION_2D;
+      when Convolution_1D                  => return Thin.GL_CONVOLUTION_1D;
+      when Convolution_2D                  => return Thin.GL_CONVOLUTION_2D;
       when Cull_Face                       => return Thin.GL_CULL_FACE;
       when Depth_Test                      => return Thin.GL_DEPTH_TEST;
       when Dither                          => return Thin.GL_DITHER;
@@ -62,11 +62,11 @@ package body OpenGL.State is
       when Sample_Coverage                 => return Thin.GL_SAMPLE_COVERAGE;
       when Scissor_Test                    => return Thin.GL_SCISSOR_TEST;
       when Secondary_Color_Array           => return Thin.GL_SECONDARY_COLOR_ARRAY;
-      when Separable_2d                    => return Thin.GL_SEPARABLE_2D;
+      when Separable_2D                    => return Thin.GL_SEPARABLE_2D;
       when Stencil_Test                    => return Thin.GL_STENCIL_TEST;
-      when Texture_1d                      => return Thin.GL_TEXTURE_1D;
-      when Texture_2d                      => return Thin.GL_TEXTURE_2D;
-      when Texture_3d                      => return Thin.GL_TEXTURE_3D;
+      when Texture_1D                      => return Thin.GL_TEXTURE_1D;
+      when Texture_2D                      => return Thin.GL_TEXTURE_2D;
+      when Texture_3D                      => return Thin.GL_TEXTURE_3D;
       when Texture_Coord_Array             => return Thin.GL_TEXTURE_COORD_ARRAY;
       when Texture_Cube_Map                => return Thin.GL_TEXTURE_CUBE_MAP;
       when Texture_Gen_Q                   => return Thin.GL_TEXTURE_GEN_Q;
