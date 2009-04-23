@@ -145,7 +145,7 @@ opengl-light.o:\
 opengl-light.ali
 
 opengl-matrix.ads:\
-opengl.ali
+opengl.ali opengl-types.ali
 
 opengl-matrix.ali:\
 ada-compile opengl-matrix.adb opengl.ali opengl-matrix.ads opengl-thin.ali

@@ -1,4 +1,5 @@
 with OpenGL.Types;
+with OpenGL.Thin;
 with System;
 
 package OpenGL.Matrix is
@@ -66,5 +67,93 @@ package OpenGL.Matrix is
 
   -- proc_map : glMultTransposeMatrixd
   procedure Multiply_Transpose (Matrix : in Matrix_4x4d_t);
+
+  --
+  -- Rotate
+  --
+
+  -- proc_map : glRotatef
+  procedure Rotate
+    (Angle : in OpenGL.Types.Float_t;
+     X     : in OpenGL.Types.Float_t;
+     Y     : in OpenGL.Types.Float_t;
+     Z     : in OpenGL.Types.Float_t);
+
+  -- proc_map : glRotated
+  procedure Rotate
+    (Angle : in OpenGL.Types.Double_t;
+     X     : in OpenGL.Types.Double_t;
+     Y     : in OpenGL.Types.Double_t;
+     Z     : in OpenGL.Types.Double_t);
+
+  --
+  -- Translate
+  --
+
+  -- proc_map : glTranslatef
+  procedure Translate
+    (X : in OpenGL.Types.Float_t;
+     Y : in OpenGL.Types.Float_t;
+     Z : in OpenGL.Types.Float_t);
+
+  -- proc_map : glTranslated
+  procedure Translate
+    (X : in OpenGL.Types.Double_t;
+     Y : in OpenGL.Types.Double_t;
+     Z : in OpenGL.Types.Double_t);
+
+  --
+  -- Scale
+  --
+
+  -- proc_map : glScalef
+  procedure Scale
+    (X : in OpenGL.Types.Float_t;
+     Y : in OpenGL.Types.Float_t;
+     Z : in OpenGL.Types.Float_t);
+
+  -- proc_map : glScaled
+  procedure Scale
+    (X : in OpenGL.Types.Double_t;
+     Y : in OpenGL.Types.Double_t;
+     Z : in OpenGL.Types.Double_t);
+
+  --
+  -- Frustum
+  --
+
+  -- proc_map : glFrustum
+  procedure Frustum
+    (Left   : in OpenGL.Types.Double_t;
+     Right  : in OpenGL.Types.Double_t;
+     Bottom : in OpenGL.Types.Double_t;
+     Top    : in OpenGL.Types.Double_t;
+     Near   : in OpenGL.Types.Double_t;
+     Far    : in OpenGL.Types.Double_t);
+
+  --
+  -- Ortho
+  --
+
+  -- proc_map : glOrtho
+  procedure Ortho
+    (Left   : in OpenGL.Types.Double_t;
+     Right  : in OpenGL.Types.Double_t;
+     Bottom : in OpenGL.Types.Double_t;
+     Top    : in OpenGL.Types.Double_t;
+     Near   : in OpenGL.Types.Double_t;
+     Far    : in OpenGL.Types.Double_t);
+
+  --
+  -- Push
+  --
+
+  -- proc_map : glPushMatrix
+  procedure Push
+    renames Thin.Push_Matrix;
+
+  -- proc_map : glPopMatrix
+  procedure Pop
+    renames Thin.Pop_Matrix;
 
 end OpenGL.Matrix;

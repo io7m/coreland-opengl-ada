@@ -1,5 +1,3 @@
-with OpenGL.Thin;
-
 package body OpenGL.Matrix is
 
   function Mode_To_Constant (Mode : in Mode_t) return Thin.Enumeration_t is
@@ -72,5 +70,129 @@ package body OpenGL.Matrix is
   begin
     Thin.Mult_Transpose_Matrixd_Untyped (Matrix (Matrix'First)'Address);
   end Multiply_Transpose;
+
+  --
+  -- Rotate
+  --
+
+  procedure Rotate
+    (Angle : in OpenGL.Types.Float_t;
+     X     : in OpenGL.Types.Float_t;
+     Y     : in OpenGL.Types.Float_t;
+     Z     : in OpenGL.Types.Float_t) is
+  begin
+    Thin.Rotatef
+      (Angle => Angle,
+       X     => X,
+       Y     => Y,
+       Z     => Z);
+  end Rotate;
+
+  procedure Rotate
+    (Angle : in OpenGL.Types.Double_t;
+     X     : in OpenGL.Types.Double_t;
+     Y     : in OpenGL.Types.Double_t;
+     Z     : in OpenGL.Types.Double_t) is
+  begin
+    Thin.Rotated
+      (Angle => Angle,
+       X     => X,
+       Y     => Y,
+       Z     => Z);
+  end Rotate;
+
+  --
+  -- Translate
+  --
+
+  procedure Translate
+    (X : in OpenGL.Types.Float_t;
+     Y : in OpenGL.Types.Float_t;
+     Z : in OpenGL.Types.Float_t) is
+  begin
+    Thin.Translatef
+      (X => X,
+       Y => Y,
+       Z => Z);
+  end Translate;
+
+  procedure Translate
+    (X : in OpenGL.Types.Double_t;
+     Y : in OpenGL.Types.Double_t;
+     Z : in OpenGL.Types.Double_t) is
+  begin
+    Thin.Translated
+      (X => X,
+       Y => Y,
+       Z => Z);
+  end Translate;
+
+  --
+  -- Scale
+  --
+
+  procedure Scale
+    (X : in OpenGL.Types.Float_t;
+     Y : in OpenGL.Types.Float_t;
+     Z : in OpenGL.Types.Float_t) is
+  begin
+    Thin.Scalef
+      (X => X,
+       Y => Y,
+       Z => Z);
+  end Scale;
+
+  procedure Scale
+    (X : in OpenGL.Types.Double_t;
+     Y : in OpenGL.Types.Double_t;
+     Z : in OpenGL.Types.Double_t) is
+  begin
+    Thin.Scaled
+      (X => X,
+       Y => Y,
+       Z => Z);
+  end Scale;
+
+  --
+  -- Frustum
+  --
+
+  procedure Frustum
+    (Left   : in OpenGL.Types.Double_t;
+     Right  : in OpenGL.Types.Double_t;
+     Bottom : in OpenGL.Types.Double_t;
+     Top    : in OpenGL.Types.Double_t;
+     Near   : in OpenGL.Types.Double_t;
+     Far    : in OpenGL.Types.Double_t) is
+  begin
+    Thin.Frustum
+      (Left   => Thin.Double_t (Left),
+       Right  => Thin.Double_t (Right),
+       Top    => Thin.Double_t (Top),
+       Bottom => Thin.Double_t (Bottom),
+       Near   => Thin.Double_t (Near),
+       Far    => Thin.Double_t (Far));
+  end Frustum;
+
+  --
+  -- Ortho
+  --
+
+  procedure Ortho
+    (Left   : in OpenGL.Types.Double_t;
+     Right  : in OpenGL.Types.Double_t;
+     Bottom : in OpenGL.Types.Double_t;
+     Top    : in OpenGL.Types.Double_t;
+     Near   : in OpenGL.Types.Double_t;
+     Far    : in OpenGL.Types.Double_t) is
+  begin
+    Thin.Ortho
+      (Left       => Thin.Double_t (Left),
+       Right      => Thin.Double_t (Right),
+       Top        => Thin.Double_t (Top),
+       Bottom     => Thin.Double_t (Bottom),
+       Near_Value => Thin.Double_t (Near),
+       Far_Value  => Thin.Double_t (Far));
+  end Ortho;
 
 end OpenGL.Matrix;
