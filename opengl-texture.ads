@@ -1,8 +1,3 @@
-generic
-  type Data_Element_t is private;
-  type Data_Index_t   is range <>;
-  type Data_Array_t   is array (Data_Index_t range <>) of Data_Element_t;
-
 package OpenGL.Texture is
 
   type Border_Width_t is range 0 .. 1;
@@ -102,6 +97,11 @@ package OpenGL.Texture is
 
   type Target_3D_t is (Texture_3D, Proxy_Texture_3D, Texture_Rectangle_ARB);
 
+  generic
+    type Data_Element_t is private;
+    type Data_Index_t   is range <>;
+    type Data_Array_t   is array (Data_Index_t range <>) of aliased Data_Element_t;
+
   -- proc_map : glTexImage3D
   procedure Image_3D
     (Target          : in Target_3D_t;
@@ -131,6 +131,11 @@ package OpenGL.Texture is
     Proxy_Texture_Cube_Map,
     Texture_Rectangle_ARB);
 
+  generic
+    type Data_Element_t is private;
+    type Data_Index_t   is range <>;
+    type Data_Array_t   is array (Data_Index_t range <>) of aliased Data_Element_t;
+
   -- proc_map : glTexImage2D
   procedure Image_2D
     (Target          : in Target_2D_t;
@@ -148,6 +153,11 @@ package OpenGL.Texture is
   --
 
   type Target_1D_t is (Texture_1D, Proxy_Texture_1D, Texture_Rectangle_ARB);
+
+  generic
+    type Data_Element_t is private;
+    type Data_Index_t   is range <>;
+    type Data_Array_t   is array (Data_Index_t range <>) of aliased Data_Element_t;
 
   -- proc_map : glTexImage1D
   procedure Image_1D
