@@ -7,12 +7,13 @@ ctxt/bindir.o ctxt/ctxt.a ctxt/dlibdir.o ctxt/incdir.o ctxt/repos.o \
 ctxt/slibdir.o ctxt/version.o deinstaller deinstaller.o install-core.o \
 install-error.o install-posix.o install-win32.o install.a installer installer.o \
 instchk instchk.o insthier.o opengl-ada-conf opengl-ada-conf.o opengl-ada.a \
-opengl-buffer_object.ali opengl-buffer_object.o opengl-error.ali opengl-error.o \
-opengl-gettypes opengl-gettypes.o opengl-light.ali opengl-light.o \
-opengl-matrix.ali opengl-matrix.o opengl-state.ali opengl-state.o \
-opengl-texture.ali opengl-texture.o opengl-thin.ali opengl-thin.o \
-opengl-types.ali opengl-types.o opengl-vertex.ali opengl-vertex.o \
-opengl-view.ali opengl-view.o opengl.ali opengl.o
+opengl-buffer.ali opengl-buffer.o opengl-buffer_object.ali \
+opengl-buffer_object.o opengl-error.ali opengl-error.o opengl-gettypes \
+opengl-gettypes.o opengl-light.ali opengl-light.o opengl-matrix.ali \
+opengl-matrix.o opengl-state.ali opengl-state.o opengl-texture.ali \
+opengl-texture.o opengl-thin.ali opengl-thin.o opengl-types.ali opengl-types.o \
+opengl-vertex.ali opengl-vertex.o opengl-view.ali opengl-view.o opengl.ali \
+opengl.o
 
 # Mkf-deinstall
 deinstall: deinstaller conf-sosuffix
@@ -86,11 +87,11 @@ mk-adatype
 	./mk-adatype > conf-adatype.tmp && mv conf-adatype.tmp conf-adatype
 
 conf-cctype:\
-conf-cc mk-cctype
+conf-cc conf-cc mk-cctype
 	./mk-cctype > conf-cctype.tmp && mv conf-cctype.tmp conf-cctype
 
 conf-ldtype:\
-conf-ld mk-ldtype
+conf-ld conf-ld mk-ldtype
 	./mk-ldtype > conf-ldtype.tmp && mv conf-ldtype.tmp conf-ldtype
 
 conf-sosuffix:\
@@ -245,12 +246,22 @@ cc-compile opengl-ada-conf.c ctxt.h _sysinfo.h
 	./cc-compile opengl-ada-conf.c
 
 opengl-ada.a:\
-cc-slib opengl-ada.sld opengl-buffer_object.o opengl-error.o opengl-light.o \
-opengl-matrix.o opengl-state.o opengl-texture.o opengl-thin.o opengl-types.o \
-opengl-vertex.o opengl-view.o opengl.o
-	./cc-slib opengl-ada opengl-buffer_object.o opengl-error.o opengl-light.o \
-	opengl-matrix.o opengl-state.o opengl-texture.o opengl-thin.o opengl-types.o \
-	opengl-vertex.o opengl-view.o opengl.o
+cc-slib opengl-ada.sld opengl-buffer.o opengl-buffer_object.o opengl-error.o \
+opengl-light.o opengl-matrix.o opengl-state.o opengl-texture.o opengl-thin.o \
+opengl-types.o opengl-vertex.o opengl-view.o opengl.o
+	./cc-slib opengl-ada opengl-buffer.o opengl-buffer_object.o opengl-error.o \
+	opengl-light.o opengl-matrix.o opengl-state.o opengl-texture.o opengl-thin.o \
+	opengl-types.o opengl-vertex.o opengl-view.o opengl.o
+
+opengl-buffer.ads:\
+opengl.ali opengl-thin.ali
+
+opengl-buffer.ali:\
+ada-compile opengl-buffer.adb opengl.ali opengl-buffer.ads
+	./ada-compile opengl-buffer.adb
+
+opengl-buffer.o:\
+opengl-buffer.ali
 
 opengl-buffer_object.ads:\
 opengl-thin.ali
@@ -412,13 +423,13 @@ obj_clean:
 	ctxt/slibdir.o ctxt/version.c ctxt/version.o deinstaller deinstaller.o \
 	install-core.o install-error.o install-posix.o install-win32.o install.a \
 	installer installer.o instchk instchk.o insthier.o opengl-ada-conf \
-	opengl-ada-conf.o opengl-ada.a opengl-buffer_object.ali opengl-buffer_object.o \
-	opengl-error.ali opengl-error.o opengl-gettypes opengl-gettypes.c \
-	opengl-gettypes.o opengl-light.ali opengl-light.o opengl-matrix.ali \
-	opengl-matrix.o opengl-state.ali opengl-state.o opengl-texture.ali \
-	opengl-texture.o opengl-thin.ads opengl-thin.ali opengl-thin.o opengl-types.ali \
-	opengl-types.o opengl-vertex.ali opengl-vertex.o opengl-view.ali opengl-view.o \
-	opengl.ali opengl.o
+	opengl-ada-conf.o opengl-ada.a opengl-buffer.ali opengl-buffer.o \
+	opengl-buffer_object.ali opengl-buffer_object.o opengl-error.ali opengl-error.o \
+	opengl-gettypes opengl-gettypes.c opengl-gettypes.o opengl-light.ali \
+	opengl-light.o opengl-matrix.ali opengl-matrix.o opengl-state.ali \
+	opengl-state.o opengl-texture.ali opengl-texture.o opengl-thin.ads \
+	opengl-thin.ali opengl-thin.o opengl-types.ali opengl-types.o opengl-vertex.ali \
+	opengl-vertex.o opengl-view.ali opengl-view.o opengl.ali opengl.o
 ext_clean:
 	rm -f conf-adatype conf-cctype conf-ldtype conf-sosuffix conf-systype mk-ctxt
 

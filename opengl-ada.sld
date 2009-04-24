@@ -1,3 +1,4 @@
+opengl-buffer.o
 opengl-buffer_object.o
 opengl-error.o
 opengl-light.o
