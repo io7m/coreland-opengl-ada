@@ -132,7 +132,7 @@ package OpenGL.Texture is
   -- Parameter
   --
 
-  type Parameter_Target_t is
+  type Target_t is
     (Texture_1D,
      Texture_2D,
      Texture_3D,
@@ -178,13 +178,13 @@ package OpenGL.Texture is
 
   -- proc_map : glTexParameteri
   procedure Parameter
-    (Target    : in Parameter_Target_t;
+    (Target    : in Target_t;
      Parameter : in Texture_Parameter_t;
      Value     : in Standard.Integer);
 
   -- proc_map : glTexParameterf
   procedure Parameter
-    (Target    : in Parameter_Target_t;
+    (Target    : in Target_t;
      Parameter : in Texture_Parameter_t;
      Value     : in Standard.Float);
 
@@ -334,5 +334,14 @@ package OpenGL.Texture is
      Format          : in Format_t;
      Data            : in Data_Array_t;
      Data_Type       : in Data_Type_t);
+
+  --
+  -- Bind
+  --
+
+  -- proc_map : glBindTexture
+  procedure Bind
+    (Target  : in Target_t;
+     Texture : in Index_t);
 
 end OpenGL.Texture;

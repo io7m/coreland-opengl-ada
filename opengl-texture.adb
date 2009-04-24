@@ -40,8 +40,8 @@ package body OpenGL.Texture is
     end case;
   end Environment_Parameter_To_Constant;
 
-  function Parameter_Target_To_Constant
-    (Value : in Parameter_Target_t) return Thin.Enumeration_t is
+  function Target_To_Constant
+    (Value : in Target_t) return Thin.Enumeration_t is
   begin
     case Value is
       when Texture_1D       => return Thin.GL_TEXTURE_1D;
@@ -49,7 +49,7 @@ package body OpenGL.Texture is
       when Texture_3D       => return Thin.GL_TEXTURE_3D;
       when Texture_Cube_Map => return Thin.GL_TEXTURE_CUBE_MAP;
     end case;
-  end Parameter_Target_To_Constant;
+  end Target_To_Constant;
 
   function Texture_Parameter_To_Constant
     (Value : in Texture_Parameter_t) return Thin.Enumeration_t is
@@ -289,23 +289,23 @@ package body OpenGL.Texture is
   --
 
   procedure Parameter
-    (Target    : in Parameter_Target_t;
+    (Target    : in Target_t;
      Parameter : in Texture_Parameter_t;
      Value     : in Standard.Integer) is
   begin
     Thin.Tex_Parameteri
-      (Target    => Parameter_Target_To_Constant (Target),
+      (Target    => Target_To_Constant (Target),
        Parameter => Texture_Parameter_To_Constant (Parameter),
        Value     => Thin.Integer_t (Value));
   end Parameter;
 
   procedure Parameter
-    (Target    : in Parameter_Target_t;
+    (Target    : in Target_t;
      Parameter : in Texture_Parameter_t;
      Value     : in Standard.Float) is
   begin
     Thin.Tex_Parameterf
-      (Target    => Parameter_Target_To_Constant (Target),
+      (Target    => Target_To_Constant (Target),
        Parameter => Texture_Parameter_To_Constant (Parameter),
        Value     => Thin.Float_t (Value));
   end Parameter;
@@ -402,5 +402,18 @@ package body OpenGL.Texture is
       (Size     => Textures'Length,
        Textures => Textures (Textures'First)'Address);
   end Generate;
+
+  --
+  -- Bind
+  --
+
+  procedure Bind
+    (Target  : in Target_t;
+     Texture : in Index_t) is
+  begin
+    Thin.Bind_Texture
+      (Target  => Target_To_Constant (Target),
+       Texture => Thin.Unsigned_Integer_t (Texture));
+  end Bind;
 
 end OpenGL.Texture;
