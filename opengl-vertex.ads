@@ -102,8 +102,10 @@ package OpenGL.Vertex is
   -- Immediate mode. Begin/End.
   --
 
+  -- proc_map : glBegin
   procedure GL_Begin (Mode : in Primitive_Type_t);
 
+  -- proc_map : glEnd
   procedure GL_End renames Thin.GL_End;
 
 end OpenGL.Vertex;
