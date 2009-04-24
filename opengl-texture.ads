@@ -136,7 +136,8 @@ package OpenGL.Texture is
     (Texture_1D,
      Texture_2D,
      Texture_3D,
-     Texture_Cube_Map);
+     Texture_Cube_Map,
+     Texture_Rectangle_ARB);
 
   type Texture_Parameter_t is
    (Texture_Min_Filter,

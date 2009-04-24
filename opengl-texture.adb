@@ -44,10 +44,11 @@ package body OpenGL.Texture is
     (Value : in Target_t) return Thin.Enumeration_t is
   begin
     case Value is
-      when Texture_1D       => return Thin.GL_TEXTURE_1D;
-      when Texture_2D       => return Thin.GL_TEXTURE_2D;
-      when Texture_3D       => return Thin.GL_TEXTURE_3D;
-      when Texture_Cube_Map => return Thin.GL_TEXTURE_CUBE_MAP;
+      when Texture_1D            => return Thin.GL_TEXTURE_1D;
+      when Texture_2D            => return Thin.GL_TEXTURE_2D;
+      when Texture_3D            => return Thin.GL_TEXTURE_3D;
+      when Texture_Cube_Map      => return Thin.GL_TEXTURE_CUBE_MAP;
+      when Texture_Rectangle_ARB => return Thin.GL_TEXTURE_RECTANGLE_ARB;
     end case;
   end Target_To_Constant;
 
