@@ -98,4 +98,12 @@ package OpenGL.Vertex is
      Coords_Per_Vertex : in Coords_Per_Vertex_t;
      Stride            : in Natural);
 
+  --
+  -- Immediate mode. Begin/End.
+  --
+
+  procedure GL_Begin (Mode : in Primitive_Type_t);
+
+  procedure GL_End renames Thin.GL_End;
+
 end OpenGL.Vertex;
