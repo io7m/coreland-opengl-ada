@@ -218,6 +218,24 @@ package OpenGL.Texture is
     Alpha_Scale,
     Coord_Replace);
 
+  Add                    : constant := Thin.GL_ADD;
+  Add_Signed             : constant := Thin.GL_ADD_SIGNED;
+  Interpolate            : constant := Thin.GL_INTERPOLATE;
+  Modulate               : constant := Thin.GL_MODULATE;
+  Decal                  : constant := Thin.GL_DECAL;
+  Blend                  : constant := Thin.GL_BLEND;
+  Replace                : constant := Thin.GL_REPLACE;
+  Subtract               : constant := Thin.GL_SUBTRACT;
+  Combine                : constant := Thin.GL_COMBINE;
+  Texture                : constant := Thin.GL_TEXTURE;
+  GL_Constant            : constant := Thin.GL_CONSTANT;
+  Primary_Color          : constant := Thin.GL_PRIMARY_COLOR;
+  Previous               : constant := Thin.GL_PREVIOUS;
+  Source_Color           : constant := Thin.GL_SRC_COLOR;
+  One_Minus_Source_Color : constant := Thin.GL_ONE_MINUS_SRC_COLOR;
+  Source_Alpha           : constant := Thin.GL_SRC_ALPHA;
+  One_Minus_Source_Alpha : constant := Thin.GL_ONE_MINUS_SRC_ALPHA;
+
   -- proc_map : glTexEnvi
   procedure Environment
     (Target    : in Environment_Target_t;
