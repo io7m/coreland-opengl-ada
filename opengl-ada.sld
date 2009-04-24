@@ -8,5 +8,6 @@ opengl-texture.o
 opengl-thin.o
 opengl-types.o
 opengl-vertex.o
+opengl-vertex_array.o
 opengl-view.o
 opengl.o

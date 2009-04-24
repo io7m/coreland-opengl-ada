@@ -37,6 +37,10 @@ pragma source_file_name(OpenGL.Types, spec_file_name => "opengl-types.ads");
 pragma source_file_name(OpenGL.Vertex, spec_file_name => "opengl-vertex.ads");
 pragma source_file_name(OpenGL.Vertex, body_file_name => "opengl-vertex.adb");
 
+-- ./opengl-vertex_array.apk
+pragma source_file_name(OpenGL.Vertex_Array, spec_file_name => "opengl-vertex_array.ads");
+pragma source_file_name(OpenGL.Vertex_Array, body_file_name => "opengl-vertex_array.adb");
+
 -- ./opengl-view.apk
 pragma source_file_name(OpenGL.View, spec_file_name => "opengl-view.ads");
 pragma source_file_name(OpenGL.View, body_file_name => "opengl-view.adb");

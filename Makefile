@@ -12,8 +12,8 @@ opengl-buffer_object.o opengl-error.ali opengl-error.o opengl-gettypes \
 opengl-gettypes.o opengl-light.ali opengl-light.o opengl-matrix.ali \
 opengl-matrix.o opengl-state.ali opengl-state.o opengl-texture.ali \
 opengl-texture.o opengl-thin.ali opengl-thin.o opengl-types.ali opengl-types.o \
-opengl-vertex.ali opengl-vertex.o opengl-view.ali opengl-view.o opengl.ali \
-opengl.o
+opengl-vertex.ali opengl-vertex.o opengl-vertex_array.ali opengl-vertex_array.o \
+opengl-view.ali opengl-view.o opengl.ali opengl.o
 
 # Mkf-deinstall
 deinstall: deinstaller conf-sosuffix
@@ -87,11 +87,11 @@ mk-adatype
 	./mk-adatype > conf-adatype.tmp && mv conf-adatype.tmp conf-adatype
 
 conf-cctype:\
-conf-cc conf-cc mk-cctype
+conf-cc mk-cctype
 	./mk-cctype > conf-cctype.tmp && mv conf-cctype.tmp conf-cctype
 
 conf-ldtype:\
-conf-ld conf-ld mk-ldtype
+conf-ld mk-ldtype
 	./mk-ldtype > conf-ldtype.tmp && mv conf-ldtype.tmp conf-ldtype
 
 conf-sosuffix:\
@@ -248,13 +248,13 @@ cc-compile opengl-ada-conf.c ctxt.h _sysinfo.h
 opengl-ada.a:\
 cc-slib opengl-ada.sld opengl-buffer.o opengl-buffer_object.o opengl-error.o \
 opengl-light.o opengl-matrix.o opengl-state.o opengl-texture.o opengl-thin.o \
-opengl-types.o opengl-vertex.o opengl-view.o opengl.o
+opengl-types.o opengl-vertex.o opengl-vertex_array.o opengl-view.o opengl.o
 	./cc-slib opengl-ada opengl-buffer.o opengl-buffer_object.o opengl-error.o \
 	opengl-light.o opengl-matrix.o opengl-state.o opengl-texture.o opengl-thin.o \
-	opengl-types.o opengl-vertex.o opengl-view.o opengl.o
+	opengl-types.o opengl-vertex.o opengl-vertex_array.o opengl-view.o opengl.o
 
 opengl-buffer.ads:\
-opengl.ali opengl-thin.ali
+opengl.ali opengl-thin.ali opengl-types.ali
 
 opengl-buffer.ali:\
 ada-compile opengl-buffer.adb opengl.ali opengl-buffer.ads
@@ -317,10 +317,10 @@ opengl-matrix.o:\
 opengl-matrix.ali
 
 opengl-state.ads:\
-opengl.ali opengl-thin.ali
+opengl.ali
 
 opengl-state.ali:\
-ada-compile opengl-state.adb opengl.ali opengl-state.ads
+ada-compile opengl-state.adb opengl.ali opengl-state.ads opengl-thin.ali
 	./ada-compile opengl-state.adb
 
 opengl-state.o:\
@@ -398,6 +398,16 @@ ada-compile opengl-vertex.adb opengl.ali opengl-vertex.ads
 opengl-vertex.o:\
 opengl-vertex.ali
 
+opengl-vertex_array.ads:\
+opengl-thin.ali opengl-vertex.ali
+
+opengl-vertex_array.ali:\
+ada-compile opengl-vertex_array.adb opengl-vertex_array.ads
+	./ada-compile opengl-vertex_array.adb
+
+opengl-vertex_array.o:\
+opengl-vertex_array.ali
+
 opengl-view.ads:\
 opengl.ali opengl-types.ali
 
@@ -429,7 +439,8 @@ obj_clean:
 	opengl-light.o opengl-matrix.ali opengl-matrix.o opengl-state.ali \
 	opengl-state.o opengl-texture.ali opengl-texture.o opengl-thin.ads \
 	opengl-thin.ali opengl-thin.o opengl-types.ali opengl-types.o opengl-vertex.ali \
-	opengl-vertex.o opengl-view.ali opengl-view.o opengl.ali opengl.o
+	opengl-vertex.o opengl-vertex_array.ali opengl-vertex_array.o opengl-view.ali \
+	opengl-view.o opengl.ali opengl.o
 ext_clean:
 	rm -f conf-adatype conf-cctype conf-ldtype conf-sosuffix conf-systype mk-ctxt
 
