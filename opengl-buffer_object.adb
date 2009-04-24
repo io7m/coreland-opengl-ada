@@ -1,6 +1,6 @@
 with OpenGL.Error;
 
-package body OpenGL.Buffer is
+package body OpenGL.Buffer_Object is
 
   --
   -- Generate buffer name(s).
@@ -186,4 +186,4 @@ package body OpenGL.Buffer is
     end if;
   end Unmap;
 
-end OpenGL.Buffer;
+end OpenGL.Buffer_Object;

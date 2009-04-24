@@ -6,7 +6,7 @@ generic
   type Index_Type   is range <>;
   type Array_Type   is array (Index_Type range <>) of aliased Element_Type;
 
-package OpenGL.Buffer is
+package OpenGL.Buffer_Object is
 
   type Buffer_t       is new Thin.Unsigned_Integer_t;
   type Buffer_Array_t is array (Natural range <>) of aliased Buffer_t;
@@ -115,4 +115,4 @@ package OpenGL.Buffer is
   -- proc_map : glUnmapBuffer
   function Unmap (Target : in Target_t) return Boolean;
 
-end OpenGL.Buffer;
+end OpenGL.Buffer_Object;

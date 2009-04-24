@@ -7,7 +7,7 @@ ctxt/bindir.o ctxt/ctxt.a ctxt/dlibdir.o ctxt/incdir.o ctxt/repos.o \
 ctxt/slibdir.o ctxt/version.o deinstaller deinstaller.o install-core.o \
 install-error.o install-posix.o install-win32.o install.a installer installer.o \
 instchk instchk.o insthier.o opengl-ada-conf opengl-ada-conf.o opengl-ada.a \
-opengl-buffer.ali opengl-buffer.o opengl-error.ali opengl-error.o \
+opengl-buffer_object.ali opengl-buffer_object.o opengl-error.ali opengl-error.o \
 opengl-gettypes opengl-gettypes.o opengl-light.ali opengl-light.o \
 opengl-matrix.ali opengl-matrix.o opengl-state.ali opengl-state.o \
 opengl-texture.ali opengl-texture.o opengl-thin.ali opengl-thin.o \
@@ -248,19 +248,19 @@ opengl-ada.a:\
 cc-slib opengl-ada.sld opengl-buffer.o opengl-error.o opengl-light.o \
 opengl-matrix.o opengl-state.o opengl-texture.o opengl-thin.o opengl-types.o \
 opengl-vertex.o opengl-view.o opengl.o
-	./cc-slib opengl-ada opengl-buffer.o opengl-error.o opengl-light.o \
-	opengl-matrix.o opengl-state.o opengl-texture.o opengl-thin.o opengl-types.o \
-	opengl-vertex.o opengl-view.o opengl.o
+	./cc-slib opengl-ada opengl-error.o opengl-light.o opengl-matrix.o \
+	opengl-state.o opengl-texture.o opengl-thin.o opengl-types.o opengl-vertex.o \
+	opengl-view.o opengl.o
 
-opengl-buffer.ads:\
-opengl.ali opengl-thin.ali
+opengl-buffer_object.ads:\
+opengl-thin.ali
 
-opengl-buffer.ali:\
-ada-compile opengl-buffer.adb opengl.ali opengl-buffer.ads opengl-error.ali
-	./ada-compile opengl-buffer.adb
+opengl-buffer_object.ali:\
+ada-compile opengl-buffer_object.adb opengl-buffer_object.ads opengl-error.ali
+	./ada-compile opengl-buffer_object.adb
 
-opengl-buffer.o:\
-opengl-buffer.ali
+opengl-buffer_object.o:\
+opengl-buffer_object.ali
 
 opengl-error.ads:\
 opengl.ali opengl-thin.ali
@@ -306,20 +306,20 @@ opengl-matrix.o:\
 opengl-matrix.ali
 
 opengl-state.ads:\
-opengl.ali
+opengl.ali opengl-thin.ali
 
 opengl-state.ali:\
-ada-compile opengl-state.adb opengl.ali opengl-state.ads opengl-thin.ali
+ada-compile opengl-state.adb opengl.ali opengl-state.ads
 	./ada-compile opengl-state.adb
 
 opengl-state.o:\
 opengl-state.ali
 
 opengl-texture.ads:\
-opengl.ali
+opengl.ali opengl-thin.ali
 
 opengl-texture.ali:\
-ada-compile opengl-texture.adb opengl.ali opengl-texture.ads opengl-thin.ali
+ada-compile opengl-texture.adb opengl.ali opengl-texture.ads
 	./ada-compile opengl-texture.adb
 
 opengl-texture.o:\
@@ -412,7 +412,7 @@ obj_clean:
 	ctxt/slibdir.o ctxt/version.c ctxt/version.o deinstaller deinstaller.o \
 	install-core.o install-error.o install-posix.o install-win32.o install.a \
 	installer installer.o instchk instchk.o insthier.o opengl-ada-conf \
-	opengl-ada-conf.o opengl-ada.a opengl-buffer.ali opengl-buffer.o \
+	opengl-ada-conf.o opengl-ada.a opengl-buffer_object.ali opengl-buffer_object.o \
 	opengl-error.ali opengl-error.o opengl-gettypes opengl-gettypes.c \
 	opengl-gettypes.o opengl-light.ali opengl-light.o opengl-matrix.ali \
 	opengl-matrix.o opengl-state.ali opengl-state.o opengl-texture.ali \
