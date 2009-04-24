@@ -2,7 +2,9 @@ with OpenGL.Thin;
 
 package OpenGL.Texture is
 
-  type Index_t is new Thin.Unsigned_Integer_t;
+  type Index_t       is new Thin.Unsigned_Integer_t;
+  type Index_Array_t is array (Natural range <>) of aliased Index_t;
+
   type Border_Width_t is range 0 .. 1;
 
   type Internal_Format_t is
@@ -152,6 +154,28 @@ package OpenGL.Texture is
     Depth_Texture_Mode,
     Generate_Mipmap);
 
+  Linear                 : constant := Thin.GL_LINEAR;
+  Linear_Mipmap_Linear   : constant := Thin.GL_LINEAR_MIPMAP_LINEAR;
+  Linear_Mipmap_Nearest  : constant := Thin.GL_LINEAR_MIPMAP_NEAREST;
+  Nearest                : constant := Thin.GL_NEAREST;
+  Nearest_Mipmap_Linear  : constant := Thin.GL_NEAREST_MIPMAP_LINEAR;
+  Nearest_Mipmap_Nearest : constant := Thin.GL_NEAREST_MIPMAP_NEAREST;
+
+  Clamp                  : constant := Thin.GL_CLAMP;
+  Clamp_To_Border        : constant := Thin.GL_CLAMP_TO_BORDER;
+  Clamp_To_Edge          : constant := Thin.GL_CLAMP_TO_EDGE;
+  Mirrored_Repeat        : constant := Thin.GL_MIRRORED_REPEAT;
+  Repeat                 : constant := Thin.GL_REPEAT;
+
+  Always                 : constant := Thin.GL_ALWAYS;
+  Equal                  : constant := Thin.GL_EQUAL;
+  Greater_Than           : constant := Thin.GL_GREATER;
+  Greater_Than_Or_Equal  : constant := Thin.GL_GEQUAL;
+  Less_Than              : constant := Thin.GL_LESS;
+  Less_Than_Or_Equal     : constant := Thin.GL_LEQUAL;
+  Never                  : constant := Thin.GL_NEVER;
+  Not_Equal              : constant := Thin.GL_NOTEQUAL;
+
   -- proc_map : glTexParameteri
   procedure Parameter
     (Target    : in Parameter_Target_t;
@@ -163,6 +187,14 @@ package OpenGL.Texture is
     (Target    : in Parameter_Target_t;
      Parameter : in Texture_Parameter_t;
      Value     : in Standard.Float);
+
+  --
+  -- Generate
+  --
+
+  -- proc_map : glGenTextures
+  procedure Generate
+    (Textures : in out Index_Array_t);
 
   --
   -- Image3D

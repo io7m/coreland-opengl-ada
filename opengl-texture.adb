@@ -329,4 +329,16 @@ package body OpenGL.Texture is
        Data            => Data (Data'First)'Address);
   end Image_1D;
 
+  --
+  -- Generate
+  --
+
+  procedure Generate
+    (Textures : in out Index_Array_t) is
+  begin
+    Thin.Gen_Textures_Untyped
+      (Size     => Textures'Length,
+       Textures => Textures (Textures'First)'Address);
+  end Generate;
+
 end OpenGL.Texture;

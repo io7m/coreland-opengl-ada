@@ -438,6 +438,7 @@ GL_UNSIGNED_SHORT_4_4_4_4_REV              : 8365
 GL_UNSIGNED_SHORT_1_5_5_5_REV              : 8366
 GL_UNSIGNED_INT_8_8_8_8_REV                : 8367
 GL_UNSIGNED_INT_2_10_10_10_REV             : 8368
+GL_MIRRORED_REPEAT                         : 8370
 GL_FOG_COORD_ARRAY                         : 8457
 GL_COLOR_SUM                               : 8458
 GL_SECONDARY_COLOR_ARRAY                   : 845e
