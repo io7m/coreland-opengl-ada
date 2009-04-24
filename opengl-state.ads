@@ -85,4 +85,26 @@ package OpenGL.State is
   function Is_Enabled (Capability : in Capability_t) return Boolean;
   pragma Inline (Is_Enabled);
 
+  --
+  -- Client state.
+  --
+
+  type Client_Capability_t is
+    (Color_Array,
+     Edge_Flag_Array,
+     Fog_Coord_Array,
+     Index_Array,
+     Normal_Array,
+     Secondary_Color_Array,
+     Texture_Coord_Array,
+     Vertex_Array);
+
+  -- proc_map : glEnableClientState
+  procedure Enable_Client_State (Capability : in Client_Capability_t);
+  pragma Inline (Enable_Client_State);
+
+  -- proc_map : glDisableClientState
+  procedure Disable_Client_State (Capability : in Client_Capability_t);
+  pragma Inline (Disable_Client_State);
+
 end OpenGL.State;

@@ -2,7 +2,8 @@ with OpenGL.Thin;
 
 package body OpenGL.State is
 
-  function Enum_Value (Capability : in Capability_t) return Thin.Enumeration_t is
+  function Capability_To_Constant (Capability : in Capability_t)
+    return Thin.Enumeration_t is
   begin
     case Capability is
       when Alpha_Test                      => return Thin.GL_ALPHA_TEST;
@@ -77,22 +78,36 @@ package body OpenGL.State is
       when Vertex_Program_Point_Size       => return Thin.GL_VERTEX_PROGRAM_POINT_SIZE;
       when Vertex_Program_Two_Side         => return Thin.GL_VERTEX_PROGRAM_TWO_SIDE;
     end case;
-  end Enum_Value;
+  end Capability_To_Constant;
+
+  function Client_Capability_To_Constant (Capability : in Client_Capability_t)
+    return Thin.Enumeration_t is
+  begin
+    case Capability is
+      when Color_Array                     => return Thin.GL_COLOR_ARRAY;
+      when Edge_Flag_Array                 => return Thin.GL_EDGE_FLAG_ARRAY;
+      when Fog_Coord_Array                 => return Thin.GL_FOG_COORD_ARRAY;
+      when Index_Array                     => return Thin.GL_INDEX_ARRAY;
+      when Normal_Array                    => return Thin.GL_NORMAL_ARRAY;
+      when Secondary_Color_Array           => return Thin.GL_SECONDARY_COLOR_ARRAY;
+      when Texture_Coord_Array             => return Thin.GL_TEXTURE_COORD_ARRAY;
+      when Vertex_Array                    => return Thin.GL_VERTEX_ARRAY;
+    end case;
+  end Client_Capability_To_Constant;
 
   procedure Enable (Capability : in Capability_t) is
   begin
-    Thin.Enable (Enum_Value (Capability));
+    Thin.Enable (Capability_To_Constant (Capability));
   end Enable;
 
   procedure Disable (Capability : in Capability_t) is
   begin
-    Thin.Disable (Enum_Value (Capability));
+    Thin.Disable (Capability_To_Constant (Capability));
   end Disable;
 
   function Is_Enabled (Capability : in Capability_t) return Boolean is
     use type Thin.Boolean_t;
-
-    On : constant Thin.Boolean_t := Thin.Is_Enabled (Enum_Value (Capability));
+    On : constant Thin.Boolean_t := Thin.Is_Enabled (Capability_To_Constant (Capability));
   begin
     if On = Thin.Boolean_t'Val (1) then
       return True;
@@ -100,5 +115,15 @@ package body OpenGL.State is
       return False;
     end if;
   end Is_Enabled;
+
+  procedure Enable_Client_State (Capability : in Client_Capability_t) is
+  begin
+    Thin.Enable_Client_State (Client_Capability_To_Constant (Capability));
+  end Enable_Client_State;
+
+  procedure Disable_Client_State (Capability : in Client_Capability_t) is
+  begin
+    Thin.Disable_Client_State (Client_Capability_To_Constant (Capability));
+  end Disable_Client_State;
 
 end OpenGL.State;

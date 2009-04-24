@@ -54,10 +54,56 @@ package body OpenGL.Vertex is
        Count => Thin.Size_t (Count));
   end Draw_Arrays;
 
+  --
+  -- Bind_Array
+  --
+
   procedure Bind_Array
     (Index : in Array_Index_t) is
   begin
     Thin.Bind_Vertex_Array (Thin.Unsigned_Integer_t (Index));
   end Bind_Array;
+
+  --
+  -- Pointer
+  --
+
+  procedure Pointer_Integer
+    (Data              : in Vertex_Array_t;
+     Coords_Per_Vertex : in Coords_Per_Vertex_t;
+     Stride            : in Natural)
+  is
+    Data_Type : Thin.Enumeration_t;
+  begin
+    case Vertex_Type is
+      when Integer => Data_Type := Thin.GL_INT;
+      when Short   => Data_Type := Thin.GL_SHORT;
+    end case;
+
+    Thin.Vertex_Pointer
+      (Size      => Thin.Integer_t (Coords_Per_Vertex),
+       Data_Type => Data_Type,
+       Stride    => Thin.Size_t (Stride),
+       Pointer   => Data (Data'First)'Address);
+  end Pointer_Integer;
+
+  procedure Pointer_Float
+    (Data              : in Vertex_Array_t;
+     Coords_Per_Vertex : in Coords_Per_Vertex_t;
+     Stride            : in Natural)
+  is
+    Data_Type : Thin.Enumeration_t;
+  begin
+    case Vertex_Type is
+      when Float  => Data_Type := Thin.GL_FLOAT;
+      when Double => Data_Type := Thin.GL_DOUBLE;
+    end case;
+
+    Thin.Vertex_Pointer
+      (Size      => Thin.Integer_t (Coords_Per_Vertex),
+       Data_Type => Data_Type,
+       Stride    => Thin.Size_t (Stride),
+       Pointer   => Data (Data'First)'Address);
+  end Pointer_Float;
 
 end OpenGL.Vertex;

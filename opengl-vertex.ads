@@ -65,4 +65,37 @@ package OpenGL.Vertex is
      Count : in Attribute_Count_t);
   pragma Inline (Draw_Arrays);
 
+  --
+  -- Pointer
+  --
+
+  type Coords_Per_Vertex_t is range 2 .. 4;
+  type Integer_Coordinate_Type_t is (Integer, Short);
+
+  generic
+    Vertex_Type               : Integer_Coordinate_Type_t;
+    type Vertex_Element_t     is range <>;
+    type Vertex_Array_Index_t is range <>;
+    type Vertex_Array_t       is array (Vertex_Array_Index_t range <>) of aliased Vertex_Element_t;
+
+  -- proc_map : glVertexPointer
+  procedure Pointer_Integer
+    (Data              : in Vertex_Array_t;
+     Coords_Per_Vertex : in Coords_Per_Vertex_t;
+     Stride            : in Natural);
+
+  type Float_Coordinate_Type_t is (Float, Double);
+
+  generic
+    Vertex_Type               : Float_Coordinate_Type_t;
+    type Vertex_Element_t     is digits <>;
+    type Vertex_Array_Index_t is range <>;
+    type Vertex_Array_t       is array (Vertex_Array_Index_t range <>) of aliased Vertex_Element_t;
+
+  -- proc_map : glVertexPointer
+  procedure Pointer_Float
+    (Data              : in Vertex_Array_t;
+     Coords_Per_Vertex : in Coords_Per_Vertex_t;
+     Stride            : in Natural);
+
 end OpenGL.Vertex;
