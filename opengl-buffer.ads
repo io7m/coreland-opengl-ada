@@ -1,4 +1,5 @@
 with OpenGL.Thin;
+with OpenGL.Types;
 
 package OpenGL.Buffer is
 
@@ -12,5 +13,13 @@ package OpenGL.Buffer is
   -- proc_map : glClear
   procedure Clear (Mask : in Buffer_Mask_t);
   pragma Inline (Clear);
+
+  -- proc_map : glClearColor
+  procedure Clear_Color
+    (Red   : in OpenGL.Types.Clamped_Float_t;
+     Green : in OpenGL.Types.Clamped_Float_t;
+     Blue  : in OpenGL.Types.Clamped_Float_t;
+     Alpha : in OpenGL.Types.Clamped_Float_t);
+  pragma Inline (Clear_Color);
 
 end OpenGL.Buffer;
