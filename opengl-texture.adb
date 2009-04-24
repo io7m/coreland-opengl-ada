@@ -1,5 +1,64 @@
 package body OpenGL.Texture is
 
+  --
+  -- Mappings between enumeration types and OpenGL constants.
+  --
+
+  function Parameter_Target_To_Constant
+    (Value : in Parameter_Target_t) return Thin.Enumeration_t is
+  begin
+    case Value is
+      when Texture_1D       => return Thin.GL_TEXTURE_1D;
+      when Texture_2D       => return Thin.GL_TEXTURE_2D;
+      when Texture_3D       => return Thin.GL_TEXTURE_3D;
+      when Texture_Cube_Map => return Thin.GL_TEXTURE_CUBE_MAP;
+    end case;
+  end Parameter_Target_To_Constant;
+
+  function Texture_Parameter_To_Constant
+    (Value : in Texture_Parameter_t) return Thin.Enumeration_t is
+  begin
+    case Value is
+      when Texture_Min_Filter   => return Thin.GL_TEXTURE_MIN_FILTER;
+      when Texture_Mag_Filter   => return Thin.GL_TEXTURE_MAG_FILTER;
+      when Texture_Min_LOD      => return Thin.GL_TEXTURE_MIN_LOD;
+      when Texture_Max_LOD      => return Thin.GL_TEXTURE_MAX_LOD;
+      when Texture_Base_Level   => return Thin.GL_TEXTURE_BASE_LEVEL;
+      when Texture_Max_Level    => return Thin.GL_TEXTURE_MAX_LEVEL;
+      when Texture_Wrap_S       => return Thin.GL_TEXTURE_WRAP_S;
+      when Texture_Wrap_T       => return Thin.GL_TEXTURE_WRAP_T;
+      when Texture_Wrap_R       => return Thin.GL_TEXTURE_WRAP_R;
+      when Texture_Priority     => return Thin.GL_TEXTURE_PRIORITY;
+      when Texture_Compare_Mode => return Thin.GL_TEXTURE_COMPARE_MODE;
+      when Texture_Compare_Func => return Thin.GL_TEXTURE_COMPARE_FUNC;
+      when Depth_Texture_Mode   => return Thin.GL_DEPTH_TEXTURE_MODE;
+      when Generate_Mipmap      => return Thin.GL_GENERATE_MIPMAP;
+    end case;
+  end Texture_Parameter_To_Constant;
+
+  function Storage_To_Constant (Value : in Storage_Parameter_t)
+    return Thin.Enumeration_t is
+  begin
+    case Value is
+      when Pack_Swap_Bytes     => return Thin.GL_PACK_SWAP_BYTES;
+      when Pack_LSB_First      => return Thin.GL_PACK_LSB_FIRST;
+      when Pack_Row_Length     => return Thin.GL_PACK_ROW_LENGTH;
+      when Pack_Image_Height   => return Thin.GL_PACK_IMAGE_HEIGHT;
+      when Pack_Skip_Pixels    => return Thin.GL_PACK_SKIP_PIXELS;
+      when Pack_Skip_Rows      => return Thin.GL_PACK_SKIP_ROWS;
+      when Pack_Skip_Images    => return Thin.GL_PACK_SKIP_IMAGES;
+      when Pack_Alignment      => return Thin.GL_PACK_ALIGNMENT;
+      when Unpack_Swap_Bytes   => return Thin.GL_UNPACK_SWAP_BYTES;
+      when Unpack_LSB_First    => return Thin.GL_UNPACK_LSB_FIRST;
+      when Unpack_Row_Length   => return Thin.GL_UNPACK_ROW_LENGTH;
+      when Unpack_Image_Height => return Thin.GL_UNPACK_IMAGE_HEIGHT;
+      when Unpack_Skip_Pixels  => return Thin.GL_UNPACK_SKIP_PIXELS;
+      when Unpack_Skip_Rows    => return Thin.GL_UNPACK_SKIP_ROWS;
+      when Unpack_Skip_Images  => return Thin.GL_UNPACK_SKIP_IMAGES;
+      when Unpack_Alignment    => return Thin.GL_UNPACK_ALIGNMENT;
+    end case;
+  end Storage_To_Constant;
+
   function Target_1D_To_Constant (Target : in Target_1D_t)
     return Thin.Enumeration_t is
   begin
@@ -140,6 +199,54 @@ package body OpenGL.Texture is
       when Unsigned_Integer_2_10_10_10_Rev => return Thin.GL_UNSIGNED_INT_2_10_10_10_REV;
     end case;
   end Data_Type_To_Constant;
+
+  --
+  -- Pixel_Store
+  --
+
+  procedure Pixel_Store
+    (Parameter : in Storage_Parameter_t;
+     Value     : in Standard.Integer) is
+  begin
+    Thin.Pixel_Storei
+      (Parameter => Storage_To_Constant (Parameter),
+       Value     => Thin.Integer_t (Value));
+  end Pixel_Store;
+
+  procedure Pixel_Store
+    (Parameter : in Storage_Parameter_t;
+     Value     : in Standard.Float) is
+  begin
+    Thin.Pixel_Storef
+      (Parameter => Storage_To_Constant (Parameter),
+       Value     => Thin.Float_t (Value));
+  end Pixel_Store;
+
+  --
+  -- Parameter
+  --
+
+  procedure Parameter
+    (Target    : in Parameter_Target_t;
+     Parameter : in Texture_Parameter_t;
+     Value     : in Standard.Integer) is
+  begin
+    Thin.Tex_Parameteri
+      (Target    => Parameter_Target_To_Constant (Target),
+       Parameter => Texture_Parameter_To_Constant (Parameter),
+       Value     => Thin.Integer_t (Value));
+  end Parameter;
+
+  procedure Parameter
+    (Target    : in Parameter_Target_t;
+     Parameter : in Texture_Parameter_t;
+     Value     : in Standard.Float) is
+  begin
+    Thin.Tex_Parameterf
+      (Target    => Parameter_Target_To_Constant (Target),
+       Parameter => Texture_Parameter_To_Constant (Parameter),
+       Value     => Thin.Float_t (Value));
+  end Parameter;
 
   --
   -- Image_3D

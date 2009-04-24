@@ -94,6 +94,76 @@ package OpenGL.Texture is
     Unsigned_Integer_10_10_10_2,
     Unsigned_Integer_2_10_10_10_Rev);
 
+  type Storage_Parameter_t is
+   (Pack_Swap_Bytes,
+    Pack_LSB_First,
+    Pack_Row_Length,
+    Pack_Image_Height,
+    Pack_Skip_Pixels,
+    Pack_Skip_Rows,
+    Pack_Skip_Images,
+    Pack_Alignment,
+    Unpack_Swap_Bytes,
+    Unpack_LSB_First,
+    Unpack_Row_Length,
+    Unpack_Image_Height,
+    Unpack_Skip_Pixels,
+    Unpack_Skip_Rows,
+    Unpack_Skip_Images,
+    Unpack_Alignment);
+
+  --
+  -- Pixel_Store
+  --
+
+  -- proc_map : glPixelStorei
+  procedure Pixel_Store
+    (Parameter : in Storage_Parameter_t;
+     Value     : in Standard.Integer);
+
+  -- proc_map : glPixelStoref
+  procedure Pixel_Store
+    (Parameter : in Storage_Parameter_t;
+     Value     : in Standard.Float);
+
+  --
+  -- Parameter
+  --
+
+  type Parameter_Target_t is
+    (Texture_1D,
+     Texture_2D,
+     Texture_3D,
+     Texture_Cube_Map);
+
+  type Texture_Parameter_t is
+   (Texture_Min_Filter,
+    Texture_Mag_Filter,
+    Texture_Min_LOD,
+    Texture_Max_LOD,
+    Texture_Base_Level,
+    Texture_Max_Level,
+    Texture_Wrap_S,
+    Texture_Wrap_T,
+    Texture_Wrap_R,
+    Texture_Priority,
+    Texture_Compare_Mode,
+    Texture_Compare_Func,
+    Depth_Texture_Mode,
+    Generate_Mipmap);
+
+  -- proc_map : glTexParameteri
+  procedure Parameter
+    (Target    : in Parameter_Target_t;
+     Parameter : in Texture_Parameter_t;
+     Value     : in Standard.Integer);
+
+  -- proc_map : glTexParameterf
+  procedure Parameter
+    (Target    : in Parameter_Target_t;
+     Parameter : in Texture_Parameter_t;
+     Value     : in Standard.Float);
+
   --
   -- Image3D
   --
