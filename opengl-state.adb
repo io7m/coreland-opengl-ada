@@ -1,5 +1,3 @@
-with OpenGL.Thin;
-
 package body OpenGL.State is
 
   function Enum_Value (Capability : in Capability_t) return Thin.Enumeration_t is
@@ -100,5 +98,10 @@ package body OpenGL.State is
       return False;
     end if;
   end Is_Enabled;
+
+  procedure Clear (Mask : in Buffer_Mask_t) is
+  begin
+    Thin.Clear (Thin.Bitfield_t (Mask));
+  end Clear;
 
 end OpenGL.State;
