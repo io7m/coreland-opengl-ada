@@ -69,6 +69,7 @@ package OpenGL.State is
     Texture_Gen_R,
     Texture_Gen_S,
     Texture_Gen_T,
+    Texture_Rectangle_ARB,
     Vertex_Array,
     Vertex_Program_Point_Size,
     Vertex_Program_Two_Side);

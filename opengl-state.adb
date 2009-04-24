@@ -74,6 +74,7 @@ package body OpenGL.State is
       when Texture_Gen_R                   => return Thin.GL_TEXTURE_GEN_R;
       when Texture_Gen_S                   => return Thin.GL_TEXTURE_GEN_S;
       when Texture_Gen_T                   => return Thin.GL_TEXTURE_GEN_T;
+      when Texture_Rectangle_ARB           => return Thin.GL_TEXTURE_RECTANGLE_ARB;
       when Vertex_Array                    => return Thin.GL_VERTEX_ARRAY;
       when Vertex_Program_Point_Size       => return Thin.GL_VERTEX_PROGRAM_POINT_SIZE;
       when Vertex_Program_Two_Side         => return Thin.GL_VERTEX_PROGRAM_TWO_SIDE;
