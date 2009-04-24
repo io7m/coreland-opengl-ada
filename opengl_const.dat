@@ -534,6 +534,8 @@ GL_COMPRESSED_INTENSITY                    : 84ec
 GL_COMPRESSED_RGB                          : 84ed
 GL_COMPRESSED_RGBA                         : 84ee
 GL_TEXTURE_COMPRESSION_HINT                : 84ef
+GL_TEXTURE_FILTER_CONTROL                  : 8500
+GL_TEXTURE_LOD_BIAS                        : 8501
 GL_NORMAL_MAP                              : 8511
 GL_REFLECTION_MAP                          : 8512
 GL_TEXTURE_CUBE_MAP                        : 8513
@@ -556,10 +558,16 @@ GL_CONSTANT                                : 8576
 GL_PRIMARY_COLOR                           : 8577
 GL_PREVIOUS                                : 8578
 GL_SOURCE0_RGB                             : 8580
+GL_SRC0_RGB                                : 8580
 GL_SOURCE1_RGB                             : 8581
+GL_SRC1_RGB                                : 8581
 GL_SOURCE2_RGB                             : 8582
+GL_SRC2_RGB                                : 8582
 GL_SOURCE0_ALPHA                           : 8588
+GL_SRC0_ALPHA                              : 8588
 GL_SOURCE1_ALPHA                           : 8589
+GL_SRC1_ALPHA                              : 8589
+GL_SRC2_ALPHA                              : 858A
 GL_SOURCE2_ALPHA                           : 858a
 GL_OPERAND0_RGB                            : 8590
 GL_OPERAND1_RGB                            : 8591
@@ -579,6 +587,7 @@ GL_DEPTH_TEXTURE_MODE                      : 884B
 GL_TEXTURE_COMPARE_MODE                    : 884C
 GL_TEXTURE_COMPARE_FUNC                    : 884D
 GL_POINT_SPRITE                            : 8861
+GL_COORD_REPLACE                           : 8862
 GL_MAX_VERTEX_ATTRIBS                      : 8869
 GL_ARRAY_BUFFER                            : 8892
 GL_ELEMENT_ARRAY_BUFFER                    : 8893

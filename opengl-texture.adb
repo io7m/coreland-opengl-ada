@@ -4,6 +4,42 @@ package body OpenGL.Texture is
   -- Mappings between enumeration types and OpenGL constants.
   --
 
+  function Environment_Target_To_Constant
+    (Target : in Environment_Target_t) return Thin.Enumeration_t is
+  begin
+    case Target is
+      when Texture_Environment    => return Thin.GL_TEXTURE_ENV;
+      when Texture_Filter_Control => return Thin.GL_TEXTURE_FILTER_CONTROL;
+      when Point_Sprite           => return Thin.GL_POINT_SPRITE;
+    end case;
+  end Environment_Target_To_Constant;
+
+  function Environment_Parameter_To_Constant
+    (Value : in Environment_Parameter_t) return Thin.Enumeration_t is
+  begin
+    case Value is
+      when Texture_Env_Mode => return Thin.GL_TEXTURE_ENV_MODE;
+      when Texture_LOD_Bias => return Thin.GL_TEXTURE_LOD_BIAS;
+      when Combine_RGB      => return Thin.GL_COMBINE_RGB;
+      when Combine_Alpha    => return Thin.GL_COMBINE_ALPHA;
+      when Source0_RGB      => return Thin.GL_SRC0_RGB;
+      when Source1_RGB      => return Thin.GL_SRC1_RGB;
+      when Source2_RGB      => return Thin.GL_SRC2_RGB;
+      when Source0_Alpha    => return Thin.GL_SRC0_ALPHA;
+      when Source1_Alpha    => return Thin.GL_SRC1_ALPHA;
+      when Source2_Alpha    => return Thin.GL_SRC2_ALPHA;
+      when Operand0_RGB     => return Thin.GL_OPERAND0_RGB;
+      when Operand1_RGB     => return Thin.GL_OPERAND1_RGB;
+      when Operand2_RGB     => return Thin.GL_OPERAND2_RGB;
+      when Operand0_Alpha   => return Thin.GL_OPERAND0_ALPHA;
+      when Operand1_Alpha   => return Thin.GL_OPERAND1_ALPHA;
+      when Operand2_Alpha   => return Thin.GL_OPERAND2_ALPHA;
+      when RGB_Scale        => return Thin.GL_RGB_SCALE;
+      when Alpha_Scale      => return Thin.GL_ALPHA_SCALE;
+      when Coord_Replace    => return Thin.GL_COORD_REPLACE;
+    end case;
+  end Environment_Parameter_To_Constant;
+
   function Parameter_Target_To_Constant
     (Value : in Parameter_Target_t) return Thin.Enumeration_t is
   begin
@@ -199,6 +235,32 @@ package body OpenGL.Texture is
       when Unsigned_Integer_2_10_10_10_Rev => return Thin.GL_UNSIGNED_INT_2_10_10_10_REV;
     end case;
   end Data_Type_To_Constant;
+
+  --
+  -- Environment
+  --
+
+  procedure Environment
+    (Target    : in Environment_Target_t;
+     Parameter : in Environment_Parameter_t;
+     Value     : in Standard.Integer) is
+  begin
+    Thin.Tex_Envi
+      (Target    => Environment_Target_To_Constant (Target),
+       Parameter => Environment_Parameter_To_Constant (Parameter),
+       Value     => Thin.Integer_t (Value));
+  end Environment;
+
+  procedure Environment
+    (Target    : in Environment_Target_t;
+     Parameter : in Environment_Parameter_t;
+     Value     : in Standard.Float) is
+  begin
+    Thin.Tex_Envf
+      (Target    => Environment_Target_To_Constant (Target),
+       Parameter => Environment_Parameter_To_Constant (Parameter),
+       Value     => Thin.Float_t (Value));
+  end Environment;
 
   --
   -- Pixel_Store

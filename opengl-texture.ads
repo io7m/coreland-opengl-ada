@@ -189,6 +189,48 @@ package OpenGL.Texture is
      Value     : in Standard.Float);
 
   --
+  -- Environment
+  --
+
+  type Environment_Target_t is
+    (Texture_Environment,
+     Texture_Filter_Control,
+     Point_Sprite);
+
+  type Environment_Parameter_t is
+   (Texture_Env_Mode,
+    Texture_LOD_Bias,
+    Combine_RGB,
+    Combine_Alpha,
+    Source0_RGB,
+    Source1_RGB,
+    Source2_RGB,
+    Source0_Alpha,
+    Source1_Alpha,
+    Source2_Alpha,
+    Operand0_RGB,
+    Operand1_RGB,
+    Operand2_RGB,
+    Operand0_Alpha,
+    Operand1_Alpha,
+    Operand2_Alpha,
+    RGB_Scale,
+    Alpha_Scale,
+    Coord_Replace);
+
+  -- proc_map : glTexEnvi
+  procedure Environment
+    (Target    : in Environment_Target_t;
+     Parameter : in Environment_Parameter_t;
+     Value     : in Standard.Integer);
+
+  -- proc_map : glTexEnvf
+  procedure Environment
+    (Target    : in Environment_Target_t;
+     Parameter : in Environment_Parameter_t;
+     Value     : in Standard.Float);
+
+  --
   -- Generate
   --
 
