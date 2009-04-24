@@ -416,4 +416,39 @@ package body OpenGL.Texture is
        Texture => Thin.Unsigned_Integer_t (Texture));
   end Bind;
 
+  --
+  -- Blend_Function
+  --
+
+  function Blend_Factor_To_Constant
+    (Blend_Factor : in Blend_Factor_t) return Thin.Enumeration_t is
+  begin
+    case Blend_Factor is
+      when Blend_Zero                     => return Thin.GL_ZERO;
+      when Blend_One                      => return Thin.GL_ONE;
+      when Blend_Source_Color             => return Thin.GL_SRC_COLOR;
+      when Blend_One_Minus_Source_Color   => return Thin.GL_ONE_MINUS_SRC_COLOR;
+      when Blend_Target_Color             => return Thin.GL_DST_COLOR;
+      when Blend_One_Minus_Target_Color   => return Thin.GL_ONE_MINUS_DST_COLOR;
+      when Blend_Source_Alpha             => return Thin.GL_SRC_ALPHA;
+      when Blend_One_Minus_Source_Alpha   => return Thin.GL_ONE_MINUS_SRC_ALPHA;
+      when Blend_Target_Alpha             => return Thin.GL_DST_ALPHA;
+      when Blend_One_Minus_Target_Alpha   => return Thin.GL_ONE_MINUS_DST_ALPHA;
+      when Blend_Constant_Color           => return Thin.GL_CONSTANT_COLOR;
+      when Blend_One_Minus_Constant_Color => return Thin.GL_ONE_MINUS_CONSTANT_COLOR;
+      when Blend_Constant_Alpha           => return Thin.GL_CONSTANT_ALPHA;
+      when Blend_One_Minus_Constant_Alpha => return Thin.GL_ONE_MINUS_CONSTANT_ALPHA;
+      when Blend_Source_Alpha_Saturate    => return Thin.GL_SRC_ALPHA_SATURATE;
+    end case;
+  end Blend_Factor_To_Constant;
+
+  procedure Blend_Function
+    (Source_Factor : in Blend_Factor_t;
+     Target_Factor : in Blend_Factor_t) is
+  begin
+    Thin.Blend_Func
+      (Source_Factor => Blend_Factor_To_Constant (Source_Factor),
+       Target_Factor => Blend_Factor_To_Constant (Target_Factor));
+  end Blend_Function;
+
 end OpenGL.Texture;

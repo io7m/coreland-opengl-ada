@@ -344,4 +344,30 @@ package OpenGL.Texture is
     (Target  : in Target_t;
      Texture : in Index_t);
 
+  --
+  -- Blend_Function
+  --
+
+  type Blend_Factor_t is
+   (Blend_Constant_Alpha,
+    Blend_Constant_Color,
+    Blend_One,
+    Blend_One_Minus_Constant_Alpha,
+    Blend_One_Minus_Constant_Color,
+    Blend_One_Minus_Source_Alpha,
+    Blend_One_Minus_Source_Color,
+    Blend_One_Minus_Target_Alpha,
+    Blend_One_Minus_Target_Color,
+    Blend_Source_Alpha,
+    Blend_Source_Alpha_Saturate,
+    Blend_Source_Color,
+    Blend_Target_Alpha,
+    Blend_Target_Color,
+    Blend_Zero);
+
+  -- proc_map : glBlendFunc
+  procedure Blend_Function
+    (Source_Factor : in Blend_Factor_t;
+     Target_Factor : in Blend_Factor_t);
+
 end OpenGL.Texture;
