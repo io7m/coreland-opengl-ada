@@ -39,6 +39,14 @@ package OpenGL.Matrix is
   procedure Load (Matrix : in Matrix_4x4d_t);
 
   --
+  -- Load_Identity
+  --
+
+  -- proc_map : glLoadIdentity
+  procedure Load_Identity
+    renames Thin.Load_Identity;
+
+  --
   -- Multiply
   --
 
