@@ -245,12 +245,12 @@ cc-compile opengl-ada-conf.c ctxt.h _sysinfo.h
 	./cc-compile opengl-ada-conf.c
 
 opengl-ada.a:\
-cc-slib opengl-ada.sld opengl-buffer.o opengl-error.o opengl-light.o \
+cc-slib opengl-ada.sld opengl-buffer_object.o opengl-error.o opengl-light.o \
 opengl-matrix.o opengl-state.o opengl-texture.o opengl-thin.o opengl-types.o \
 opengl-vertex.o opengl-view.o opengl.o
-	./cc-slib opengl-ada opengl-error.o opengl-light.o opengl-matrix.o \
-	opengl-state.o opengl-texture.o opengl-thin.o opengl-types.o opengl-vertex.o \
-	opengl-view.o opengl.o
+	./cc-slib opengl-ada opengl-buffer_object.o opengl-error.o opengl-light.o \
+	opengl-matrix.o opengl-state.o opengl-texture.o opengl-thin.o opengl-types.o \
+	opengl-vertex.o opengl-view.o opengl.o
 
 opengl-buffer_object.ads:\
 opengl-thin.ali
