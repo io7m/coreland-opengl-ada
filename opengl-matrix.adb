@@ -162,7 +162,7 @@ package body OpenGL.Matrix is
      Right  : in OpenGL.Types.Double_t;
      Bottom : in OpenGL.Types.Double_t;
      Top    : in OpenGL.Types.Double_t;
-     Near   : in OpenGL.Types.Double_t;
+     Near   : in Near_Double_t;
      Far    : in OpenGL.Types.Double_t) is
   begin
     Thin.Frustum

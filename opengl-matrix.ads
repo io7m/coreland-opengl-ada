@@ -130,13 +130,16 @@ package OpenGL.Matrix is
   -- Frustum
   --
 
+  subtype Near_Double_t is OpenGL.Types.Double_t
+    range 0.0 .. OpenGL.Types.Double_t'Last;
+
   -- proc_map : glFrustum
   procedure Frustum
     (Left   : in OpenGL.Types.Double_t;
      Right  : in OpenGL.Types.Double_t;
      Bottom : in OpenGL.Types.Double_t;
      Top    : in OpenGL.Types.Double_t;
-     Near   : in OpenGL.Types.Double_t;
+     Near   : in Near_Double_t;
      Far    : in OpenGL.Types.Double_t);
 
   --
