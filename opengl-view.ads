@@ -8,8 +8,8 @@ package OpenGL.View is
 
   -- proc_map : glDepthRange
   procedure Depth_Range
-    (Near : in OpenGL.Types.Clamped_Long_Float_t;
-     Far  : in OpenGL.Types.Clamped_Long_Float_t);
+    (Near : in OpenGL.Types.Clamped_Double_t;
+     Far  : in OpenGL.Types.Clamped_Double_t);
 
   -- proc_map : glViewport
   procedure Viewport
