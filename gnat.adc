@@ -15,6 +15,10 @@ pragma source_file_name(OpenGL.Check, body_file_name => "opengl-check.adb");
 pragma source_file_name(OpenGL.Error, spec_file_name => "opengl-error.ads");
 pragma source_file_name(OpenGL.Error, body_file_name => "opengl-error.adb");
 
+-- ./opengl-fog.apk
+pragma source_file_name(OpenGL.Fog, spec_file_name => "opengl-fog.ads");
+pragma source_file_name(OpenGL.Fog, body_file_name => "opengl-fog.adb");
+
 -- ./opengl-light.apk
 pragma source_file_name(OpenGL.Light, spec_file_name => "opengl-light.ads");
 pragma source_file_name(OpenGL.Light, body_file_name => "opengl-light.adb");

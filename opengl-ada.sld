@@ -2,6 +2,7 @@ opengl-buffer.o
 opengl-buffer_object.o
 opengl-check.o
 opengl-error.o
+opengl-fog.o
 opengl-light.o
 opengl-matrix.o
 opengl-state.o

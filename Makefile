@@ -9,12 +9,12 @@ install-error.o install-posix.o install-win32.o install.a installer installer.o 
 instchk instchk.o insthier.o opengl-ada-conf opengl-ada-conf.o opengl-ada.a \
 opengl-buffer.ali opengl-buffer.o opengl-buffer_object.ali \
 opengl-buffer_object.o opengl-check.ali opengl-check.o opengl-error.ali \
-opengl-error.o opengl-gettypes opengl-gettypes.o opengl-light.ali \
-opengl-light.o opengl-matrix.ali opengl-matrix.o opengl-state.ali \
-opengl-state.o opengl-texture.ali opengl-texture.o opengl-thin.ali \
-opengl-thin.o opengl-types.ali opengl-types.o opengl-vertex.ali opengl-vertex.o \
-opengl-vertex_array.ali opengl-vertex_array.o opengl-view.ali opengl-view.o \
-opengl.ali opengl.o
+opengl-error.o opengl-fog.ali opengl-fog.o opengl-gettypes opengl-gettypes.o \
+opengl-light.ali opengl-light.o opengl-matrix.ali opengl-matrix.o \
+opengl-state.ali opengl-state.o opengl-texture.ali opengl-texture.o \
+opengl-thin.ali opengl-thin.o opengl-types.ali opengl-types.o opengl-vertex.ali \
+opengl-vertex.o opengl-vertex_array.ali opengl-vertex_array.o opengl-view.ali \
+opengl-view.o opengl.ali opengl.o
 
 # Mkf-deinstall
 deinstall: deinstaller conf-sosuffix
@@ -248,13 +248,13 @@ cc-compile opengl-ada-conf.c ctxt.h _sysinfo.h
 
 opengl-ada.a:\
 cc-slib opengl-ada.sld opengl-buffer.o opengl-buffer_object.o opengl-check.o \
-opengl-error.o opengl-light.o opengl-matrix.o opengl-state.o opengl-texture.o \
-opengl-thin.o opengl-types.o opengl-vertex.o opengl-vertex_array.o \
-opengl-view.o opengl.o
+opengl-error.o opengl-fog.o opengl-light.o opengl-matrix.o opengl-state.o \
+opengl-texture.o opengl-thin.o opengl-types.o opengl-vertex.o \
+opengl-vertex_array.o opengl-view.o opengl.o
 	./cc-slib opengl-ada opengl-buffer.o opengl-buffer_object.o opengl-check.o \
-	opengl-error.o opengl-light.o opengl-matrix.o opengl-state.o opengl-texture.o \
-	opengl-thin.o opengl-types.o opengl-vertex.o opengl-vertex_array.o \
-	opengl-view.o opengl.o
+	opengl-error.o opengl-fog.o opengl-light.o opengl-matrix.o opengl-state.o \
+	opengl-texture.o opengl-thin.o opengl-types.o opengl-vertex.o \
+	opengl-vertex_array.o opengl-view.o opengl.o
 
 opengl-buffer.ads:\
 opengl.ali opengl-thin.ali opengl-types.ali
@@ -295,6 +295,16 @@ ada-compile opengl-error.adb opengl.ali opengl-error.ads
 
 opengl-error.o:\
 opengl-error.ali
+
+opengl-fog.ads:\
+opengl.ali opengl-types.ali
+
+opengl-fog.ali:\
+ada-compile opengl-fog.adb opengl.ali opengl-fog.ads opengl-thin.ali
+	./ada-compile opengl-fog.adb
+
+opengl-fog.o:\
+opengl-fog.ali
 
 opengl-gettypes:\
 cc-link opengl-gettypes.ld opengl-gettypes.o
@@ -448,12 +458,13 @@ obj_clean:
 	installer installer.o instchk instchk.o insthier.o opengl-ada-conf \
 	opengl-ada-conf.o opengl-ada.a opengl-buffer.ali opengl-buffer.o \
 	opengl-buffer_object.ali opengl-buffer_object.o opengl-check.ali opengl-check.o \
-	opengl-error.ali opengl-error.o opengl-gettypes opengl-gettypes.c \
-	opengl-gettypes.o opengl-light.ali opengl-light.o opengl-matrix.ali \
-	opengl-matrix.o opengl-state.ali opengl-state.o opengl-texture.ali \
-	opengl-texture.o opengl-thin.ads opengl-thin.ali opengl-thin.o opengl-types.ali \
-	opengl-types.o opengl-vertex.ali opengl-vertex.o opengl-vertex_array.ali \
-	opengl-vertex_array.o opengl-view.ali opengl-view.o opengl.ali opengl.o
+	opengl-error.ali opengl-error.o opengl-fog.ali opengl-fog.o opengl-gettypes \
+	opengl-gettypes.c opengl-gettypes.o opengl-light.ali opengl-light.o \
+	opengl-matrix.ali opengl-matrix.o opengl-state.ali opengl-state.o \
+	opengl-texture.ali opengl-texture.o opengl-thin.ads opengl-thin.ali \
+	opengl-thin.o opengl-types.ali opengl-types.o opengl-vertex.ali opengl-vertex.o \
+	opengl-vertex_array.ali opengl-vertex_array.o opengl-view.ali opengl-view.o \
+	opengl.ali opengl.o
 ext_clean:
 	rm -f conf-adatype conf-cctype conf-ldtype conf-sosuffix conf-systype mk-ctxt
 
