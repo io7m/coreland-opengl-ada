@@ -1,27 +1,11 @@
 with OpenGL.Types;
 with OpenGL.Thin;
-with System;
 
 package OpenGL.Matrix is
 
-  --
-  -- Alignment of "matrix" arrays. Defined as 16 bytes (on platforms with 8-bit
-  -- bytes) for easy processing with SSE/Altivec/vector hardware.
-  --
+  type Matrix_4x4f_t is new Types.Float_Arrays.Real_Matrix (1 .. 4, 1 .. 4);
 
-  Matrix_Alignment : constant := 16 * System.Storage_Unit;
-
-  --
-  -- Matrix types.
-  --
-
-  type Matrix_4x4f_t is array (1 .. 16) of aliased OpenGL.Types.Float_t;
-  for Matrix_4x4f_t'Alignment use Matrix_Alignment;
-  pragma Convention (C, Matrix_4x4f_t);
-
-  type Matrix_4x4d_t is array (1 .. 16) of aliased OpenGL.Types.Double_t;
-  for Matrix_4x4d_t'Alignment use Matrix_Alignment;
-  pragma Convention (C, Matrix_4x4d_t);
+  type Matrix_4x4d_t is new Types.Double_Arrays.Real_Matrix (1 .. 4, 1 .. 4);
 
   type Mode_t is (Texture, Modelview, Color, Projection);
 
