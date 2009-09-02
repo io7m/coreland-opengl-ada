@@ -54,8 +54,7 @@ end
 
 if kind == "boolean" then
   io.write ([[
-  type ]]..ada_type..[[ is (False, True);
-  for ]]..ada_type..[[ use (False => 0, True => 1);
+  type ]]..ada_type..[[ is new Boolean;
   for ]]..ada_type..[['Size use ]]..size_bits..[[;
   pragma Convention (C, ]]..ada_type..[[);
 ]])
