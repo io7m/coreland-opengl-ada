@@ -15,7 +15,7 @@ package body OpenGL.Vertex_Array is
   procedure Generate_Arrays
     (Arrays : in out Array_Index_Array_t) is
   begin
-    Thin.Gen_Vertex_Arrays_Untyped
+    Thin.Gen_Vertex_Arrays
       (Size   => Arrays'Length,
        Arrays => Arrays (Arrays'First)'Address);
   end Generate_Arrays;
@@ -23,7 +23,7 @@ package body OpenGL.Vertex_Array is
   procedure Delete_Arrays
     (Arrays : in Array_Index_Array_t) is
   begin
-    Thin.Delete_Vertex_Arrays_Untyped
+    Thin.Delete_Vertex_Arrays
       (Size   => Arrays'Length,
        Arrays => Arrays (Arrays'First)'Address);
   end Delete_Arrays;

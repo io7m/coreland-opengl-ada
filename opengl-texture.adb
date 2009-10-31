@@ -399,7 +399,7 @@ package body OpenGL.Texture is
   procedure Generate
     (Textures : in out Index_Array_t) is
   begin
-    Thin.Gen_Textures_Untyped
+    Thin.Gen_Textures
       (Size     => Textures'Length,
        Textures => Textures (Textures'First)'Address);
   end Generate;

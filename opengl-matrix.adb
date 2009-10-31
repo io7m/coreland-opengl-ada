@@ -21,12 +21,12 @@ package body OpenGL.Matrix is
 
   procedure Load (Matrix : in Matrix_4x4f_t) is
   begin
-    Thin.Load_Matrixf_Untyped (Matrix (Matrix'First (1), Matrix'First (1))'Address);
+    Thin.Load_Matrixf (Matrix (Matrix'First (1), Matrix'First (1))'Address);
   end Load;
 
   procedure Load (Matrix : in Matrix_4x4d_t) is
   begin
-    Thin.Load_Matrixd_Untyped (Matrix (Matrix'First (1), Matrix'First (1))'Address);
+    Thin.Load_Matrixd (Matrix (Matrix'First (1), Matrix'First (1))'Address);
   end Load;
 
   --
@@ -35,12 +35,12 @@ package body OpenGL.Matrix is
 
   procedure Multiply (Matrix : in Matrix_4x4f_t) is
   begin
-    Thin.Mult_Matrixf_Untyped (Matrix (Matrix'First (1), Matrix'First (1))'Address);
+    Thin.Mult_Matrixf (Matrix (Matrix'First (1), Matrix'First (1))'Address);
   end Multiply;
 
   procedure Multiply (Matrix : in Matrix_4x4d_t) is
   begin
-    Thin.Mult_Matrixd_Untyped (Matrix (Matrix'First (1), Matrix'First (1))'Address);
+    Thin.Mult_Matrixd (Matrix (Matrix'First (1), Matrix'First (1))'Address);
   end Multiply;
 
   --
@@ -49,12 +49,12 @@ package body OpenGL.Matrix is
 
   procedure Load_Transpose (Matrix : in Matrix_4x4f_t) is
   begin
-    Thin.Load_Transpose_Matrixf_Untyped (Matrix (Matrix'First (1), Matrix'First (1))'Address);
+    Thin.Load_Transpose_Matrixf (Matrix (Matrix'First (1), Matrix'First (1))'Address);
   end Load_Transpose;
 
   procedure Load_Transpose (Matrix : in Matrix_4x4d_t) is
   begin
-    Thin.Load_Transpose_Matrixd_Untyped (Matrix (Matrix'First (1), Matrix'First (1))'Address);
+    Thin.Load_Transpose_Matrixd (Matrix (Matrix'First (1), Matrix'First (1))'Address);
   end Load_Transpose;
 
   --
@@ -63,12 +63,12 @@ package body OpenGL.Matrix is
 
   procedure Multiply_Transpose (Matrix : in Matrix_4x4f_t) is
   begin
-    Thin.Mult_Transpose_Matrixf_Untyped (Matrix (Matrix'First (1), Matrix'First (1))'Address);
+    Thin.Mult_Transpose_Matrixf (Matrix (Matrix'First (1), Matrix'First (1))'Address);
   end Multiply_Transpose;
 
   procedure Multiply_Transpose (Matrix : in Matrix_4x4d_t) is
   begin
-    Thin.Mult_Transpose_Matrixd_Untyped (Matrix (Matrix'First (1), Matrix'First (1))'Address);
+    Thin.Mult_Transpose_Matrixd (Matrix (Matrix'First (1), Matrix'First (1))'Address);
   end Multiply_Transpose;
 
   --

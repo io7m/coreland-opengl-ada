@@ -8,7 +8,7 @@ package body OpenGL.Buffer_Object is
 
   procedure Generate (Buffers : in out Buffer_Array_t) is
   begin
-    Thin.Gen_Buffers_Untyped
+    Thin.Gen_Buffers
       (Size    => Buffers'Length,
        Buffers => Buffers (Buffers'First)'Address);
   end Generate;
@@ -19,7 +19,7 @@ package body OpenGL.Buffer_Object is
 
   procedure Delete (Buffers : in Buffer_Array_t) is
   begin
-    Thin.Delete_Buffers_Untyped
+    Thin.Delete_Buffers
       (Size    => Buffers'Length,
        Buffers => Buffers (Buffers'First)'Address);
   end Delete;

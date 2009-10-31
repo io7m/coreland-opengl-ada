@@ -54,12 +54,12 @@ package body OpenGL.Fog is
 
   procedure Fog_Color (Color : in Types.Vector_4i_t) is
   begin
-    Thin.Fogiv_Untyped (Thin.GL_FOG_COLOR, Color (Color'First)'Address);
+    Thin.Fogiv (Thin.GL_FOG_COLOR, Color (Color'First)'Address);
   end Fog_Color;
 
   procedure Fog_Color (Color : in Types.Vector_4f_t) is
   begin
-    Thin.Fogfv_Untyped (Thin.GL_FOG_COLOR, Color (Color'First)'Address);
+    Thin.Fogfv (Thin.GL_FOG_COLOR, Color (Color'First)'Address);
   end Fog_Color;
 
   function Source_To_Constant (Source : in Source_t) return Thin.Integer_t is
