@@ -256,7 +256,7 @@ cc-link opengl-ada-conf.ld opengl-ada-conf.o ctxt/ctxt.a
 	./cc-link opengl-ada-conf opengl-ada-conf.o ctxt/ctxt.a
 
 opengl-ada-conf.o:\
-cc-compile opengl-ada-conf.c ctxt.h _sysinfo.h
+cc-compile opengl-ada-conf.c ctxt.h _sd_sysinfo.h
 	./cc-compile opengl-ada-conf.c
 
 opengl-ada.a:\
