@@ -201,10 +201,6 @@ local function write_subprogram (sub_name, subprogram, raw_addressing)
   assert (type (subprogram) == "table")
   assert (type (raw_addressing) == "boolean")
 
-  if raw_addressing then
-    sub_name = sub_name.."_Untyped"
-  end
-
   -- Write initial name/type
   io.write ([[
   ]]..subprogram.type..[[ ]]..sub_name..[[
@@ -240,10 +236,8 @@ local function write_subprogram (sub_name, subprogram, raw_addressing)
 
       -- Want an 'untyped' version using raw memory addresses for access types?
       local use_addr = false
-      if raw_addressing == true then
-        if can_be_address (parameter.type) then
-          use_addr = true
-        end
+      if can_be_address (parameter.type) then
+        use_addr = true
       end
       if use_addr then
         io.write (": in System.Address")
@@ -290,11 +284,7 @@ end
 for index, subprogram in pairs (subprograms) do
   local sub_name = subprogram_name (subprogram)
 
-  write_subprogram (sub_name, subprogram, false)
-
   -- Check that there's actually a parameter to change (otherwise the
   -- result is an identical, conflicting definition).
-  if want_raw_addressing (subprogram) then
-    write_subprogram (sub_name, subprogram, true)
-  end
+  write_subprogram (sub_name, subprogram, want_raw_addressing (subprogram))
 end
