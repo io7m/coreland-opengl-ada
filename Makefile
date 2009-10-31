@@ -3,9 +3,9 @@
 default: all
 
 all:\
-ctxt/bindir.o ctxt/ctxt.a ctxt/dlibdir.o ctxt/incdir.o ctxt/repos.o \
-ctxt/slibdir.o ctxt/version.o deinstaller deinstaller.o install-core.o \
-install-error.o install-posix.o install-win32.o install.a installer installer.o \
+local ctxt/bindir.o ctxt/ctxt.a ctxt/dlibdir.o ctxt/fakeroot.o ctxt/incdir.o \
+ctxt/repos.o ctxt/slibdir.o ctxt/version.o deinstaller deinstaller.o \
+install-core.o install-posix.o install-win32.o install.a installer installer.o \
 instchk instchk.o insthier.o opengl-ada-conf opengl-ada-conf.o opengl-ada.a \
 opengl-buffer.ali opengl-buffer.o opengl-buffer_object.ali \
 opengl-buffer_object.o opengl-check.ali opengl-check.o opengl-error.ali \
@@ -34,30 +34,40 @@ install-dryrun: installer conf-sosuffix
 install-check: instchk conf-sosuffix
 	./instchk
 
-# -- SYSDEPS start
+# Mkf-local
+local: flags-opengl
+	./check-deps
+
+local_pre:
+local_clean:
+
+#----------------------------------------------------------------------
+# SYSDEPS start
+
 flags-opengl:
 	@echo SYSDEPS opengl-flags run create flags-opengl 
-	@(cd SYSDEPS/modules/opengl-flags && ./run)
-_sysinfo.h:
-	@echo SYSDEPS sysinfo run create _sysinfo.h 
-	@(cd SYSDEPS/modules/sysinfo && ./run)
+	@(cd SYSDEPS && ./sd-run modules/opengl-flags)
+_sd_sysinfo.h:
+	@echo SYSDEPS sd-sysinfo run create _sd_sysinfo.h 
+	@(cd SYSDEPS && ./sd-run modules/sd-sysinfo)
 
 
 opengl-flags_clean:
 	@echo SYSDEPS opengl-flags clean flags-opengl 
-	@(cd SYSDEPS/modules/opengl-flags && ./clean)
-sysinfo_clean:
-	@echo SYSDEPS sysinfo clean _sysinfo.h 
-	@(cd SYSDEPS/modules/sysinfo && ./clean)
+	@(cd SYSDEPS && ./sd-clean modules/opengl-flags)
+sd-sysinfo_clean:
+	@echo SYSDEPS sd-sysinfo clean _sd_sysinfo.h 
+	@(cd SYSDEPS && ./sd-clean modules/sd-sysinfo)
 
 
 sysdeps_clean:\
 opengl-flags_clean \
-sysinfo_clean \
+sd-sysinfo_clean \
 
 
-# -- SYSDEPS end
 
+# SYSDEPS end
+#----------------------------------------------------------------------
 
 ada-bind:\
 conf-adabind conf-systype conf-adatype conf-adabflags
@@ -88,11 +98,11 @@ mk-adatype
 	./mk-adatype > conf-adatype.tmp && mv conf-adatype.tmp conf-adatype
 
 conf-cctype:\
-conf-cc conf-cc mk-cctype
+conf-cc mk-cctype
 	./mk-cctype > conf-cctype.tmp && mv conf-cctype.tmp conf-cctype
 
 conf-ldtype:\
-conf-ld conf-ld mk-ldtype
+conf-ld mk-ldtype
 	./mk-ldtype > conf-ldtype.tmp && mv conf-ldtype.tmp conf-ldtype
 
 conf-sosuffix:\
@@ -113,10 +123,10 @@ cc-compile ctxt/bindir.c
 	./cc-compile ctxt/bindir.c
 
 ctxt/ctxt.a:\
-cc-slib ctxt/ctxt.sld ctxt/bindir.o ctxt/dlibdir.o ctxt/incdir.o ctxt/repos.o \
-ctxt/slibdir.o ctxt/version.o
-	./cc-slib ctxt/ctxt ctxt/bindir.o ctxt/dlibdir.o ctxt/incdir.o ctxt/repos.o \
-	ctxt/slibdir.o ctxt/version.o
+cc-slib ctxt/ctxt.sld ctxt/bindir.o ctxt/dlibdir.o ctxt/fakeroot.o \
+ctxt/incdir.o ctxt/repos.o ctxt/slibdir.o ctxt/version.o
+	./cc-slib ctxt/ctxt ctxt/bindir.o ctxt/dlibdir.o ctxt/fakeroot.o ctxt/incdir.o \
+	ctxt/repos.o ctxt/slibdir.o ctxt/version.o
 
 # ctxt/dlibdir.c.mff
 ctxt/dlibdir.c: mk-ctxt conf-dlibdir
@@ -126,6 +136,15 @@ ctxt/dlibdir.c: mk-ctxt conf-dlibdir
 ctxt/dlibdir.o:\
 cc-compile ctxt/dlibdir.c
 	./cc-compile ctxt/dlibdir.c
+
+# ctxt/fakeroot.c.mff
+ctxt/fakeroot.c: mk-ctxt conf-fakeroot
+	rm -f ctxt/fakeroot.c
+	./mk-ctxt ctxt_fakeroot < conf-fakeroot > ctxt/fakeroot.c
+
+ctxt/fakeroot.o:\
+cc-compile ctxt/fakeroot.c
+	./cc-compile ctxt/fakeroot.c
 
 # ctxt/incdir.c.mff
 ctxt/incdir.c: mk-ctxt conf-incdir
@@ -168,16 +187,12 @@ cc-link deinstaller.ld deinstaller.o insthier.o install.a ctxt/ctxt.a
 	./cc-link deinstaller deinstaller.o insthier.o install.a ctxt/ctxt.a
 
 deinstaller.o:\
-cc-compile deinstaller.c install.h
+cc-compile deinstaller.c install.h ctxt.h
 	./cc-compile deinstaller.c
 
 install-core.o:\
 cc-compile install-core.c install.h
 	./cc-compile install-core.c
-
-install-error.o:\
-cc-compile install-error.c install.h
-	./cc-compile install-error.c
 
 install-posix.o:\
 cc-compile install-posix.c install.h
@@ -188,10 +203,8 @@ cc-compile install-win32.c install.h
 	./cc-compile install-win32.c
 
 install.a:\
-cc-slib install.sld install-core.o install-posix.o install-win32.o \
-install-error.o
-	./cc-slib install install-core.o install-posix.o install-win32.o \
-	install-error.o
+cc-slib install.sld install-core.o install-posix.o install-win32.o
+	./cc-slib install install-core.o install-posix.o install-win32.o
 
 install.h:\
 install_os.h
@@ -201,7 +214,7 @@ cc-link installer.ld installer.o insthier.o install.a ctxt/ctxt.a
 	./cc-link installer installer.o insthier.o install.a ctxt/ctxt.a
 
 installer.o:\
-cc-compile installer.c install.h
+cc-compile installer.c ctxt.h install.h
 	./cc-compile installer.c
 
 instchk:\
@@ -209,7 +222,7 @@ cc-link instchk.ld instchk.o insthier.o install.a ctxt/ctxt.a
 	./cc-link instchk instchk.o insthier.o install.a ctxt/ctxt.a
 
 instchk.o:\
-cc-compile instchk.c install.h
+cc-compile instchk.c ctxt.h install.h
 	./cc-compile instchk.c
 
 insthier.o:\
@@ -259,52 +272,37 @@ opengl-vertex_array.o opengl-view.o opengl.o
 opengl-buffer.ads:\
 opengl.ali opengl-thin.ali opengl-types.ali
 
-opengl-buffer.ali:\
+opengl-buffer.o opengl-buffer.ali:\
 ada-compile opengl-buffer.adb opengl.ali opengl-buffer.ads
 	./ada-compile opengl-buffer.adb
-
-opengl-buffer.o:\
-opengl-buffer.ali
 
 opengl-buffer_object.ads:\
 opengl-thin.ali
 
-opengl-buffer_object.ali:\
+opengl-buffer_object.o opengl-buffer_object.ali:\
 ada-compile opengl-buffer_object.adb opengl-buffer_object.ads opengl-error.ali
 	./ada-compile opengl-buffer_object.adb
-
-opengl-buffer_object.o:\
-opengl-buffer_object.ali
 
 opengl-check.ads:\
 opengl.ali
 
-opengl-check.ali:\
+opengl-check.o opengl-check.ali:\
 ada-compile opengl-check.adb opengl.ali opengl-check.ads opengl-error.ali
 	./ada-compile opengl-check.adb
-
-opengl-check.o:\
-opengl-check.ali
 
 opengl-error.ads:\
 opengl.ali opengl-thin.ali
 
-opengl-error.ali:\
+opengl-error.o opengl-error.ali:\
 ada-compile opengl-error.adb opengl.ali opengl-error.ads
 	./ada-compile opengl-error.adb
-
-opengl-error.o:\
-opengl-error.ali
 
 opengl-fog.ads:\
 opengl.ali opengl-types.ali
 
-opengl-fog.ali:\
+opengl-fog.o opengl-fog.ali:\
 ada-compile opengl-fog.adb opengl.ali opengl-fog.ads opengl-thin.ali
 	./ada-compile opengl-fog.adb
-
-opengl-fog.o:\
-opengl-fog.ali
 
 opengl-gettypes:\
 cc-link opengl-gettypes.ld opengl-gettypes.o
@@ -322,42 +320,30 @@ cc-compile opengl-gettypes.c
 opengl-light.ads:\
 opengl.ali
 
-opengl-light.ali:\
+opengl-light.o opengl-light.ali:\
 ada-compile opengl-light.adb opengl.ali opengl-light.ads opengl-thin.ali
 	./ada-compile opengl-light.adb
-
-opengl-light.o:\
-opengl-light.ali
 
 opengl-matrix.ads:\
 opengl.ali opengl-types.ali opengl-thin.ali
 
-opengl-matrix.ali:\
+opengl-matrix.o opengl-matrix.ali:\
 ada-compile opengl-matrix.adb opengl.ali opengl-matrix.ads
 	./ada-compile opengl-matrix.adb
-
-opengl-matrix.o:\
-opengl-matrix.ali
 
 opengl-state.ads:\
 opengl.ali
 
-opengl-state.ali:\
+opengl-state.o opengl-state.ali:\
 ada-compile opengl-state.adb opengl.ali opengl-state.ads opengl-thin.ali
 	./ada-compile opengl-state.adb
-
-opengl-state.o:\
-opengl-state.ali
 
 opengl-texture.ads:\
 opengl.ali opengl-thin.ali
 
-opengl-texture.ali:\
+opengl-texture.o opengl-texture.ali:\
 ada-compile opengl-texture.adb opengl.ali opengl-texture.ads
 	./ada-compile opengl-texture.adb
-
-opengl-texture.o:\
-opengl-texture.ali
 
 # opengl-thin.ads.mff
 opengl-thin.ads: \
@@ -397,65 +383,47 @@ opengl-mktypes.sh opengl-mktype.lua opengl_types.dat
 	cat opengl-thin.ads.N >> opengl-thin.ads.tmp
 	mv opengl-thin.ads.tmp opengl-thin.ads
 
-opengl-thin.ali:\
+opengl-thin.o opengl-thin.ali:\
 ada-compile opengl-thin.ads
 	./ada-compile opengl-thin.ads
 
-opengl-thin.o:\
-opengl-thin.ali
-
-opengl-types.ali:\
+opengl-types.o opengl-types.ali:\
 ada-compile opengl-types.ads opengl.ali opengl-types.ads opengl-thin.ali
 	./ada-compile opengl-types.ads
-
-opengl-types.o:\
-opengl-types.ali
 
 opengl-vertex.ads:\
 opengl.ali opengl-thin.ali
 
-opengl-vertex.ali:\
+opengl-vertex.o opengl-vertex.ali:\
 ada-compile opengl-vertex.adb opengl.ali opengl-vertex.ads
 	./ada-compile opengl-vertex.adb
-
-opengl-vertex.o:\
-opengl-vertex.ali
 
 opengl-vertex_array.ads:\
 opengl-thin.ali opengl-vertex.ali
 
-opengl-vertex_array.ali:\
+opengl-vertex_array.o opengl-vertex_array.ali:\
 ada-compile opengl-vertex_array.adb opengl-vertex_array.ads
 	./ada-compile opengl-vertex_array.adb
-
-opengl-vertex_array.o:\
-opengl-vertex_array.ali
 
 opengl-view.ads:\
 opengl.ali opengl-types.ali
 
-opengl-view.ali:\
+opengl-view.o opengl-view.ali:\
 ada-compile opengl-view.adb opengl.ali opengl-view.ads opengl-thin.ali
 	./ada-compile opengl-view.adb
 
-opengl-view.o:\
-opengl-view.ali
-
-opengl.ali:\
+opengl.o opengl.ali:\
 ada-compile opengl.ads opengl.ads
 	./ada-compile opengl.ads
 
-opengl.o:\
-opengl.ali
-
-clean-all: sysdeps_clean obj_clean ext_clean
+clean-all: sysdeps_clean local_clean obj_clean ext_clean
 clean: obj_clean
 obj_clean:
 	rm -f ctxt/bindir.c ctxt/bindir.o ctxt/ctxt.a ctxt/dlibdir.c ctxt/dlibdir.o \
-	ctxt/incdir.c ctxt/incdir.o ctxt/repos.c ctxt/repos.o ctxt/slibdir.c \
-	ctxt/slibdir.o ctxt/version.c ctxt/version.o deinstaller deinstaller.o \
-	install-core.o install-error.o install-posix.o install-win32.o install.a \
-	installer installer.o instchk instchk.o insthier.o opengl-ada-conf \
+	ctxt/fakeroot.c ctxt/fakeroot.o ctxt/incdir.c ctxt/incdir.o ctxt/repos.c \
+	ctxt/repos.o ctxt/slibdir.c ctxt/slibdir.o ctxt/version.c ctxt/version.o \
+	deinstaller deinstaller.o install-core.o install-posix.o install-win32.o \
+	install.a installer installer.o instchk instchk.o insthier.o opengl-ada-conf \
 	opengl-ada-conf.o opengl-ada.a opengl-buffer.ali opengl-buffer.o \
 	opengl-buffer_object.ali opengl-buffer_object.o opengl-check.ali opengl-check.o \
 	opengl-error.ali opengl-error.o opengl-fog.ali opengl-fog.o opengl-gettypes \
