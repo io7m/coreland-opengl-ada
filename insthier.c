@@ -97,7 +97,5 @@ struct install_item insthier[] = {
   {INST_COPY, "opengl-ada.a", "libopengl-ada.a", ctxt_slibdir, 0, 0, 0644},
   {INST_COPY, "opengl-ada-conf.ld", 0, ctxt_repos, 0, 0, 0644},
   {INST_COPY_EXEC, "opengl-ada-conf", 0, ctxt_bindir, 0, 0, 0755},
-  {INST_COPY, "opengl-gettypes.ld", 0, ctxt_repos, 0, 0, 0644},
-  {INST_COPY_EXEC, "opengl-gettypes", 0, ctxt_bindir, 0, 0, 0755},
 };
 unsigned long insthier_len = sizeof(insthier) / sizeof(struct install_item);
