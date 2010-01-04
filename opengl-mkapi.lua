@@ -156,50 +156,12 @@ local function subprogram_name (subprogram)
 end
 
 --
--- Check if a type can be replaced with an address type.
---
-
-local function can_be_address (input_type)
-  assert (type (input_type) == "string")
-  return (types_ada_kind [input_type] == "access") or
-         (types_ada_kind [input_type] == "access_constant")
-end
-
---
--- Check to see if one of the subprograms parameters (if any) or
--- return type (if any) is an access type.
---
-
-local function want_raw_addressing (subprogram)
-  assert (type (subprogram) == "table")
-
-  if subprogram.type == "function" then
-    if can_be_address (subprogram.return_type) then
-      return true
-    end
-  end
-
-  if #subprogram.parameters <= 0 then
-    return false
-  end
-
-  for index, parameter in pairs (subprogram.parameters) do
-    if can_be_address (parameter.type) then
-      return true
-    end
-  end
-
-  return false
-end
-
---
 -- Write subprogram definition
 --
 
-local function write_subprogram (sub_name, subprogram, raw_addressing)
+local function write_subprogram (sub_name, subprogram)
   assert (type (sub_name) == "string")
   assert (type (subprogram) == "table")
-  assert (type (raw_addressing) == "boolean")
 
   -- Write initial name/type
   io.write ([[
@@ -234,16 +196,7 @@ local function write_subprogram (sub_name, subprogram, raw_addressing)
         io.write (" ")
       end
 
-      -- Want an 'untyped' version using raw memory addresses for access types?
-      local use_addr = false
-      if can_be_address (parameter.type) then
-        use_addr = true
-      end
-      if use_addr then
-        io.write (": in System.Address")
-      else
-        io.write (": "..map_type_to_ada (parameter.type))
-      end
+      io.write (": "..map_type_to_ada (parameter.type))
 
       if not (index == table.maxn (subprogram.parameters)) then
         io.write (";\n")
@@ -256,18 +209,7 @@ local function write_subprogram (sub_name, subprogram, raw_addressing)
 
   -- Function type? Write return type, else close procedure.
   if subprogram.type == "function" then
-    local use_addr = false
-    if raw_addressing then
-      if can_be_address (subprogram.return_type) then
-        use_addr = true
-      end
-    end
-
-    if use_addr then
-      io.write (" return System.Address")
-    else
-      io.write (" return "..map_type_to_ada (subprogram.return_type))
-    end
+    io.write (" return "..map_type_to_ada (subprogram.return_type))
   end
 
   io.write (";\n")
@@ -286,5 +228,5 @@ for index, subprogram in pairs (subprograms) do
 
   -- Check that there's actually a parameter to change (otherwise the
   -- result is an identical, conflicting definition).
-  write_subprogram (sub_name, subprogram, want_raw_addressing (subprogram))
+  write_subprogram (sub_name, subprogram)
 end

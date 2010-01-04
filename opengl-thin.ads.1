@@ -1,0 +1,89 @@
+  --
+  -- Types
+  --
+
+  type String_t is new System.Address;
+
+  -- GLfloat
+  type Float_t is new C.C_float;
+
+  -- GLdouble
+  type Double_t is new C.double;
+
+  -- GLsizeiptr
+  type Size_Pointer_t is mod 2 ** System.Word_Size;
+  for Size_Pointer_t'Size use System.Word_Size;
+  pragma Convention (C, Size_Pointer_t);
+
+  -- GLintptr
+  type Integer_Pointer_t is mod 2 ** System.Word_Size;
+  for Integer_Pointer_t'Size use System.Word_Size;
+  pragma Convention (C, Integer_Pointer_t);
+
+  -- GLbitfield
+  type Bitfield_t is mod 2 ** 32;
+  for Bitfield_t'Size use 32;
+  pragma Convention (C, Bitfield_t);
+
+  -- GLboolean
+  type Boolean_t is new Boolean;
+  for Boolean_t'Size use 8;
+  pragma Convention (C, Boolean_t);
+
+  -- GLbyte
+  type Byte_t is range -127 .. 127;
+  for Byte_t'Size use 8;
+  pragma Convention (C, Byte_t);
+
+  -- GLclampd
+  subtype Clamped_Double_t is Double_t range 0.0 .. 1.0;
+
+  -- GLclampf
+  subtype Clamped_Float_t is Float_t range 0.0 .. 1.0;
+
+  -- GLenum
+  type Enumeration_t is mod 2 ** 32;
+  for Enumeration_t'Size use 32;
+  pragma Convention (C, Enumeration_t);
+
+  -- GLint
+  type Integer_t is range -2147483647 .. 2147483647;
+  for Integer_t'Size use 32;
+  pragma Convention (C, Integer_t);
+
+  -- GLshort
+  type Short_t is range -32767 .. 32767;
+  for Short_t'Size use 16;
+  pragma Convention (C, Short_t);
+
+  -- GLsizei
+  type Size_t is range -2147483647 .. 2147483647;
+  for Size_t'Size use 32;
+  pragma Convention (C, Size_t);
+
+  -- GLubyte
+  type Unsigned_Byte_t is mod 2 ** 8;
+  for Unsigned_Byte_t'Size use 8;
+  pragma Convention (C, Unsigned_Byte_t);
+
+  -- GLuint
+  type Unsigned_Integer_t is mod 2 ** 32;
+  for Unsigned_Integer_t'Size use 32;
+  pragma Convention (C, Unsigned_Integer_t);
+
+  -- GLushort
+  type Unsigned_Short_t is mod 2 ** 16;
+  for Unsigned_Short_t'Size use 16;
+  pragma Convention (C, Unsigned_Short_t);
+
+  -- GLvoid *
+  subtype Void_Pointer_t is System.Address;
+
+  -- GLvoid **
+  type Void_Pointer_Access_t is access all Void_Pointer_t;
+  pragma Convention (C, Void_Pointer_Access_t);
+
+  -- const GLvoid **
+  type Void_Pointer_Access_Constant_t is access constant System.Address;
+  pragma Convention (C, Void_Pointer_Access_Constant_t);
+

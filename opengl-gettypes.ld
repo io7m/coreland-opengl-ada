@@ -1,1 +1,0 @@
-opengl-gettypes.o

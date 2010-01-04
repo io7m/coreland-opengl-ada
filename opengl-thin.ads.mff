@@ -1,7 +1,6 @@
 opengl-thin.ads: \
 block-comment \
 opengl-mkconst.lua opengl_const.dat \
-opengl-gettypes \
 opengl-mkapi.lua \
 opengl_1_1_types.dat opengl_1_1_names.dat \
 opengl_1_2_types.dat opengl_1_2_names.dat \
@@ -10,12 +9,11 @@ opengl_1_4_types.dat opengl_1_4_names.dat \
 opengl_1_5_types.dat opengl_1_5_names.dat \
 opengl_2_0_types.dat opengl_2_0_names.dat \
 opengl_2_1_types.dat opengl_2_1_names.dat \
-opengl_3_0_types.dat opengl_3_0_names.dat \
-opengl-mktypes.sh opengl-mktype.lua opengl_types.dat
+opengl_3_0_types.dat opengl_3_0_names.dat
 	rm -f opengl-thin.ads.tmp
 	cat opengl-thin.ads.0 >> opengl-thin.ads.tmp
 	./opengl-mkconst.lua opengl_const.dat >> opengl-thin.ads.tmp
-	./opengl-mktypes.sh opengl_types.dat >> opengl-thin.ads.tmp
+	cat opengl-thin.ads.1 >> opengl-thin.ads.tmp
 	./block-comment 'OpenGL 1.1' >> opengl-thin.ads.tmp
 	./opengl-mkapi.lua opengl_1_1_types.dat opengl_1_1_names.dat opengl_types.dat >> opengl-thin.ads.tmp
 	./block-comment 'OpenGL 1.2' >> opengl-thin.ads.tmp
