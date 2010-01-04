@@ -1,6 +1,4 @@
 This package provides a set of Ada bindings to OpenGL.
 <br/>
 <br/>
-Bindings are generated from a set of machine-checked specifications and
-use data types based on those discovered at compile time on the host
-system.
+Bindings are generated from a set of machine-checked specifications.
