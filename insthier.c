@@ -8,7 +8,6 @@ struct install_item insthier[] = {
   {INST_MKDIR, 0, 0, ctxt_slibdir, 0, 0, 0755},
   {INST_MKDIR, 0, 0, ctxt_repos, 0, 0, 0755},
   {INST_COPY, "opengl-ada-conf.c", 0, ctxt_repos, 0, 0, 0644},
-  {INST_COPY, "opengl-gettypes.c", 0, ctxt_repos, 0, 0, 0644},
   {INST_COPY, "opengl-buffer.ads", 0, ctxt_repos, 0, 0, 0644},
   {INST_COPY, "opengl-buffer.ads", 0, ctxt_incdir, 0, 0, 0644},
   {INST_COPY, "opengl-buffer_object.ads", 0, ctxt_repos, 0, 0, 0644},
