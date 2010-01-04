@@ -3,7 +3,7 @@
 default: all
 
 all:\
-ctxt/bindir.o ctxt/ctxt.a ctxt/dlibdir.o ctxt/fakeroot.o ctxt/incdir.o \
+local ctxt/bindir.o ctxt/ctxt.a ctxt/dlibdir.o ctxt/fakeroot.o ctxt/incdir.o \
 ctxt/repos.o ctxt/slibdir.o ctxt/version.o deinstaller deinstaller.o \
 install-core.o install-posix.o install-win32.o install.a installer installer.o \
 instchk instchk.o insthier.o opengl-ada-conf opengl-ada-conf.o opengl-ada.a \
@@ -33,6 +33,13 @@ install-dryrun: installer conf-sosuffix
 # Mkf-instchk
 install-check: instchk conf-sosuffix
 	./instchk
+
+# Mkf-local
+local: check-deps
+	./check-deps
+
+local_clean:
+
 
 #----------------------------------------------------------------------
 # SYSDEPS start
@@ -84,11 +91,11 @@ mk-adatype
 	./mk-adatype > conf-adatype.tmp && mv conf-adatype.tmp conf-adatype
 
 conf-cctype:\
-conf-cc mk-cctype
+conf-cc conf-cc mk-cctype
 	./mk-cctype > conf-cctype.tmp && mv conf-cctype.tmp conf-cctype
 
 conf-ldtype:\
-conf-ld mk-ldtype
+conf-ld conf-ld mk-ldtype
 	./mk-ldtype > conf-ldtype.tmp && mv conf-ldtype.tmp conf-ldtype
 
 conf-sosuffix:\
@@ -355,7 +362,7 @@ opengl_3_0_types.dat opengl_3_0_names.dat
 	mv opengl-thin.ads.tmp opengl-thin.ads
 
 opengl-thin.o opengl-thin.ali:\
-ada-compile opengl-thin.ads
+ada-compile opengl-thin.ads opengl.ali opengl-thin.ads
 	./ada-compile opengl-thin.ads
 
 opengl-types.o opengl-types.ali:\
@@ -387,7 +394,7 @@ opengl.o opengl.ali:\
 ada-compile opengl.ads opengl.ads
 	./ada-compile opengl.ads
 
-clean-all: sysdeps_clean obj_clean ext_clean
+clean-all: sysdeps_clean local_clean obj_clean ext_clean
 clean: obj_clean
 obj_clean:
 	rm -f ctxt/bindir.c ctxt/bindir.o ctxt/ctxt.a ctxt/dlibdir.c ctxt/dlibdir.o \

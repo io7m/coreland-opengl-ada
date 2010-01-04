@@ -1,0 +1,5 @@
+local: check-deps
+	./check-deps
+
+local_clean:
+
