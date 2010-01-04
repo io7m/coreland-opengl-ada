@@ -1,5 +1,0 @@
-local: flags-opengl
-	./check-deps
-
-local_pre:
-local_clean:

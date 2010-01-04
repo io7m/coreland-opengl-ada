@@ -3,7 +3,7 @@
 default: all
 
 all:\
-local ctxt/bindir.o ctxt/ctxt.a ctxt/dlibdir.o ctxt/fakeroot.o ctxt/incdir.o \
+ctxt/bindir.o ctxt/ctxt.a ctxt/dlibdir.o ctxt/fakeroot.o ctxt/incdir.o \
 ctxt/repos.o ctxt/slibdir.o ctxt/version.o deinstaller deinstaller.o \
 install-core.o install-posix.o install-win32.o install.a installer installer.o \
 instchk instchk.o insthier.o opengl-ada-conf opengl-ada-conf.o opengl-ada.a \
@@ -34,34 +34,20 @@ install-dryrun: installer conf-sosuffix
 install-check: instchk conf-sosuffix
 	./instchk
 
-# Mkf-local
-local: flags-opengl
-	./check-deps
-
-local_pre:
-local_clean:
-
 #----------------------------------------------------------------------
 # SYSDEPS start
 
-flags-opengl:
-	@echo SYSDEPS opengl-flags run create flags-opengl 
-	@(cd SYSDEPS && ./sd-run modules/opengl-flags)
 _sd_sysinfo.h:
 	@echo SYSDEPS sd-sysinfo run create _sd_sysinfo.h 
 	@(cd SYSDEPS && ./sd-run modules/sd-sysinfo)
 
 
-opengl-flags_clean:
-	@echo SYSDEPS opengl-flags clean flags-opengl 
-	@(cd SYSDEPS && ./sd-clean modules/opengl-flags)
 sd-sysinfo_clean:
 	@echo SYSDEPS sd-sysinfo clean _sd_sysinfo.h 
 	@(cd SYSDEPS && ./sd-clean modules/sd-sysinfo)
 
 
 sysdeps_clean:\
-opengl-flags_clean \
 sd-sysinfo_clean \
 
 
@@ -85,7 +71,7 @@ ada-srcmap-all:\
 ada-srcmap conf-adacomp conf-adatype conf-systype
 
 cc-compile:\
-conf-cc conf-cctype conf-systype conf-ccfflist flags-opengl
+conf-cc conf-cctype conf-systype
 
 cc-link:\
 conf-ld conf-ldtype conf-systype
@@ -401,7 +387,7 @@ opengl.o opengl.ali:\
 ada-compile opengl.ads opengl.ads
 	./ada-compile opengl.ads
 
-clean-all: sysdeps_clean local_clean obj_clean ext_clean
+clean-all: sysdeps_clean obj_clean ext_clean
 clean: obj_clean
 obj_clean:
 	rm -f ctxt/bindir.c ctxt/bindir.o ctxt/ctxt.a ctxt/dlibdir.c ctxt/dlibdir.o \
