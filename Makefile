@@ -3,7 +3,7 @@
 default: all
 
 all:\
-local ctxt/bindir.o ctxt/ctxt.a ctxt/dlibdir.o ctxt/fakeroot.o ctxt/incdir.o \
+ctxt/bindir.o ctxt/ctxt.a ctxt/dlibdir.o ctxt/fakeroot.o ctxt/incdir.o \
 ctxt/repos.o ctxt/slibdir.o ctxt/version.o deinstaller deinstaller.o \
 install-core.o install-posix.o install-win32.o install.a installer installer.o \
 instchk instchk.o insthier.o opengl-ada-conf opengl-ada-conf.o opengl-ada.a \
@@ -33,13 +33,6 @@ install-dryrun: installer conf-sosuffix
 # Mkf-instchk
 install-check: instchk conf-sosuffix
 	./instchk
-
-# Mkf-local
-local: check-deps
-	./check-deps
-
-local_clean:
-
 
 #----------------------------------------------------------------------
 # SYSDEPS start
@@ -91,11 +84,11 @@ mk-adatype
 	./mk-adatype > conf-adatype.tmp && mv conf-adatype.tmp conf-adatype
 
 conf-cctype:\
-conf-cc conf-cc mk-cctype
+conf-cc mk-cctype
 	./mk-cctype > conf-cctype.tmp && mv conf-cctype.tmp conf-cctype
 
 conf-ldtype:\
-conf-ld conf-ld mk-ldtype
+conf-ld mk-ldtype
 	./mk-ldtype > conf-ldtype.tmp && mv conf-ldtype.tmp conf-ldtype
 
 conf-sosuffix:\
@@ -325,42 +318,6 @@ opengl-texture.o opengl-texture.ali:\
 ada-compile opengl-texture.adb opengl.ali opengl-texture.ads
 	./ada-compile opengl-texture.adb
 
-# opengl-thin.ads.mff
-opengl-thin.ads: \
-block-comment \
-opengl-mkconst.lua opengl_const.dat \
-opengl-mkapi.lua \
-opengl_1_1_types.dat opengl_1_1_names.dat \
-opengl_1_2_types.dat opengl_1_2_names.dat \
-opengl_1_3_types.dat opengl_1_3_names.dat \
-opengl_1_4_types.dat opengl_1_4_names.dat \
-opengl_1_5_types.dat opengl_1_5_names.dat \
-opengl_2_0_types.dat opengl_2_0_names.dat \
-opengl_2_1_types.dat opengl_2_1_names.dat \
-opengl_3_0_types.dat opengl_3_0_names.dat
-	rm -f opengl-thin.ads.tmp
-	cat opengl-thin.ads.0 >> opengl-thin.ads.tmp
-	./opengl-mkconst.lua opengl_const.dat >> opengl-thin.ads.tmp
-	cat opengl-thin.ads.1 >> opengl-thin.ads.tmp
-	./block-comment 'OpenGL 1.1' >> opengl-thin.ads.tmp
-	./opengl-mkapi.lua opengl_1_1_types.dat opengl_1_1_names.dat opengl_types.dat >> opengl-thin.ads.tmp
-	./block-comment 'OpenGL 1.2' >> opengl-thin.ads.tmp
-	./opengl-mkapi.lua opengl_1_2_types.dat opengl_1_2_names.dat opengl_types.dat >> opengl-thin.ads.tmp
-	./block-comment 'OpenGL 1.3' >> opengl-thin.ads.tmp
-	./opengl-mkapi.lua opengl_1_3_types.dat opengl_1_3_names.dat opengl_types.dat >> opengl-thin.ads.tmp
-	./block-comment 'OpenGL 1.4' >> opengl-thin.ads.tmp
-	./opengl-mkapi.lua opengl_1_4_types.dat opengl_1_4_names.dat opengl_types.dat >> opengl-thin.ads.tmp
-	./block-comment 'OpenGL 1.5' >> opengl-thin.ads.tmp
-	./opengl-mkapi.lua opengl_1_5_types.dat opengl_1_5_names.dat opengl_types.dat >> opengl-thin.ads.tmp
-	./block-comment 'OpenGL 2.0' >> opengl-thin.ads.tmp
-	./opengl-mkapi.lua opengl_2_0_types.dat opengl_2_0_names.dat opengl_types.dat >> opengl-thin.ads.tmp
-	./block-comment 'OpenGL 2.1' >> opengl-thin.ads.tmp
-	./opengl-mkapi.lua opengl_2_1_types.dat opengl_2_1_names.dat opengl_types.dat >> opengl-thin.ads.tmp
-	./block-comment 'OpenGL 3.0' >> opengl-thin.ads.tmp
-	./opengl-mkapi.lua opengl_3_0_types.dat opengl_3_0_names.dat opengl_types.dat >> opengl-thin.ads.tmp
-	cat opengl-thin.ads.N >> opengl-thin.ads.tmp
-	mv opengl-thin.ads.tmp opengl-thin.ads
-
 opengl-thin.o opengl-thin.ali:\
 ada-compile opengl-thin.ads opengl.ali opengl-thin.ads
 	./ada-compile opengl-thin.ads
@@ -394,7 +351,7 @@ opengl.o opengl.ali:\
 ada-compile opengl.ads opengl.ads
 	./ada-compile opengl.ads
 
-clean-all: sysdeps_clean local_clean obj_clean ext_clean
+clean-all: sysdeps_clean obj_clean ext_clean
 clean: obj_clean
 obj_clean:
 	rm -f ctxt/bindir.c ctxt/bindir.o ctxt/ctxt.a ctxt/dlibdir.c ctxt/dlibdir.o \
@@ -406,10 +363,10 @@ obj_clean:
 	opengl-buffer_object.ali opengl-buffer_object.o opengl-check.ali opengl-check.o \
 	opengl-error.ali opengl-error.o opengl-fog.ali opengl-fog.o opengl-light.ali \
 	opengl-light.o opengl-matrix.ali opengl-matrix.o opengl-state.ali \
-	opengl-state.o opengl-texture.ali opengl-texture.o opengl-thin.ads \
-	opengl-thin.ali opengl-thin.o opengl-types.ali opengl-types.o opengl-vertex.ali \
-	opengl-vertex.o opengl-vertex_array.ali opengl-vertex_array.o opengl-view.ali \
-	opengl-view.o opengl.ali opengl.o
+	opengl-state.o opengl-texture.ali opengl-texture.o opengl-thin.ali \
+	opengl-thin.o opengl-types.ali opengl-types.o opengl-vertex.ali opengl-vertex.o \
+	opengl-vertex_array.ali opengl-vertex_array.o opengl-view.ali opengl-view.o \
+	opengl.ali opengl.o
 ext_clean:
 	rm -f conf-adatype conf-cctype conf-ldtype conf-sosuffix conf-systype mk-ctxt
 
